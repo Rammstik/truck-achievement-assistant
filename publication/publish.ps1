@@ -1,51 +1,41 @@
-param([Parameter(Mandatory=$true)][string]$GitHubCLI)
+param([Parameter(Mandatory=$true)][string]$GitHubCLI, [switch]$ValidateOnly)
 $ErrorActionPreference='Stop'
 $root=Split-Path -Parent $PSScriptRoot
 $version=(Get-Content -LiteralPath (Join-Path $root 'installer/release.json') -Raw | ConvertFrom-Json).version
 $repo='Rammstik/truck-achievement-assistant'
-$sourceRepo='Rammstik/truck-achievement-assistant-source'
 function Invoke-Gh {
     & $GitHubCLI @args
     if($LASTEXITCODE -ne 0){throw 'GitHub command failed'}
 }
-$sourceState=Invoke-Gh api ('repos/'+$sourceRepo) | ConvertFrom-Json
-$publicState=Invoke-Gh api ('repos/'+$repo) | ConvertFrom-Json
-if(-not $sourceState.private -or $publicState.private){throw 'Repository visibility does not match the agreed publication policy'}
-$publicRoot=Join-Path $PSScriptRoot 'public'
-$allow=@('README.md','.gitignore','RELEASE_NOTES_RU.md')
-$actual=@(Get-ChildItem -LiteralPath $publicRoot -File | ForEach-Object Name)
-if(@($actual | Where-Object {$_ -notin $allow}).Count -gt 0){throw 'Unexpected file in public documentation'}
+function Invoke-Git {
+    & git -c ('safe.directory='+$root.Replace('\','/')) -C $root @args
+    if($LASTEXITCODE -ne 0){throw 'Git command failed'}
+}
+$state=Invoke-Gh api ('repos/'+$repo) | ConvertFrom-Json
+if($state.private){throw 'The release repository must be public'}
+$remote=Invoke-Git remote get-url origin
+if($LASTEXITCODE -ne 0 -or $remote -ne ('https://github.com/'+$repo+'.git')){throw 'Unexpected origin repository'}
+$tracked=@(Invoke-Git ls-files)
+if($LASTEXITCODE -ne 0){throw 'Could not inspect tracked files'}
+$unexpected=@($tracked | Where-Object {
+    $_ -notmatch '^(\.gitattributes|\.gitignore|README\.md|RELEASE_NOTES_RU\.md|requirements-build\.txt|installer/|publication/|work/(native-assistant|achievement-core|achievement-lab)/)' -or
+    $_ -match '(^|/)(player-data|sessions|staging|test-area|test-results|public-repo|bin|bin-ats|build|build-ats|pybuild|__pycache__)/|\.(exe|dll|zip|log|pyc|obj|pdb)$'
+})
+if($unexpected.Count -gt 0){$unexpected; throw 'Unexpected file in the public source tree'}
+if(@(Invoke-Git status --porcelain).Count -gt 0){throw 'Commit source changes before publishing a release'}
+$commit=Invoke-Git rev-parse HEAD
 $downloadRoot=Join-Path $root 'outputs/public'
 $assets=@((Join-Path $downloadRoot "ETS2-Achievement-Assistant-Setup-$version.exe"),(Join-Path $downloadRoot "ETS2-Achievement-Assistant-Portable-$version.zip"),(Join-Path $downloadRoot 'SHA256SUMS.txt'))
 foreach($asset in $assets){if(-not (Test-Path -LiteralPath $asset -PathType Leaf)){throw "Missing release asset: $asset"}}
-# A separate working copy prevents product source from entering the public repository.
-$checkout=Join-Path $PSScriptRoot 'public-repo'
-if(-not (Test-Path -LiteralPath (Join-Path $checkout '.git'))){
-    New-Item -ItemType Directory -Force -Path $checkout | Out-Null
-    & git -C $checkout init -b main
-    & git -C $checkout remote add origin ('https://github.com/'+$repo+'.git')
-}
-& git -C $checkout config user.name Rammstik
-& git -C $checkout config user.email '103355750+Rammstik@users.noreply.github.com'
-& git -C $checkout config core.autocrlf false
-foreach($name in $allow){Copy-Item -LiteralPath (Join-Path $publicRoot $name) -Destination (Join-Path $checkout $name) -Force}
-& git -C $checkout add -- @allow
-& git -C $checkout diff --cached --quiet
-if($LASTEXITCODE -eq 1){
-    & git -C $checkout commit -m "Publish ETS2 $version installation guide"
-    if($LASTEXITCODE -ne 0){throw 'Public documentation commit failed'}
-}
-$tracked=@(& git -C $checkout ls-files)
-if(@($tracked | Where-Object {$_ -notin $allow}).Count -gt 0){throw 'Public repository includes files outside the documentation allow-list'}
-& git -C $checkout push -u origin main
-if($LASTEXITCODE -ne 0){throw 'Public documentation push failed'}
-Invoke-Gh release create "ets2-v$version" @assets --repo $repo --target main --prerelease --title "ETS2 Achievement Assistant $version — ETS2 1.62.1.0" --notes-file (Join-Path $publicRoot 'RELEASE_NOTES_RU.md')
-# Validate actual published visibility and asset checksums using server-side digests.
+if($ValidateOnly){Write-Output "Validated public repository, committed source and release assets for $version"; return}
+Invoke-Git push -u origin main
+# A new release tag points to the exact source commit. Existing releases are never overwritten.
+Invoke-Gh release create "ets2-v$version" @assets --repo $repo --target $commit --prerelease --title "ETS2 Achievement Assistant $version" --notes-file (Join-Path $PSScriptRoot 'public/RELEASE_NOTES_RU.md')
 $release=Invoke-Gh api ("repos/$repo/releases/tags/ets2-v$version") | ConvertFrom-Json
 if($release.draft -or -not $release.prerelease -or $release.assets.Count -ne $assets.Count){throw 'Unexpected published release state'}
 foreach($asset in $assets){
-    $remote=$release.assets | Where-Object name -eq ([IO.Path]::GetFileName($asset))
+    $remoteAsset=$release.assets | Where-Object name -eq ([IO.Path]::GetFileName($asset))
     $hash=(Get-FileHash -LiteralPath $asset -Algorithm SHA256).Hash.ToLowerInvariant()
-    if(-not $remote -or $remote.digest -ne ('sha256:'+$hash)){throw "Uploaded asset checksum mismatch: $asset"}
+    if(-not $remoteAsset -or $remoteAsset.digest -ne ('sha256:'+$hash)){throw "Uploaded asset checksum mismatch: $asset"}
 }
 $release | Select-Object html_url,prerelease,@{n='assets';e={$_.assets | Select-Object name,size,digest}}

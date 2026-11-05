@@ -4,7 +4,7 @@
 
 **[Скачать установщик для Windows](https://github.com/Rammstik/truck-achievement-assistant/releases/tag/ets2-v0.6.15)**
 
-В разделе Assets выберите `ETS2-Achievement-Assistant-Setup-0.6.15.exe`. ZIP с пометкой `Portable` предназначен для ручной установки. Автоматические архивы GitHub `Source code` содержат только документацию.
+В разделе Assets выберите `ETS2-Achievement-Assistant-Setup-0.6.15.exe`. ZIP с пометкой `Portable` предназначен для ручной установки. Автоматические архивы GitHub `Source code` относятся к исходникам выбранного тега; для установки выбирайте готовый установщик или Portable.
 
 ## Совместимость
 
@@ -47,4 +47,4 @@ Python и инструменты разработки устанавливать
 
 Создайте [обращение](https://github.com/Rammstik/truck-achievement-assistant/issues) с версией игры и помощника, описанием проблемы и снимком экрана. Не прикладывайте полные сохранения и личные данные без необходимости.
 
-Исходники проекта закрыты. Это независимый проект, не официальный продукт SCS Software. Лицензии сторонних компонентов включены в дистрибутив. Установщик создан с помощью [Inno Setup](https://jrsoftware.org/).
+Исходники ETS2 и ATS доступны в [основном репозитории проекта](https://github.com/Rammstik/truck-achievement-assistant). Это независимый проект, не официальный продукт SCS Software. Лицензии сторонних компонентов включены в дистрибутив. Установщик создан с помощью [Inno Setup](https://jrsoftware.org/).

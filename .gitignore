@@ -3,6 +3,8 @@
 !/.gitignore
 !/.gitattributes
 !/README.md
+!/RELEASE_NOTES_RU.md
+!/requirements-build.txt
 !/installer/
 !/publication/
 !/work/
