@@ -1,0 +1,665 @@
+{
+  "source_game_version": "1.61.1.9",
+  "sources": [
+    {
+      "archive": "dlc_balkan_w.scs",
+      "sectors_scanned": 42,
+      "parse_errors": 0
+    },
+    {
+      "archive": "base_map.scs",
+      "sectors_scanned": 282,
+      "parse_errors": 0
+    },
+    {
+      "archive": "dlc_balkan_e.scs",
+      "sectors_scanned": 70,
+      "parse_errors": 0
+    },
+    {
+      "archive": "dlc_balt.scs",
+      "sectors_scanned": 60,
+      "parse_errors": 0
+    },
+    {
+      "archive": "dlc_east.scs",
+      "sectors_scanned": 60,
+      "parse_errors": 0
+    },
+    {
+      "archive": "dlc_fr.scs",
+      "sectors_scanned": 76,
+      "parse_errors": 0
+    },
+    {
+      "archive": "dlc_it.scs",
+      "sectors_scanned": 57,
+      "parse_errors": 0
+    },
+    {
+      "archive": "dlc_north.scs",
+      "sectors_scanned": 68,
+      "parse_errors": 0
+    },
+    {
+      "archive": "dlc_greece.scs",
+      "sectors_scanned": 71,
+      "parse_errors": 0
+    },
+    {
+      "archive": "dlc_iberia.scs",
+      "sectors_scanned": 128,
+      "parse_errors": 0
+    },
+    {
+      "archive": "dlc_polar.scs",
+      "sectors_scanned": 187,
+      "parse_errors": 0
+    }
+  ],
+  "identification": "Map Cutscene type Viewpoint, action achievement <time> <id>; map item UID matched to saved cutscene UID",
+  "viewed_state": 2,
+  "state_mapping_evidence": "Reverse engineered; current saved counts match Steam for West Balkans, Greece and Nordic Horizons. Requires gameplay confirmation for other states.",
+  "rules": {
+    "ib_cutscenes": {
+      "target": 12,
+      "items": [
+        {
+          "id": "4325886063837380609",
+          "uid_hex": "3C08A2749DD70001",
+          "name": "Барселона",
+          "x": -37131.33,
+          "z": 47821.766,
+          "source_archive": "dlc_iberia.scs",
+          "source_sector": "map/europe/sec-0010+0011.base",
+          "label_key": "ibe_cut_barcelona"
+        },
+        {
+          "id": "4322712974819524608",
+          "uid_hex": "3BFD5C8C42170000",
+          "name": "Башня солнечной энергии в Андалусии",
+          "x": -75927.7,
+          "z": 62374.492,
+          "source_archive": "dlc_iberia.scs",
+          "source_sector": "map/europe/sec-0019+0015.base",
+          "label_key": "ibe_cut_gemasolar"
+        },
+        {
+          "id": "4302904945408409600",
+          "uid_hex": "3BB6FD4005570000",
+          "name": "Водохранилище Барриос-де-Луна",
+          "x": -71310.5,
+          "z": 33244.32,
+          "source_archive": "dlc_iberia.scs",
+          "source_sector": "map/europe/sec-0018+0008.base",
+          "label_key": "ibe_cut_reservoir"
+        },
+        {
+          "id": "4326872823996743681",
+          "uid_hex": "3C0C23E89E9E0001",
+          "name": "Гавань Порту",
+          "x": -86444.39,
+          "z": 36905.684,
+          "source_archive": "dlc_iberia.scs",
+          "source_sector": "map/europe/sec-0022+0009.base",
+          "label_key": "ibe_cut_porto"
+        },
+        {
+          "id": "4325872420823433217",
+          "uid_hex": "3C08960C1AD70001",
+          "name": "Карьер Los Tres Cuñados",
+          "x": -75963.97,
+          "z": 34766.09,
+          "source_archive": "dlc_iberia.scs",
+          "source_sector": "map/europe/sec-0019+0008.base",
+          "label_key": "ibe_cut_quarry"
+        },
+        {
+          "id": "4233202316612075521",
+          "uid_hex": "3ABF5B1418060001",
+          "name": "Международный мост через реку Гвадиана",
+          "x": -87254.19,
+          "z": 61884.758,
+          "source_archive": "dlc_iberia.scs",
+          "source_sector": "map/europe/sec-0022+0015.base",
+          "label_key": "ibe_cut_guadiana"
+        },
+        {
+          "id": "4297270052703895552",
+          "uid_hex": "3BA2F85853570000",
+          "name": "Мост 25 апреля",
+          "x": -92633.95,
+          "z": 50689.082,
+          "source_archive": "dlc_iberia.scs",
+          "source_sector": "map/europe/sec-0024+0012.base",
+          "label_key": "ibe_cut_lisboa"
+        },
+        {
+          "id": "4316248567285481472",
+          "uid_hex": "3BE6653417570000",
+          "name": "Нефтеперерабатывающий завод Пуэртольяно",
+          "x": -69753.086,
+          "z": 59275.37,
+          "source_archive": "dlc_iberia.scs",
+          "source_sector": "map/europe/sec-0018+0014.base",
+          "label_key": "ibe_cut_puertollano"
+        },
+        {
+          "id": "4325880684701220865",
+          "uid_hex": "3C089D9030570001",
+          "name": "Ольян",
+          "x": -88677.836,
+          "z": 62374.867,
+          "source_archive": "dlc_iberia.scs",
+          "source_sector": "map/europe/sec-0023+0015.base",
+          "label_key": "ibe_cut_olhao"
+        },
+        {
+          "id": "4325874895647342593",
+          "uid_hex": "3C08984C51D70001",
+          "name": "Параболическая электростанция Андалусии",
+          "x": -66700.45,
+          "z": 66065.734,
+          "source_archive": "dlc_iberia.scs",
+          "source_sector": "map/europe/sec-0017+0016.base",
+          "label_key": "ibe_cut_andasol"
+        },
+        {
+          "id": "4228974900642512897",
+          "uid_hex": "3AB056441CD70001",
+          "name": "Паромный порт Сантандер",
+          "x": -61263.734,
+          "z": 31764.543,
+          "source_archive": "dlc_iberia.scs",
+          "source_sector": "map/europe/sec-0016+0007.base",
+          "label_key": "ibe_cut_santander"
+        },
+        {
+          "id": "4325890201597968385",
+          "uid_hex": "3C08A63803970001",
+          "name": "Порт Валенсии",
+          "x": -51088.426,
+          "z": 56801.965,
+          "source_archive": "dlc_iberia.scs",
+          "source_sector": "map/europe/sec-0013+0014.base",
+          "label_key": "ibe_cut_valencia"
+        },
+        {
+          "id": "4325883745565868033",
+          "uid_hex": "3C08A058DA170001",
+          "name": "Порт Синиш",
+          "x": -92100.305,
+          "z": 56829.15,
+          "source_archive": "dlc_iberia.scs",
+          "source_sector": "map/europe/sec-0024+0014.base",
+          "label_key": "ibe_cut_sines"
+        },
+        {
+          "id": "4323983495641104384",
+          "uid_hex": "3C01E01470570000",
+          "name": "Теплицы<br>Эль-Эхидо",
+          "x": -67859.03,
+          "z": 69757.55,
+          "source_archive": "dlc_iberia.scs",
+          "source_sector": "map/europe/sec-0017+0017.base",
+          "label_key": "ibe_cut_ejido"
+        },
+        {
+          "id": "4325884690127323137",
+          "uid_hex": "3C08A134C6570001",
+          "name": "Торговый центр Сарагосы",
+          "x": -53328.777,
+          "z": 44345.59,
+          "source_archive": "dlc_iberia.scs",
+          "source_sector": "map/europe/sec-0014+0011.base",
+          "label_key": "ibe_cut_zaragoza"
+        }
+      ]
+    },
+    "pc_cutscenes": {
+      "target": 12,
+      "items": [
+        {
+          "id": "6718120608914800641",
+          "uid_hex": "5D3B8F1984990001",
+          "name": "Будё",
+          "x": 14564.125,
+          "z": -93767.56,
+          "source_archive": "dlc_polar.scs",
+          "source_sector": "map/europe/sec+0003-0024.base",
+          "label_key": "poc_cut_bodo"
+        },
+        {
+          "id": "6790942893425623040",
+          "uid_hex": "5E3E4694E4990000",
+          "name": "Вийтасаари",
+          "x": 43580.49,
+          "z": -73377.7,
+          "source_archive": "dlc_polar.scs",
+          "source_sector": "map/europe/sec+0010-0019.base",
+          "label_key": "poc_cut_viitasaari"
+        },
+        {
+          "id": "6786433153379139585",
+          "uid_hex": "5E2E40FF37190001",
+          "name": "Деревня Санта-Клауса",
+          "x": 41740.605,
+          "z": -92444.25,
+          "source_archive": "dlc_polar.scs",
+          "source_sector": "map/europe/sec+0010-0024.base",
+          "label_key": "poc_cut_santa"
+        },
+        {
+          "id": "6799750965046018048",
+          "uid_hex": "5E5D9179E0B00000",
+          "name": "Евле",
+          "x": 22339.355,
+          "z": -55920.855,
+          "source_archive": "base_map.scs",
+          "source_sector": "map/europe/sec+0005-0014.base",
+          "label_key": "poc_cut_gavle"
+        },
+        {
+          "id": "6800980974389690368",
+          "uid_hex": "5E61F029BEB00000",
+          "name": "Зона отдыха Хейа",
+          "x": 24564.094,
+          "z": -107298.984,
+          "source_archive": "dlc_polar.scs",
+          "source_sector": "map/europe/sec+0006-0027.base",
+          "label_key": "poc_cut_heia"
+        },
+        {
+          "id": "6795075835387248641",
+          "uid_hex": "5E4CF5786E190001",
+          "name": "Комунна Норкапп",
+          "x": 37416.703,
+          "z": -121849.2,
+          "source_archive": "dlc_polar.scs",
+          "source_sector": "map/europe/sec+0009-0031.base",
+          "label_key": "poc_cut_nordkapp"
+        },
+        {
+          "id": "6798021953558937600",
+          "uid_hex": "5E576CF305300000",
+          "name": "Лолби",
+          "x": 33479.945,
+          "z": -66192.14,
+          "source_archive": "dlc_polar.scs",
+          "source_sector": "map/europe/sec+0008-0017.base",
+          "label_key": "poc_cut_lalby"
+        },
+        {
+          "id": "6798388233713483776",
+          "uid_hex": "5E58BA1443B00000",
+          "name": "Лулео",
+          "x": 33386.293,
+          "z": -85096.984,
+          "source_archive": "dlc_polar.scs",
+          "source_sector": "map/europe/sec+0008-0022.base",
+          "label_key": "poc_cut_lulea"
+        },
+        {
+          "id": "6808542008057593856",
+          "uid_hex": "5E7CCCE214990000",
+          "name": "Олесунн",
+          "x": -7781.586,
+          "z": -67316.56,
+          "source_archive": "dlc_polar.scs",
+          "source_sector": "map/europe/sec-0002-0017.base",
+          "label_key": "poc_cut_alesund"
+        },
+        {
+          "id": "6799713489651302401",
+          "uid_hex": "5E5D6F6475190001",
+          "name": "Перевал Муоткатакка",
+          "x": 29321.3,
+          "z": -105415.984,
+          "source_archive": "dlc_polar.scs",
+          "source_sector": "map/europe/sec+0007-0027.base",
+          "label_key": "poc_cut_muotkatakka"
+        },
+        {
+          "id": "6798064169428516865",
+          "uid_hex": "5E5793582B190001",
+          "name": "Пограничный пункт Бьёрнфьель",
+          "x": 25179.941,
+          "z": -101633.33,
+          "source_archive": "dlc_polar.scs",
+          "source_sector": "map/europe/sec+0006-0026.base",
+          "label_key": "poc_cut_bjornfjell"
+        },
+        {
+          "id": "6796693553426726912",
+          "uid_hex": "5E52B4C6C3300000",
+          "name": "Порсангер-фьорд",
+          "x": 36496.41,
+          "z": -117020.414,
+          "source_archive": "dlc_polar.scs",
+          "source_sector": "map/europe/sec+0009-0030.base",
+          "label_key": "poc_cut_porsanger"
+        },
+        {
+          "id": "6801404378632683520",
+          "uid_hex": "5E63713F3A300000",
+          "name": "Свольвер",
+          "x": 13453.055,
+          "z": -99953,
+          "source_archive": "dlc_polar.scs",
+          "source_sector": "map/europe/sec+0003-0025.base",
+          "label_key": "poc_cut_svolvaer"
+        },
+        {
+          "id": "6838080605766287360",
+          "uid_hex": "5EE5BE14CC300000",
+          "name": "Тронхейм",
+          "x": 3181.8633,
+          "z": -73102.33,
+          "source_archive": "dlc_polar.scs",
+          "source_sector": "map/europe/sec+0000-0019.base",
+          "label_key": "poc_cut_trondheim"
+        },
+        {
+          "id": "6735695312101900288",
+          "uid_hex": "5D79FF32F9190000",
+          "name": "Умео",
+          "x": 28603.844,
+          "z": -75422.7,
+          "source_archive": "dlc_polar.scs",
+          "source_sector": "map/europe/sec+0007-0019.base",
+          "label_key": "poc_cut_umea"
+        },
+        {
+          "id": "6821798302067523585",
+          "uid_hex": "5EABE5698C190001",
+          "name": "Ферма, пос. Тохмаярви",
+          "x": 57180.637,
+          "z": -69752.95,
+          "source_archive": "dlc_polar.scs",
+          "source_sector": "map/europe/sec+0014-0018.base",
+          "label_key": "poc_cut_farm"
+        },
+        {
+          "id": "6829341793253392384",
+          "uid_hex": "5EC6B22D74990000",
+          "name": "Шахта железной руды, Кируна",
+          "x": 27010.594,
+          "z": -97983.414,
+          "source_archive": "dlc_polar.scs",
+          "source_sector": "map/europe/sec+0006-0025.base",
+          "label_key": "poc_cut_kiruna"
+        }
+      ]
+    },
+    "bw_cutscenes": {
+      "target": 8,
+      "items": [
+        {
+          "id": "5656566782490771457",
+          "uid_hex": "4E802984D6A30001",
+          "name": "Бихач",
+          "x": 20569.86,
+          "z": 32820.508,
+          "source_archive": "dlc_balkan_w.scs",
+          "source_sector": "map/europe/sec+0005+0008.base",
+          "label_key": "blkw_cut_bihac"
+        },
+        {
+          "id": "5673255168430833665",
+          "uid_hex": "4EBB73847A780001",
+          "name": "Ветряная электростанция Ковачица",
+          "x": 40678.438,
+          "z": 29165.387,
+          "source_archive": "base_map.scs",
+          "source_sector": "map/europe/sec+0010+0007.base",
+          "label_key": "blkw_cut_kovacica_wind_park"
+        },
+        {
+          "id": "5672897618993348608",
+          "uid_hex": "4EBA2E5403420000",
+          "name": "Дубровник",
+          "x": 29099.23,
+          "z": 44116.86,
+          "source_archive": "dlc_balkan_w.scs",
+          "source_sector": "map/europe/sec+0007+0011.base",
+          "label_key": "blkw_cut_dubrovnik"
+        },
+        {
+          "id": "5714674303582535680",
+          "uid_hex": "4F4E9A0060170000",
+          "name": "Карьер близ Гостивара",
+          "x": 41501.22,
+          "z": 48990.184,
+          "source_archive": "dlc_balkan_w.scs",
+          "source_sector": "map/europe/sec+0010+0012.base",
+          "label_key": "blkw_cut_gostivar_quarry"
+        },
+        {
+          "id": "5683261107758170113",
+          "uid_hex": "4EDEFFDDC5B80001",
+          "name": "Копер",
+          "x": 10913.305,
+          "z": 29664.64,
+          "source_archive": "base_map.scs",
+          "source_sector": "map/europe/sec+0002+0007.base",
+          "label_key": "blkw_cut_koper"
+        },
+        {
+          "id": "5686402058225778688",
+          "uid_hex": "4EEA288B4A990000",
+          "name": "Любляна",
+          "x": 15282.469,
+          "z": 25673.086,
+          "source_archive": "base_map.scs",
+          "source_sector": "map/europe/sec+0003+0006.base",
+          "label_key": "blkw_cut_ljubljana"
+        },
+        {
+          "id": "5579709199926362113",
+          "uid_hex": "4D6F1BF46B970001",
+          "name": "Мост Джурджевича",
+          "x": 34752.11,
+          "z": 41675.89,
+          "source_archive": "dlc_balkan_w.scs",
+          "source_sector": "map/europe/sec+0008+0010.base",
+          "label_key": "blkw_cut_durdevica"
+        },
+        {
+          "id": "5674503406346174471",
+          "uid_hex": "4EBFE2C884020007",
+          "name": "Порт, Риека",
+          "x": 14149.992,
+          "z": 30143.559,
+          "source_archive": "base_map.scs",
+          "source_sector": "map/europe/sec+0003+0007.base",
+          "label_key": "blkw_cut_rijeka"
+        },
+        {
+          "id": "5352259586727673857",
+          "uid_hex": "4A470BBC94950001",
+          "name": "Пристань, Дуррес",
+          "x": 35548.223,
+          "z": 51912.453,
+          "source_archive": "dlc_balkan_w.scs",
+          "source_sector": "map/europe/sec+0008+0012.base",
+          "label_key": "blkw_cut_durres"
+        },
+        {
+          "id": "5686455304604549120",
+          "uid_hex": "4EEA58F8AE170000",
+          "name": "Прокупле",
+          "x": 43600.04,
+          "z": 40750.78,
+          "source_archive": "dlc_balkan_w.scs",
+          "source_sector": "map/europe/sec+0010+0010.base",
+          "label_key": "blkw_cut_prokuplje"
+        },
+        {
+          "id": "5674506806660038657",
+          "uid_hex": "4EBFE5E036820001",
+          "name": "Сплит",
+          "x": 21828.855,
+          "z": 41212.824,
+          "source_archive": "dlc_balkan_w.scs",
+          "source_sector": "map/europe/sec+0005+0010.base",
+          "label_key": "blkw_cut_split"
+        },
+        {
+          "id": "5663915744096223233",
+          "uid_hex": "4E9A455C4C990001",
+          "name": "Старый город, Сараево",
+          "x": 31785.27,
+          "z": 38489.086,
+          "source_archive": "dlc_balkan_w.scs",
+          "source_sector": "map/europe/sec+0007+0009.base",
+          "label_key": "blkw_cut_sarajevo"
+        },
+        {
+          "id": "5337536147453560599",
+          "uid_hex": "4A12BCD8BCC6C717",
+          "name": "Тирана",
+          "x": 38326.66,
+          "z": 51030.496,
+          "source_archive": "dlc_balkan_w.scs",
+          "source_sector": "map/europe/sec+0009+0012.base",
+          "label_key": "blkw_cut_tirana"
+        },
+        {
+          "id": "5674501807519432704",
+          "uid_hex": "4EBFE15442820000",
+          "name": "Фиерское нефтяное месторождение",
+          "x": 39227.65,
+          "z": 55367.887,
+          "source_archive": "dlc_balkan_w.scs",
+          "source_sector": "map/europe/sec+0009+0013.base",
+          "label_key": "blkw_cut_fier_oil_fields"
+        },
+        {
+          "id": "5667285918404771840",
+          "uid_hex": "4EA63E8427170000",
+          "name": "Центр Приштины",
+          "x": 43099.812,
+          "z": 43138.92,
+          "source_archive": "dlc_balkan_w.scs",
+          "source_sector": "map/europe/sec+0010+0010.base",
+          "label_key": "blkw_cut_pristina"
+        }
+      ]
+    },
+    "gr_cutscenes": {
+      "target": 8,
+      "items": [
+        {
+          "id": "6351526212364992512",
+          "uid_hex": "5825277035990000",
+          "name": "Каламбака и Метеоры",
+          "x": 46232.473,
+          "z": 61351.19,
+          "source_archive": "dlc_greece.scs",
+          "source_sector": "map/europe/sec+0011+0015.base",
+          "label_key": "gr_cut_kalabaka"
+        },
+        {
+          "id": "6351370404188717056",
+          "uid_hex": "582499BB4A990000",
+          "name": "Коринфский канал",
+          "x": 52381.88,
+          "z": 70703.8,
+          "source_archive": "dlc_greece.scs",
+          "source_sector": "map/europe/sec+0013+0017.base",
+          "label_key": "gr_cut_corinth"
+        },
+        {
+          "id": "6351438061105643520",
+          "uid_hex": "5824D743E5190000",
+          "name": "Курортно-гостиничный комплекс, остров Лесбос",
+          "x": 65460.363,
+          "z": 61513.906,
+          "source_archive": "dlc_greece.scs",
+          "source_sector": "map/europe/sec+0016+0015.base",
+          "label_key": "gr_cut_hotel"
+        },
+        {
+          "id": "6337960593503813633",
+          "uid_hex": "57F4F59470380001",
+          "name": "Ликсури",
+          "x": 40640.66,
+          "z": 70698.83,
+          "source_archive": "dlc_greece.scs",
+          "source_sector": "map/europe/sec+0010+0017.base",
+          "label_key": "gr_cut_lixouri"
+        },
+        {
+          "id": "6332130975043551233",
+          "uid_hex": "57E03F929EB80001",
+          "name": "Монастырь святого Нектария",
+          "x": 75993.43,
+          "z": 78678.81,
+          "source_archive": "dlc_greece.scs",
+          "source_sector": "map/europe/sec+0018+0019.base",
+          "label_key": "gr_cut_monastery"
+        },
+        {
+          "id": "6338058193179508737",
+          "uid_hex": "57F54E58A2380001",
+          "name": "Мост через водохранилище Полифитон",
+          "x": 47638.38,
+          "z": 59165.785,
+          "source_archive": "dlc_greece.scs",
+          "source_sector": "map/europe/sec+0011+0014.base",
+          "label_key": "gr_cut_polyfytos"
+        },
+        {
+          "id": "6351332661727395840",
+          "uid_hex": "58247767B0990000",
+          "name": "Пирейский порт, Афины",
+          "x": 57449.73,
+          "z": 71171.59,
+          "source_archive": "dlc_greece.scs",
+          "source_sector": "map/europe/sec+0014+0017.base",
+          "label_key": "gr_cut_piraeus"
+        },
+        {
+          "id": "6339575772935749640",
+          "uid_hex": "57FAB293B4820008",
+          "name": "Пляж, Фалираки",
+          "x": 77210.53,
+          "z": 77925,
+          "source_archive": "dlc_greece.scs",
+          "source_sector": "map/europe/sec+0019+0019.base",
+          "label_key": "gr_cut_beach"
+        },
+        {
+          "id": "6343962157494960129",
+          "uid_hex": "580A47F872020001",
+          "name": "Порт Суда",
+          "x": 59072.72,
+          "z": 84675.1,
+          "source_archive": "dlc_greece.scs",
+          "source_sector": "map/europe/sec+0014+0021.base",
+          "label_key": "gr_cut_souda"
+        },
+        {
+          "id": "6348505698297905153",
+          "uid_hex": "581A6C4BF9970001",
+          "name": "Пристань Кавалы",
+          "x": 58050.918,
+          "z": 52692.727,
+          "source_archive": "dlc_greece.scs",
+          "source_sector": "map/europe/sec+0014+0013.base",
+          "label_key": "gr_cut_kavala"
+        },
+        {
+          "id": "6339977090673672192",
+          "uid_hex": "57FC1F92C5B80000",
+          "name": "Цементный завод, Тессалоники",
+          "x": 52315.176,
+          "z": 54147.574,
+          "source_archive": "dlc_greece.scs",
+          "source_sector": "map/europe/sec+0013+0013.base",
+          "label_key": "gr_cut_cement"
+        }
+      ]
+    }
+  }
+}

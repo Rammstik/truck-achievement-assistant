@@ -1,0 +1,258 @@
+{
+  "source_game_version": "1.61.1.9",
+  "target": 10,
+  "achievement_id": "st_all_routes",
+  "items": [
+    {
+      "id": "ber_szcz1",
+      "from_city": "berlin",
+      "to_city": "szczecin",
+      "from_name": "Берлин",
+      "to_name": "Щецин",
+      "name": "Берлин → Щецин"
+    },
+    {
+      "id": "brat_graz1",
+      "from_city": "bratislava",
+      "to_city": "graz",
+      "from_name": "Братислава",
+      "to_name": "Грац",
+      "name": "Братислава → Грац"
+    },
+    {
+      "id": "bre_tra1",
+      "from_city": "bremen",
+      "to_city": "travemunde",
+      "from_name": "Бремен",
+      "to_name": "Травемюнде",
+      "name": "Бремен → Травемюнде"
+    },
+    {
+      "id": "brus_amster1",
+      "from_city": "brussel",
+      "to_city": "amsterdam",
+      "from_name": "Брюссель",
+      "to_name": "Амстердам",
+      "name": "Брюссель → Амстердам"
+    },
+    {
+      "id": "glas_aber1",
+      "from_city": "glasgow",
+      "to_city": "aberdeen",
+      "from_name": "Глазго",
+      "to_name": "Абердин",
+      "name": "Глазго → Абердин"
+    },
+    {
+      "id": "dij_gen1",
+      "from_city": "dijon",
+      "to_city": "geneve",
+      "from_name": "Дижон",
+      "to_name": "Женева",
+      "name": "Дижон → Женева"
+    },
+    {
+      "id": "dort_hann1",
+      "from_city": "dortmund",
+      "to_city": "hannover",
+      "from_name": "Дортмунд",
+      "to_name": "Ганновер",
+      "name": "Дортмунд → Ганновер"
+    },
+    {
+      "id": "dres_wroc1",
+      "from_city": "dresden",
+      "to_city": "wroclaw",
+      "from_name": "Дрезден",
+      "to_name": "Вроцлав",
+      "name": "Дрезден → Вроцлав"
+    },
+    {
+      "id": "car_bir1",
+      "from_city": "cardiff",
+      "to_city": "birmingham",
+      "from_name": "Кардифф",
+      "to_name": "Бирмингем",
+      "name": "Кардифф → Бирмингем"
+    },
+    {
+      "id": "kas_ham1",
+      "from_city": "kassel",
+      "to_city": "hamburg",
+      "from_name": "Кассель",
+      "to_name": "Гамбург",
+      "name": "Кассель → Гамбург"
+    },
+    {
+      "id": "koln_amster1",
+      "from_city": "koln",
+      "to_city": "amsterdam",
+      "from_name": "Кёльн",
+      "to_name": "Амстердам",
+      "name": "Кёльн → Амстердам"
+    },
+    {
+      "id": "lin_br1",
+      "from_city": "linz",
+      "to_city": "brno",
+      "from_name": "Линц",
+      "to_name": "Брно",
+      "name": "Линц → Брно"
+    },
+    {
+      "id": "lon_fel1",
+      "from_city": "london",
+      "to_city": "felixstowe",
+      "from_name": "Лондон",
+      "to_name": "Филикстоу",
+      "name": "Лондон → Филикстоу"
+    },
+    {
+      "id": "lux_lieg1",
+      "from_city": "luxembourg",
+      "to_city": "liege",
+      "from_name": "Люксембург",
+      "to_name": "Льеж",
+      "name": "Люксембург → Льеж"
+    },
+    {
+      "id": "munch_inns1",
+      "from_city": "munchen",
+      "to_city": "salzburg",
+      "from_name": "Мюнхен",
+      "to_name": "Зальцбург",
+      "name": "Мюнхен → Зальцбург"
+    },
+    {
+      "id": "ply_dov1",
+      "from_city": "plymouth",
+      "to_city": "dover",
+      "from_name": "Плимут",
+      "to_name": "Дувр",
+      "name": "Плимут → Дувр"
+    },
+    {
+      "id": "prag_nurn1",
+      "from_city": "prague",
+      "to_city": "nurnberg",
+      "from_name": "Прага",
+      "to_name": "Нюрнберг",
+      "name": "Прага → Нюрнберг"
+    },
+    {
+      "id": "reim_stra1",
+      "from_city": "reims",
+      "to_city": "strasbourg",
+      "from_name": "Реймс",
+      "to_name": "Страсбург",
+      "name": "Реймс → Страсбург"
+    },
+    {
+      "id": "ros_ber1",
+      "from_city": "rostock",
+      "to_city": "berlin",
+      "from_name": "Росток",
+      "to_name": "Берлин",
+      "name": "Росток → Берлин"
+    },
+    {
+      "id": "shef_bir1",
+      "from_city": "sheffield",
+      "to_city": "birmingham",
+      "from_name": "Шеффилд",
+      "to_name": "Бирмингем",
+      "name": "Шеффилд → Бирмингем"
+    }
+  ],
+  "known_routes": [
+    "ath_ath1",
+    "barc_vand1",
+    "beo_uzi1",
+    "ber_szcz1",
+    "brat_graz1",
+    "bre_ren1",
+    "bre_tra1",
+    "brus_amster1",
+    "cag_sas1",
+    "car_bir1",
+    "dau_rez1",
+    "dij_gen1",
+    "dort_hann1",
+    "dres_wroc1",
+    "gal_las1",
+    "gij_nav1",
+    "glas_aber1",
+    "got_hel1",
+    "hue_sev1",
+    "ioa_vlo1",
+    "ist_edi1",
+    "jyv_vaa1",
+    "kas_ham1",
+    "koln_amster1",
+    "kop_nov1",
+    "kos_bud1",
+    "kra_ban1",
+    "kra_nov1",
+    "kuo_kaj1",
+    "lin_br1",
+    "lin_kal1",
+    "lis_pon1",
+    "lon_fel1",
+    "lux_lieg1",
+    "mad_pue1",
+    "munch_inns1",
+    "nan_civ1",
+    "nap_ter1",
+    "nar_kir1",
+    "nic_nic1",
+    "ode_hir1",
+    "olh_lis1",
+    "ols_bial1",
+    "oul_rov1",
+    "pal_cat1",
+    "ple_sof1",
+    "ply_dov1",
+    "por_hel1",
+    "prag_nurn1",
+    "reim_stra1",
+    "res_tar1",
+    "ros_ber1",
+    "shef_bir1",
+    "sko_bit1",
+    "sor_ter1",
+    "sos_pet1",
+    "stav_osl1",
+    "sze_deb1",
+    "the_tri1",
+    "tou_mon1",
+    "tre_esb1",
+    "tro_ost1",
+    "ver_par1",
+    "war_kat1",
+    "zen_kar1"
+  ],
+  "route_definition_sources": [
+    {
+      "file": "st-routes.sii",
+      "sha256": "d8f53734840db8dbfebe0a82f99604837572783f860617b992c3336966ce3b9c"
+    },
+    {
+      "file": "st-routes-extra-0.sii",
+      "sha256": "7e867ca522dd1f73b32ad195b1bbdf9479962a13492bd48620e7efa9ddc800f8"
+    },
+    {
+      "file": "st-routes-extra-1.sii",
+      "sha256": "c8f6f40b379e0e87201481687d18f8af7b8e74c6d2c50e7f9fa25f3242145412"
+    }
+  ],
+  "condition_source": "achievement_delivery_sequence .st_all_route.condition / core.scs",
+  "log_layout": {
+    "version": 1,
+    "params_length": 24,
+    "cargo": 3,
+    "distance": 6,
+    "payment": 13,
+    "job_type": 18,
+    "route": 19
+  }
+}

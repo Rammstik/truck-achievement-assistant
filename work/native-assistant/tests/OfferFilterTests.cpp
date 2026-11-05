@@ -1,0 +1,118 @@
+#include "OfferFilter.h"
+#include <iostream>
+#include <stdexcept>
+#include <fstream>
+using namespace aa::offers;
+json endpoint(const char* company,const char* city){return {{"company",{{"text_candidate",company}}},{"city",{{"text_candidate",city}}}};}
+void check(bool condition,const char* message){if(!condition)throw std::runtime_error(message);}
+bool accepts(const json& offer){return allows(offer,*std::atomic_load(&current));}
+int main(int argc,char** argv){try{
+    json model={{"account","a"},{"profile","p"},{"achievements",json::array({{{"id","ib_shipyards"},{"status","locked"}},{{"id","fr_nucplants"},{"status","locked"}}})}};
+    json prefs={{"account","a"},{"profile","p"},{"plan",{{"a:p:ib_shipyards",true}}}};
+    json ship={{"source",endpoint("other","paris")},{"target",endpoint("ocean_sol","vigo")},{"cargo",{{"text_candidate","apples"}}}};
+    json nuclear=ship;nuclear["target"]=endpoint("nucleon","alban");json wrong=ship;wrong["target"]=endpoint("other","vigo");
+    SetSelection(model,prefs);check(accepts(ship)&&!accepts(nuclear)&&!accepts(wrong),"shipyard predicate or destination identity wrong");
+    prefs["plan"]["a:p:fr_nucplants"]=true;SetSelection(model,prefs);check(accepts(ship)&&accepts(nuclear)&&!accepts(wrong),"plan union wrong");
+    prefs["plan"]["a:p:ib_shipyards"]=false;SetSelection(model,prefs);check(!accepts(ship)&&accepts(nuclear),"goal removal wrong");
+    prefs["plan"]["a:p:fr_nucplants"]=false;SetSelection(model,prefs);check(!Status()["active"].get<bool>()&&accepts(wrong),"empty plan did not restore all offers");
+    prefs["plan"]["a:p:ib_shipyards"]=true;SetSelection(model,prefs);json unknown=ship;unknown["target"]=nullptr;check(accepts(unknown),"unknown candidate discarded");
+    model["details"]["achievements"]["ib_shipyards"]["items"]=json::array({{{"id",".ib_shipyards.vigo"},{"confirmed",true}}});
+    SetSelection(model,prefs);check(!accepts(ship),"confirmed step retained");
+    model["details"]["achievements"]["ib_shipyards"]["items"][0]["id"]="target:ocean_sol.vigo";SetSelection(model,prefs);check(!accepts(ship),"confirmed UI row ID retained");
+    model["details"]["achievements"]["ib_shipyards"]["items"][0]["confirmed"]=false;SetSelection(model,prefs);check(accepts(ship),"unconfirmed step excluded");
+    auto mismatch=prefs;mismatch["profile"]="other";SetSelection(model,mismatch);check(!Status()["active"].get<bool>(),"profile leaked");
+    model["achievements"][0]["status"]="done";SetSelection(model,prefs);check(!Status()["active"].get<bool>(),"completed achievement retained");
+    model["achievements"]=json::array({{{"id","pc_salm_fillet"},{"status","locked"}}});prefs["plan"]={{"a:p:pc_salm_fillet",true}};SetSelection(model,prefs);
+    check(!accepts(ship),"unique-country goal ignored nested cargo condition");
+    model["achievements"]=json::array({{{"id","hc_allcargos"},{"status","progress"}},{{"id","st_all_cargos"},{"status","progress"}}});
+    prefs["plan"]={{"a:p:hc_allcargos",true}};
+    model["details"]["achievements"]["hc_allcargos"]={{"kind","transported_cargos"},{"items",json::array({{{"id","cable_reel"},{"visited",true}},{{"id","asph_miller"},{"visited",false}}})}};
+    SetSelection(model,prefs);check(Status()["active"]==true,"heavy cargo goal unsupported");
+    json heavy=ship;heavy["cargo"]["text_candidate"]="asph_miller";
+    json completedCargo=heavy;completedCargo["cargo"]["text_candidate"]="cable_reel";
+    json special=heavy;special["special_transport"]=true;special["cargo"]["text_candidate"]="boiler_parts";
+    check(accepts(heavy)&&!accepts(completedCargo)&&!accepts(ship)&&!accepts(special),"heavy cargo filtering or saved completion exclusion wrong");
+    json unknownCargo=heavy;unknownCargo["cargo"]=nullptr;check(accepts(unknownCargo),"unknown cargo candidate excluded");
+    prefs["plan"]["a:p:st_all_cargos"]=true;SetSelection(model,prefs);
+    check(accepts(heavy)&&accepts(special)&&!accepts(ship),"heavy/special union wrong");
+    prefs["plan"]["a:p:hc_allcargos"]=false;SetSelection(model,prefs);check(!accepts(heavy)&&accepts(special),"heavy removal did not remove its offers");
+    model["details"]["achievements"]["st_all_cargos"]={{"kind","transported_cargos"},{"items",json::array({{{"id","boiler_parts"},{"visited",true}}})}};
+    SetSelection(model,prefs);check(!accepts(special),"saved special cargo completion ignored");
+    prefs["plan"]["a:p:st_all_cargos"]=false;SetSelection(model,prefs);check(accepts(special)&&accepts(ship),"special offers not restored after last goal removal");
+    model["achievements"]=json::array({{{"id","ib_shipyards"},{"status","locked"}}});prefs["plan"]={{"a:p:ib_shipyards",true}};SetSelection(model,prefs);
+    auto specialUnknown=special;specialUnknown["cargo"]=nullptr;specialUnknown["target"]=nullptr;
+    check(!accepts(specialUnknown),"special offers bypass ordinary company filter through missing metadata");
+    auto partialWrong=ship;partialWrong["target"]["company"]=nullptr;partialWrong["target"]["city"]["text_candidate"]="paris";
+    check(!accepts(partialWrong),"known wrong city admitted due to unknown company");
+    model["achievements"]=json::array({{{"id","fr_truckstop"},{"status","locked"}}});prefs["plan"]={{"a:p:fr_truckstop",true}};SetSelection(model,prefs);
+    auto fuel=ship;fuel["target"]=endpoint("eco","lemans");check(!accepts(fuel),"fuel station allowed wrong cargo");
+    fuel["cargo"]["text_candidate"]="diesel";check(accepts(fuel),"fuel station rejected correct cargo");
+    model["achievements"]=json::array({{{"id","it_quarry"},{"status","locked"}}});prefs["plan"]={{"a:p:it_quarry",true}};SetSelection(model,prefs);
+    auto quarry=ship;quarry["source"]=endpoint("marmo","livorno");check(accepts(quarry)&&!accepts(ship),"source-only quarry predicate wrong");
+    model["achievements"]=json::array({{{"id","sc_cows_to_farm"},{"status","locked"}}});prefs["plan"]={{"a:p:sc_cows_to_farm",true}};SetSelection(model,prefs);
+    auto cattle=ship;cattle["target"]=endpoint("freyr","aalborg");cattle["cargo"]["text_candidate"]="live_cattle";
+    check(accepts(cattle)&&!accepts(ship),"cargo plus delivery depot wrong");
+    model["achievements"]=json::array({{{"id","hc_threeperf"},{"status","locked"}}});prefs["plan"]={{"a:p:hc_threeperf",true}};SetSelection(model,prefs);
+    check(accepts(completedCargo)&&!accepts(ship),"repeated heavy delivery incorrectly excludes previously transported cargo");
+    model["achievements"]=json::array({{{"id","st_silo"},{"status","locked"}}});prefs["plan"]={{"a:p:st_silo",true}};SetSelection(model,prefs);
+    auto silo=special;silo["cargo"]["text_candidate"]="silo";check(accepts(silo)&&!accepts(special)&&!accepts(heavy),"specific special cargo predicate wrong");
+    model["achievements"]=json::array({{{"id","gr_hotels"},{"status","progress"}},{{"id","hc_firstjob"},{"status","locked"}}});prefs["plan"]={{"a:p:gr_hotels",true}};
+    auto& hotelInfo=model["details"]["achievements"]["gr_hotels"];
+    hotelInfo={{"kind","tracking"},{"mode","history"},{"items",json::array({{{"id",".gr_hotels.argostoli"},{"current",1},{"target",1},{"uncertain",1}},{{"id",".gr_hotels.chania"},{"current",nullptr},{"target",1}}})}};
+    auto hotel=ship;hotel["target"]=endpoint("artemia","argostoli");auto nextHotel=hotel;nextHotel["target"]=endpoint("artemia","chania");
+    SetSelection(model,prefs);check(!accepts(hotel)&&accepts(nextHotel),"screenshot regression: completed hotel retained or unknown hotel excluded");
+    prefs["plan"]["a:p:hc_firstjob"]=true;hotel["cargo"]["text_candidate"]="asph_miller";SetSelection(model,prefs);
+    check(accepts(hotel),"one goal's completed hotel incorrectly excluded another goal's heavy cargo");
+    prefs["plan"]["a:p:hc_firstjob"]=false;hotelInfo["items"][0]["current"]=nullptr;SetSelection(model,prefs);check(accepts(hotel),"missing hotel evidence treated as completed");
+    hotelInfo["items"][0]["current"]=1;SetSelection(model,prefs);check(!accepts(hotel),"new positive evidence failed to update plan");
+    model["achievements"]=json::array({{{"id","bw_coastline"},{"status","progress"}}});prefs["plan"]={{"a:p:bw_coastline",true}};
+    model["details"]["achievements"]["bw_coastline"]={{"kind","tracking"},{"items",json::array({{{"id",".bw_coastline.rijeka.zadar"},{"current",1},{"target",1}}})}};
+    auto coast=ship;coast["source"]=endpoint("other","zadar");coast["target"]=endpoint("other","split");auto later=coast;later["source"]=endpoint("other","split");later["target"]=endpoint("other","niksic");
+    SetSelection(model,prefs);check(accepts(coast)&&!accepts(later),"ordered sequence did not select next incomplete stage");
+    model["achievements"]=json::array({{{"id","ba_industry"},{"status","progress"}}});prefs["plan"]={{"a:p:ba_industry",true}};
+    auto& industry=model["details"]["achievements"]["ba_industry"];industry={{"kind","tracking"},{"items",json::array({{{"id",".ba_industry.lvr"},{"current",1},{"target",2}}})}};
+    auto loco=ship;loco["target"]=endpoint("lvr","riga");SetSelection(model,prefs);check(accepts(loco),"one of two required deliveries excluded too early");
+    industry["items"][0]["current"]=2;SetSelection(model,prefs);check(!accepts(loco),"completed two-delivery category retained");
+    model["achievements"]=json::array({{{"id","pc_salm_fillet"},{"status","progress"}}});prefs["plan"]={{"a:p:pc_salm_fillet",true}};
+    model["details"]["achievements"]["pc_salm_fillet"]={{"kind","tracking"},{"items",json::array({{{"id","germany"},{"current",1},{"target",1}}})}};
+    auto salmon=ship;salmon["source"]=endpoint("other","alta");salmon["target"]=endpoint("other","hamburg");salmon["cargo"]["text_candidate"]="salm_fillet";
+    SetSelection(model,prefs);check(!accepts(salmon),"completed destination country retained");salmon["target"]=endpoint("other","paris");check(accepts(salmon),"unknown destination country excluded");
+    model["achievements"]=json::array({{{"id","be_black_sea"},{"status","locked"}}});prefs["plan"]={{"a:p:be_black_sea",true}};SetSelection(model,prefs);
+    auto pair=ship;pair["source"]=endpoint("other","burgas");pair["target"]=endpoint("other","istanbul");check(accepts(pair),"reverse city pair rejected");check(!accepts(ship),"wrong city pair admitted");
+    model["details"]["achievements"]["be_black_sea"]={{"kind","tracking"},{"items",json::array({{{"id","0"},{"current",1},{"target",1}}})}};SetSelection(model,prefs);check(!accepts(pair),"completed city pair retained");
+    model["achievements"]=json::array({{{"id","sc_visit_cities"},{"status","progress"}}});prefs["plan"]={{"a:p:sc_visit_cities",true}};
+    model["details"]["achievements"]["sc_visit_cities"]={{"kind","visited_cities"},{"items",json::array({{{"id","malmo"},{"visited",true}}})}};
+    auto cityJob=ship;cityJob["target"]=endpoint("other","aalborg");SetSelection(model,prefs);
+    check(!Status()["active"].get<bool>()&&accepts(ship),"city filter enabled by default");
+    prefs["filter_unvisited_cities"]=true;SetSelection(model,prefs);check(accepts(cityJob)&&!accepts(ship),"city visit filter wrong");
+    const auto enabledRevision=Status()["revision"].get<uint64_t>();prefs["filter_unvisited_cities"]=false;SetSelection(model,prefs);
+    check(accepts(ship)&&Status()["revision"].get<uint64_t>()>enabledRevision,"city toggle did not restore all offers and request refresh");
+    model["achievements"].push_back({{"id","gr_hotels"},{"status","progress"}});prefs["plan"]["a:p:gr_hotels"]=true;SetSelection(model,prefs);
+    check(!accepts(ship)&&accepts(nextHotel)&&!accepts(cityJob),"disabled city toggle changed other achievement filtering");
+    prefs["filter_unvisited_cities"]=true;SetSelection(model,prefs);check(accepts(cityJob)&&accepts(nextHotel),"enabled city toggle broke union");
+    prefs["plan"]["a:p:gr_hotels"]=false;SetSelection(model,prefs);cityJob["target"]=endpoint("other","malmo");check(!accepts(cityJob),"visited city retained");
+    model["achievements"]=json::array({{{"id","jobs_30_cargo"},{"status","locked"}}});prefs["plan"]={{"a:p:jobs_30_cargo",true}};
+    model["details"]["achievements"]["jobs_30_cargo"]={{"kind","tracking"},{"items",json::array({{{"id","apples"},{"current",1},{"target",1}}})}};
+    SetSelection(model,prefs);check(!accepts(ship)&&accepts(heavy),"all-cargo novelty filter wrong");
+    model["achievements"]=json::array({{{"id","5_jobs_in_a_row"},{"status","locked"}}});prefs["plan"]={{"a:p:5_jobs_in_a_row",true}};SetSelection(model,prefs);
+    check(accepts(ship)&&accepts(heavy),"general delivery series candidates incorrectly narrowed");
+    model["achievements"]=json::array({{{"id","job_15_companies"},{"status","locked"}}});prefs["plan"]={{"a:p:job_15_companies",true}};
+    model["details"]["achievements"]["job_15_companies"]={{"kind","tracking"},{"items",json::array({{{"id","artemia"},{"current",1},{"target",1}}})}};
+    SetSelection(model,prefs);check(!accepts(hotel)&&!accepts(nextHotel)&&accepts(ship),"company novelty confused brands with depots");
+    model["achievements"]=json::array({{{"id","ba_concrete"},{"status","locked"}}});prefs["plan"]={{"a:p:ba_concrete",true}};
+    model["details"]["achievements"]["ba_concrete"]={{"kind","tracking"},{"items",json::array({{{"id","source:radus.kouvola"},{"current",1},{"target",1}}})}};
+    auto concrete=ship;concrete["source"]=endpoint("radus","kouvola");SetSelection(model,prefs);check(accepts(concrete)&&!accepts(ship),"repeated concrete deliveries wrongly excluded a previously used plant");
+    model["achievements"]=json::array({{{"id","ba_to_russia"},{"status","locked"}}});prefs["plan"]={{"a:p:ba_to_russia",true}};
+    auto exclave=ship;exclave["source"]=endpoint("other","kaliningrad");exclave["target"]=endpoint("other","luga");SetSelection(model,prefs);check(accepts(exclave)&&!accepts(ship),"source/target city lists ignored");
+    auto reversed=exclave;reversed["source"]=exclave["target"];reversed["target"]=exclave["source"];check(!accepts(reversed),"directional installed rule reversed");
+    model["achievements"]=json::array({{{"id","ba_job_countries"},{"status","locked"}}});prefs["plan"]={{"a:p:ba_job_countries",true}};
+    auto countries=ship;countries["source"]=endpoint("other","vilnius");countries["target"]=endpoint("other","luga");SetSelection(model,prefs);check(accepts(countries),"country pair reverse direction rejected");
+    model["details"]["achievements"]["ba_job_countries"]={{"kind","country_pairs"},{"items",json::array({{{"countries",json::array({"russia","lithuania"})},{"deliveries",json::array({json::object()})}}})}};
+    SetSelection(model,prefs);check(!accepts(countries),"positive Baltic country-pair evidence ignored");
+    if(argc>=3){std::ifstream file(argv[2]);json actual;file>>actual;auto capturedPrefs=prefs;capturedPrefs["plan"]={{"a:p:gr_hotels",true}};SetSelection(actual,capturedPrefs);
+        check(!accepts(hotel)&&accepts(nextHotel),"actual captured hotel snapshot regression");}
+    if(argc>=2){json ids=json::array();for(auto it=catalogue()["goals"].begin();it!=catalogue()["goals"].end();++it)
+        if(supported(it.key(),catalogue()["units"][it.value()["unit"].get<std::string>()]))ids.push_back(it.key());
+        std::ofstream output(argv[1]);output<<ids.dump(2);check(bool(output),"coverage export failed");}
+    std::cout<<"PASS: company/cargo/source conditions; saved cargo completion exclusion; unknown candidates; ordinary/Special Transport isolation; union/removal/restore; heavy repeat candidates.\n";return 0;
+}catch(const std::exception& error){std::cerr<<error.what()<<'\n';return 1;}}

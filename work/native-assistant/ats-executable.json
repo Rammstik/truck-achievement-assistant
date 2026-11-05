@@ -1,0 +1,23 @@
+{
+  "game": "ats",
+  "version": "1.61.3.18",
+  "sha256": "c60e8ee02cc97b3cc6ef8c6298bb5c3c23c4ffd330b8185b646fb1b608a3c7b4",
+  "map_rvas": {
+    "Draw": 16832576,
+    "Material": 16831248,
+    "Pack": 7718144,
+    "PackCall": 16838222,
+    "PackReturn": 16838227
+  },
+  "job_rvas": {
+    "Predicate": 17255888,
+    "SpecialPredicate": 17256128,
+    "City": 8201552,
+    "Destination": 8201984,
+    "Name": 1293040,
+    "Update": 17244912,
+    "Rebuild": 17244816,
+    "SetStatus": 17244400
+  },
+  "game_test_run": false
+}

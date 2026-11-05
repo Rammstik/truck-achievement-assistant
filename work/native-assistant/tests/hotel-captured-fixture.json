@@ -1,0 +1,80 @@
+{
+  "account": "a",
+  "profile": "p",
+  "achievements": [
+    {
+      "id": "gr_hotels",
+      "status": "progress"
+    }
+  ],
+  "details": {
+    "achievements": {
+      "gr_hotels": {
+        "kind": "tracking",
+        "title": "Пункты доставки",
+        "items": [
+          {
+            "id": ".gr_hotels.argostoli",
+            "name": "Куда: Hotel Artemia · Аргостолион",
+            "current": 1,
+            "target": 1,
+            "uncertain": 1,
+            "blocked": false,
+            "requirements": null,
+            "evidence": [
+              "Ханья → Аргостолион · Мука"
+            ]
+          },
+          {
+            "id": ".gr_hotels.chania",
+            "name": "Куда: Hotel Artemia · Ханья",
+            "current": null,
+            "target": 1,
+            "uncertain": 1,
+            "blocked": false,
+            "requirements": null,
+            "evidence": []
+          },
+          {
+            "id": ".gr_hotels.chios",
+            "name": "Куда: Hotel Artemia · Хиос",
+            "current": null,
+            "target": 1,
+            "uncertain": 1,
+            "blocked": false,
+            "requirements": null,
+            "evidence": []
+          },
+          {
+            "id": ".gr_hotels.mitilini",
+            "name": "Куда: Hotel Artemia · Митилена",
+            "current": null,
+            "target": 1,
+            "uncertain": 1,
+            "blocked": false,
+            "requirements": null,
+            "evidence": []
+          },
+          {
+            "id": ".gr_hotels.rhodes",
+            "name": "Куда: Hotel Artemia · Родос",
+            "current": null,
+            "target": 1,
+            "uncertain": 1,
+            "blocked": false,
+            "requirements": null,
+            "evidence": []
+          }
+        ],
+        "target": 4,
+        "observed": 1,
+        "mode": "history",
+        "notice": "Оценка по журналу; история может быть неполной. Отсутствие записи не доказывает невыполнение.",
+        "available": true,
+        "unreadable_records": 0,
+        "rule_version": "1.61.1.9",
+        "rule_class": "achievement_delivery"
+      }
+    }
+  }
+}

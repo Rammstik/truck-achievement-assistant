@@ -1,0 +1,128 @@
+{
+  "source_game_version": "1.61.3.18",
+  "target": 10,
+  "achievement_id": "st_all_routes",
+  "items": [
+    {
+      "id": "cru_mar1",
+      "name": "cru_mar1",
+      "from_city": "",
+      "to_city": ""
+    },
+    {
+      "id": "eur_red1",
+      "name": "eur_red1",
+      "from_city": "",
+      "to_city": ""
+    },
+    {
+      "id": "fre_bak1",
+      "name": "fre_bak1",
+      "from_city": "",
+      "to_city": ""
+    },
+    {
+      "id": "kin_fla1",
+      "name": "kin_fla1",
+      "from_city": "",
+      "to_city": ""
+    },
+    {
+      "id": "las_sdg1",
+      "name": "las_sdg1",
+      "from_city": "",
+      "to_city": ""
+    },
+    {
+      "id": "oak_hur1",
+      "name": "oak_hur1",
+      "from_city": "",
+      "to_city": ""
+    },
+    {
+      "id": "oxn_bar1",
+      "name": "oxn_bar1",
+      "from_city": "",
+      "to_city": ""
+    },
+    {
+      "id": "pho_sie1",
+      "name": "pho_sie1",
+      "from_city": "",
+      "to_city": ""
+    },
+    {
+      "id": "pri_ely1",
+      "name": "pri_ely1",
+      "from_city": "",
+      "to_city": ""
+    },
+    {
+      "id": "sac_mod1",
+      "name": "sac_mod1",
+      "from_city": "",
+      "to_city": ""
+    },
+    {
+      "id": "san_fre1",
+      "name": "san_fre1",
+      "from_city": "",
+      "to_city": ""
+    },
+    {
+      "id": "sto_hur1",
+      "name": "sto_hur1",
+      "from_city": "",
+      "to_city": ""
+    },
+    {
+      "id": "sto_sfr1",
+      "name": "sto_sfr1",
+      "from_city": "",
+      "to_city": ""
+    },
+    {
+      "id": "tru_car1",
+      "name": "tru_car1",
+      "from_city": "",
+      "to_city": ""
+    },
+    {
+      "id": "tru_oak1",
+      "name": "tru_oak1",
+      "from_city": "",
+      "to_city": ""
+    },
+    {
+      "id": "yum_tuc1",
+      "name": "yum_tuc1",
+      "from_city": "",
+      "to_city": ""
+    },
+    {
+      "id": "win_car1",
+      "name": "win_car1",
+      "from_city": "",
+      "to_city": ""
+    }
+  ],
+  "known_routes": [
+    "cru_mar1",
+    "eur_red1",
+    "fre_bak1",
+    "kin_fla1",
+    "las_sdg1",
+    "oak_hur1",
+    "oxn_bar1",
+    "pho_sie1",
+    "pri_ely1",
+    "sac_mod1",
+    "san_fre1",
+    "sto_hur1",
+    "sto_sfr1",
+    "tru_car1",
+    "tru_oak1",
+    "yum_tuc1",
+    "win_car1"
+  ]
+}

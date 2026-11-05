@@ -1,0 +1,2413 @@
+{
+  "source": "Exact company nodes extracted from ETS2 1.62.1.0",
+  "companies": {
+    "aaa": [
+      "cagliari",
+      "pescara",
+      "roma",
+      "taranto"
+    ],
+    "acc": [
+      "a_coruna",
+      "bilbao",
+      "catania",
+      "coimbra",
+      "gijon",
+      "madrid",
+      "murcia",
+      "port_sagunt",
+      "santander",
+      "sevilla",
+      "taranto",
+      "terni"
+    ],
+    "aci": [
+      "bari",
+      "bologna",
+      "cagliari",
+      "catanzaro",
+      "genova",
+      "milano",
+      "roma"
+    ],
+    "adrica": [
+      "rijeka",
+      "split",
+      "zadar"
+    ],
+    "aerobalt": [
+      "helsinki",
+      "kaunas",
+      "riga",
+      "tallinn",
+      "turku",
+      "vilnius"
+    ],
+    "agregados": [
+      "coimbra",
+      "granada",
+      "puertollano",
+      "valladolid"
+    ],
+    "agrominta": [
+      "utena"
+    ],
+    "agrominta_a": [
+      "utena"
+    ],
+    "agronord": [
+      "borlange",
+      "esbjerg",
+      "goteborg",
+      "kalmar",
+      "karlstad",
+      "kristiansand",
+      "mo_i_rana",
+      "umea"
+    ],
+    "ai": [
+      "banja_luka",
+      "beograd",
+      "bremen",
+      "hamburg",
+      "hannover",
+      "kassel",
+      "kragujevac",
+      "ljubljana",
+      "nis",
+      "nurnberg",
+      "sarajevo",
+      "skopje"
+    ],
+    "alumcore": [
+      "sundsvall"
+    ],
+    "aluxion": [
+      "karakaj",
+      "mostar",
+      "podgorica"
+    ],
+    "aluxion_str": [
+      "niksic"
+    ],
+    "app": [
+      "badajoz",
+      "ciudad_real",
+      "coimbra",
+      "faro",
+      "gijon",
+      "madrid",
+      "malaga",
+      "valencia",
+      "zaragoza"
+    ],
+    "artemia": [
+      "argostoli",
+      "chania",
+      "chios",
+      "mitilini",
+      "rhodes"
+    ],
+    "ateria": [
+      "helsinki",
+      "joensuu",
+      "lahti",
+      "oulu",
+      "tallinn",
+      "vaasa"
+    ],
+    "balkan_loco": [
+      "craiova",
+      "edirne",
+      "ljubljana",
+      "maribor",
+      "pleven",
+      "ruse",
+      "sarajevo",
+      "skopje",
+      "veli_tarnovo"
+    ],
+    "baltomors_ru": [
+      "luga",
+      "petersburg",
+      "pskov",
+      "volkhov",
+      "vyborg"
+    ],
+    "baltomorsk": [
+      "daugavpils",
+      "kaunas",
+      "klaipeda",
+      "rezekne",
+      "valmiera",
+      "ventspils"
+    ],
+    "baltrak": [
+      "edirne",
+      "istanbul",
+      "tekirdag"
+    ],
+    "batisse_base": [
+      "calvi",
+      "clermont",
+      "rennes"
+    ],
+    "batisse_hs": [
+      "lyon",
+      "montpellier",
+      "paris"
+    ],
+    "batisse_road": [
+      "bordeaux",
+      "lemans"
+    ],
+    "batisse_wind": [
+      "brest",
+      "larochelle",
+      "montpellier"
+    ],
+    "bcp": [
+      "birmingham",
+      "bratislava",
+      "gdansk",
+      "kosice",
+      "munchen",
+      "pecs",
+      "stuttgart",
+      "verona"
+    ],
+    "betunia": [
+      "mostar",
+      "novi_sad",
+      "pristina",
+      "tirana",
+      "tuzla",
+      "vlore",
+      "zadar"
+    ],
+    "bhb_raffin": [
+      "lehavre",
+      "marseille"
+    ],
+    "bhv": [
+      "ajaccio",
+      "albacete",
+      "bastia",
+      "bordeaux",
+      "cordoba",
+      "edirne",
+      "falun",
+      "faro",
+      "galati",
+      "gavle",
+      "goteborg",
+      "helsingborg",
+      "iasi",
+      "jonkoping",
+      "kajaani",
+      "kaunas",
+      "kristiansand",
+      "kristiansund",
+      "lahti",
+      "lemans",
+      "limoges",
+      "linkoping",
+      "madrid",
+      "mikkeli",
+      "montpellier",
+      "nantes",
+      "narvik",
+      "nice",
+      "odense",
+      "orebro",
+      "panevezys",
+      "paris",
+      "parnu",
+      "ruse",
+      "siauliai",
+      "stockholm",
+      "toulouse",
+      "tromso",
+      "vaasa",
+      "vaxjo",
+      "vilnius"
+    ],
+    "bjork": [
+      "borlange",
+      "goteborg",
+      "kristiansand",
+      "linkoping",
+      "sundsvall",
+      "vaxjo"
+    ],
+    "bjork_hrv": [
+      "falun",
+      "kiruna",
+      "ostersund"
+    ],
+    "blt": [
+      "kaunas",
+      "kunda",
+      "paldiski",
+      "siauliai",
+      "tartu",
+      "utena"
+    ],
+    "blt_ru": [
+      "petersburg",
+      "pskov"
+    ],
+    "blt_yacht": [
+      "riga",
+      "tallinn",
+      "turku"
+    ],
+    "blt_yacht_ru": [
+      "petersburg"
+    ],
+    "bltmetal": [
+      "liepaja",
+      "pori",
+      "siauliai",
+      "tallinn"
+    ],
+    "boisserie": [
+      "lemans",
+      "limoges",
+      "marseille"
+    ],
+    "borealis": [
+      "bodo",
+      "mikkeli",
+      "svolvaer"
+    ],
+    "bosfir": [
+      "banja_luka",
+      "bihac",
+      "zenica"
+    ],
+    "brawen": [
+      "bacau",
+      "banja_luka",
+      "bucuresti",
+      "ioannina",
+      "lamia",
+      "ljubljana",
+      "novi_sad",
+      "skopje",
+      "thessaloniki",
+      "trikala"
+    ],
+    "byggpro": [
+      "alta",
+      "andenes",
+      "dombas",
+      "falun",
+      "ivalo",
+      "kajaani",
+      "lulea",
+      "skelleftea",
+      "vaasa"
+    ],
+    "c_navale": [
+      "ancona",
+      "messina",
+      "olbia"
+    ],
+    "cantera": [
+      "a_coruna",
+      "burgos",
+      "guarda",
+      "o_barco",
+      "santander",
+      "vigo"
+    ],
+    "canteras_ds": [
+      "almeria",
+      "murcia"
+    ],
+    "cargotras": [
+      "catanzaro",
+      "livorno",
+      "milano",
+      "olbia",
+      "palermo",
+      "pescara",
+      "sassari"
+    ],
+    "casa_olivera": [
+      "badajoz",
+      "cordoba",
+      "lleida",
+      "mengibar"
+    ],
+    "ccg_bas": [
+      "pristina"
+    ],
+    "ccg_fla": [
+      "rhodes",
+      "thessaloniki",
+      "tirana"
+    ],
+    "ccg_hal": [
+      "zadar"
+    ],
+    "cemelt_bas": [
+      "kaunas"
+    ],
+    "cemelt_fl_ru": [
+      "kaliningrad",
+      "sofia"
+    ],
+    "cemelt_fla": [
+      "bucuresti",
+      "cluj_napoca",
+      "edirne",
+      "timisoara",
+      "valmiera"
+    ],
+    "cemelt_hal": [
+      "panevezys"
+    ],
+    "cemelt_win": [
+      "klaipeda",
+      "liepaja",
+      "paldiski"
+    ],
+    "cesare_smar": [
+      "milano",
+      "palermo",
+      "pescara",
+      "sassari"
+    ],
+    "cesta_sl": [
+      "algeciras",
+      "barcelona",
+      "granada",
+      "leon",
+      "madrid",
+      "malaga",
+      "salamanca",
+      "sevilla"
+    ],
+    "cgla": [
+      "barcelona",
+      "calarasi",
+      "kragujevac",
+      "leon",
+      "port_sagunt",
+      "ruse"
+    ],
+    "charmey": [
+      "bern",
+      "geneve"
+    ],
+    "chimi": [
+      "larochelle",
+      "montpellier"
+    ],
+    "christopoulo": [
+      "chios",
+      "heraklion",
+      "kalamata",
+      "lamia",
+      "patras"
+    ],
+    "cnp": [
+      "a_coruna",
+      "algeciras",
+      "ancona",
+      "athens",
+      "burgas",
+      "catania",
+      "constanta",
+      "duisburg",
+      "fier",
+      "huelva",
+      "livorno",
+      "napoli",
+      "novi_sad",
+      "nurnberg",
+      "pitesti",
+      "rotterdam",
+      "taranto",
+      "tarragona",
+      "thessaloniki",
+      "wien"
+    ],
+    "cnp_str": [
+      "mitilini",
+      "nis",
+      "vlore",
+      "zadar",
+      "zagreb"
+    ],
+    "cnp_well": [
+      "fier"
+    ],
+    "comoto": [
+      "madrid",
+      "suzzara",
+      "valladolid"
+    ],
+    "cont_port": [
+      "aarhus",
+      "alesund",
+      "antwerp",
+      "bremen",
+      "burgas",
+      "constanta",
+      "duisburg",
+      "durres",
+      "esbjerg",
+      "galati",
+      "gavle",
+      "hamburg",
+      "helsinki",
+      "klaipeda",
+      "koper",
+      "kotka",
+      "oslo",
+      "oulu",
+      "pori",
+      "rijeka",
+      "rotterdam",
+      "tallinn",
+      "thessaloniki"
+    ],
+    "cont_port_fr": [
+      "lehavre",
+      "marseille"
+    ],
+    "cont_port_it": [
+      "ancona",
+      "bari",
+      "genova",
+      "livorno",
+      "napoli",
+      "trieste"
+    ],
+    "cont_port_ru": [
+      "petersburg"
+    ],
+    "cortica": [
+      "corticadas",
+      "ponte_de_sor",
+      "porto",
+      "sines"
+    ],
+    "costruzi_bas": [
+      "firenze"
+    ],
+    "costruzi_fla": [
+      "catanzaro"
+    ],
+    "costruzi_hal": [
+      "genova",
+      "sassari"
+    ],
+    "costruzi_win": [
+      "cagliari",
+      "palermo",
+      "pescara",
+      "taranto"
+    ],
+    "crnodrvo": [
+      "bijelo_polje"
+    ],
+    "crnodrvo_log": [
+      "bijelo_polje"
+    ],
+    "daf_dlr": [
+      "amsterdam",
+      "bergen",
+      "bordeaux",
+      "catania",
+      "glasgow",
+      "iasi",
+      "kokkola",
+      "petersburg",
+      "sevilla",
+      "tartu",
+      "thessaloniki",
+      "trondheim"
+    ],
+    "daf_fac": [
+      "eindhoven"
+    ],
+    "dans_jardin": [
+      "bastia",
+      "bordeaux",
+      "bourges",
+      "lemans",
+      "marseille",
+      "montpellier",
+      "nantes",
+      "porto_vecchi"
+    ],
+    "dfh": [
+      "berlin",
+      "bremen",
+      "dresden",
+      "duisburg",
+      "hamburg",
+      "nurnberg",
+      "rostock"
+    ],
+    "dimitriou": [
+      "athens",
+      "chania",
+      "patras"
+    ],
+    "dobr_ferm_bg": [
+      "karlovo",
+      "pleven",
+      "sofia"
+    ],
+    "domdepo": [
+      "bailen",
+      "bucuresti",
+      "burgos",
+      "cluj_napoca",
+      "edirne",
+      "frankfurt",
+      "iasi",
+      "linz",
+      "o_barco",
+      "pitesti",
+      "tekirdag",
+      "timisoara",
+      "utena",
+      "valmiera",
+      "villarreal"
+    ],
+    "domdepo_ru": [
+      "luga",
+      "pleven",
+      "volkhov",
+      "vyborg"
+    ],
+    "drekkar": [
+      "aarhus",
+      "bergen",
+      "karlskrona",
+      "linkoping",
+      "malmo",
+      "odense",
+      "tromso",
+      "umea",
+      "uppsala",
+      "vaxjo"
+    ],
+    "dulcis": [
+      "pitesti"
+    ],
+    "dunavia": [
+      "beograd",
+      "novi_sad",
+      "osijek"
+    ],
+    "eco": [
+      "bordeaux",
+      "lehavre",
+      "lemans",
+      "limoges",
+      "marseille",
+      "montpellier",
+      "nantes"
+    ],
+    "ee_paper": [
+      "kunda"
+    ],
+    "egres": [
+      "helsinki",
+      "kajaani",
+      "kokkola",
+      "kouvola"
+    ],
+    "elcano_fla": [
+      "barcelona",
+      "burgos",
+      "malaga",
+      "santander"
+    ],
+    "elcano_hms": [
+      "madrid"
+    ],
+    "eliarchos": [
+      "kalamata",
+      "mitilini"
+    ],
+    "engeron": [
+      "badajoz",
+      "ciudad_real",
+      "granada",
+      "puertollano",
+      "sevilla"
+    ],
+    "eolo_lines": [
+      "algeciras",
+      "almeria",
+      "athens",
+      "cagliari",
+      "huelva",
+      "lile_rousse",
+      "marseille",
+      "messina",
+      "napoli",
+      "palermo",
+      "porto_vecchi",
+      "sangiovanni",
+      "sassari"
+    ],
+    "eppa": [
+      "olhao",
+      "porto"
+    ],
+    "eskadra": [
+      "v_novgorod"
+    ],
+    "eumefa": [
+      "beograd",
+      "heraklion",
+      "larissa",
+      "maribor",
+      "nis",
+      "sarajevo",
+      "tirana",
+      "vlore"
+    ],
+    "euroacres": [
+      "bern",
+      "bialystok",
+      "bremen",
+      "brno",
+      "cambridge",
+      "carlisle",
+      "debrecen",
+      "dijon",
+      "dover",
+      "dresden",
+      "erfurt",
+      "gdansk",
+      "geneve",
+      "graz",
+      "groningen",
+      "klagenfurt",
+      "krakow",
+      "liverpool",
+      "magdeburg",
+      "osnabruck",
+      "pecs",
+      "plymouth",
+      "reims",
+      "swansea",
+      "szeged",
+      "torino",
+      "travemunde",
+      "verona",
+      "wien",
+      "wroclaw",
+      "zurich"
+    ],
+    "euroflow": [
+      "antwerp",
+      "liege"
+    ],
+    "eurogoodies": [
+      "berlin",
+      "bijelo_polje",
+      "brussel",
+      "bystrica",
+      "cardiff",
+      "debrecen",
+      "dijon",
+      "dortmund",
+      "dover",
+      "dusseldorf",
+      "edinburgh",
+      "glasgow",
+      "grimsby",
+      "groningen",
+      "innsbruck",
+      "kassel",
+      "klagenfurt",
+      "koln",
+      "koper",
+      "leipzig",
+      "lille",
+      "liverpool",
+      "lodz",
+      "lublin",
+      "metz",
+      "newcastle",
+      "niksic",
+      "olsztyn",
+      "plymouth",
+      "podgorica",
+      "prague",
+      "reims",
+      "rijeka",
+      "split",
+      "szczecin",
+      "venezia",
+      "wien",
+      "wroclaw"
+    ],
+    "eviksi": [
+      "daugavpils",
+      "liepaja",
+      "riga"
+    ],
+    "eviksi_a": [
+      "liepaja",
+      "valmiera",
+      "ventspils"
+    ],
+    "exomar": [
+      "a_coruna",
+      "ancona",
+      "bologna",
+      "burgos",
+      "cordoba",
+      "evora",
+      "guarda",
+      "olbia",
+      "roma",
+      "taranto"
+    ],
+    "fallow": [
+      "cluj_napoca",
+      "istanbul",
+      "larissa",
+      "patras",
+      "podgorica",
+      "targu_mures",
+      "timisoara",
+      "vlore",
+      "zagreb",
+      "zenica"
+    ],
+    "fattoria_f": [
+      "napoli",
+      "roma"
+    ],
+    "fcp": [
+      "berlin",
+      "brussel",
+      "dusseldorf",
+      "graz",
+      "hannover",
+      "leipzig",
+      "manchester",
+      "olsztyn",
+      "poznan",
+      "torino"
+    ],
+    "feldbinder": [
+      "winsen"
+    ],
+    "feldbinder_t": [
+      "winsen"
+    ],
+    "finist": [
+      "volkhov"
+    ],
+    "fintyre": [
+      "tampere"
+    ],
+    "fintyre_ru": [
+      "petersburg"
+    ],
+    "fjoste": [
+      "borlange",
+      "kajaani",
+      "kokkola",
+      "lulea",
+      "mo_i_rana",
+      "skelleftea",
+      "tornio"
+    ],
+    "fle": [
+      "almeria",
+      "barcelona",
+      "bastia",
+      "bodo",
+      "brest",
+      "bucuresti",
+      "calvi",
+      "clermont",
+      "cluj_napoca",
+      "dusseldorf",
+      "frankfurt",
+      "istanbul",
+      "kobenhavn",
+      "kristiansund",
+      "leipzig",
+      "madrid",
+      "malaga",
+      "montpellier",
+      "nantes",
+      "nis",
+      "paris",
+      "podgorica",
+      "skopje",
+      "sofia",
+      "stuttgart",
+      "timisoara",
+      "toulouse",
+      "tromso"
+    ],
+    "freyr": [
+      "aalborg",
+      "bodo",
+      "esbjerg",
+      "falun",
+      "joensuu",
+      "jonkoping",
+      "lillehammer",
+      "mikkeli",
+      "trelleborg"
+    ],
+    "fui": [
+      "catania",
+      "catanzaro",
+      "firenze",
+      "olbia",
+      "roma"
+    ],
+    "gallia_ferry": [
+      "bilbao",
+      "roscoff"
+    ],
+    "globeur": [
+      "bayonne",
+      "bordeaux",
+      "bourges",
+      "lehavre",
+      "montpellier",
+      "rennes"
+    ],
+    "gnt": [
+      "alesund",
+      "bastia",
+      "bergen",
+      "daugavpils",
+      "helsingborg",
+      "jonkoping",
+      "kalmar",
+      "klaipeda",
+      "kristiansand",
+      "panevezys",
+      "svolvaer",
+      "uppsala",
+      "valmiera",
+      "ventspils",
+      "vilnius"
+    ],
+    "gomme_monde": [
+      "bourges",
+      "clermont"
+    ],
+    "granoro": [
+      "magdeburg",
+      "rostock"
+    ],
+    "han_expo": [
+      "hannover"
+    ],
+    "huerta": [
+      "albacete",
+      "beja",
+      "el_ejido",
+      "huelva",
+      "murcia",
+      "sevilla",
+      "valencia"
+    ],
+    "huilant": [
+      "ajaccio",
+      "bordeaux",
+      "lacq",
+      "larochelle"
+    ],
+    "iberatomica": [
+      "almaraz",
+      "vandellos"
+    ],
+    "ibp": [
+      "helsinki",
+      "mazeikiai",
+      "naantali"
+    ],
+    "icaria": [
+      "argostoli",
+      "athens",
+      "chania",
+      "chios",
+      "heraklion",
+      "kalamata",
+      "kavala",
+      "mitilini",
+      "rhodes"
+    ],
+    "ika_bohag": [
+      "a_coruna",
+      "aalborg",
+      "aarhus",
+      "ancona",
+      "bayonne",
+      "beograd",
+      "bologna",
+      "bordeaux",
+      "borlange",
+      "brest",
+      "bucuresti",
+      "catania",
+      "clermont",
+      "dortmund",
+      "firenze",
+      "frankfurt",
+      "groningen",
+      "hamar",
+      "haparanda",
+      "helsinki",
+      "kalmar",
+      "kiel",
+      "kuopio",
+      "linkoping",
+      "lisboa",
+      "malmo",
+      "milano",
+      "montpellier",
+      "munchen",
+      "murcia",
+      "napoli",
+      "odense",
+      "orebro",
+      "oslo",
+      "paris",
+      "pescara",
+      "porto",
+      "rennes",
+      "rijeka",
+      "roma",
+      "sofia",
+      "stavanger",
+      "stockholm",
+      "tampere",
+      "umea",
+      "uppsala",
+      "valladolid",
+      "vilnius"
+    ],
+    "ika_ru": [
+      "petersburg"
+    ],
+    "imp_otel": [
+      "calarasi",
+      "craiova",
+      "galati",
+      "hunedoara",
+      "iasi",
+      "resita"
+    ],
+    "ini": [
+      "bologna",
+      "catania",
+      "catanzaro",
+      "genova",
+      "napoli",
+      "parma",
+      "pescara",
+      "roma",
+      "suzzara",
+      "taranto"
+    ],
+    "itcc": [
+      "bialystok",
+      "dortmund",
+      "duisburg",
+      "dusseldorf",
+      "glasgow",
+      "kosice",
+      "linz",
+      "ljubljana",
+      "luxembourg",
+      "maribor",
+      "osnabruck",
+      "ostrava",
+      "sheffield",
+      "skopje",
+      "szczecin"
+    ],
+    "itcc_scrap": [
+      "amsterdam",
+      "banja_luka",
+      "koln",
+      "linz",
+      "osnabruck",
+      "zenica"
+    ],
+    "jastuk": [
+      "banja_luka",
+      "kragujevac",
+      "nis",
+      "tirana",
+      "tuzla"
+    ],
+    "kaarfor": [
+      "ajaccio",
+      "bastia",
+      "bucuresti",
+      "budapest",
+      "cambridge",
+      "constanta",
+      "craiova",
+      "duisburg",
+      "edinburgh",
+      "edirne",
+      "hunedoara",
+      "iasi",
+      "kassel",
+      "kiel",
+      "larochelle",
+      "limoges",
+      "lublin",
+      "lyon",
+      "magdeburg",
+      "montpellier",
+      "munchen",
+      "nantes",
+      "nice",
+      "ostrava",
+      "pitesti",
+      "poznan",
+      "reims",
+      "ruse",
+      "strasbourg",
+      "swansea",
+      "targu_mures",
+      "verona"
+    ],
+    "kamen_ru": [
+      "vyborg"
+    ],
+    "kathode": [
+      "dusseldorf",
+      "eindhoven",
+      "geneve",
+      "klagenfurt",
+      "munchen",
+      "narvik",
+      "nurnberg",
+      "oulu",
+      "zurich"
+    ],
+    "kivi": [
+      "helsinki",
+      "kotka",
+      "riga",
+      "tartu",
+      "turku",
+      "utena"
+    ],
+    "kivisydan": [
+      "lappeenranta"
+    ],
+    "konstnr": [
+      "gavle",
+      "oslo",
+      "stockholm"
+    ],
+    "konstnr_hal": [
+      "kiruna",
+      "umea"
+    ],
+    "konstnr_hs": [
+      "helsingborg",
+      "linkoping",
+      "malmo",
+      "steinkjer",
+      "trondheim",
+      "vasteraas"
+    ],
+    "konstnr_wind": [
+      "esbjerg",
+      "gedser",
+      "honningsvag",
+      "linkoping",
+      "ostersund",
+      "skelleftea",
+      "tornio",
+      "vaasa"
+    ],
+    "krone": [
+      "werlte"
+    ],
+    "krone_t": [
+      "werlte"
+    ],
+    "ladoga": [
+      "turku"
+    ],
+    "ladoga_ru": [
+      "kaliningrad",
+      "petersburg"
+    ],
+    "larus": [
+      "novo_mesto"
+    ],
+    "lateds": [
+      "daugavpils",
+      "valmiera"
+    ],
+    "lavish_food": [
+      "a_coruna",
+      "badajoz",
+      "huelva",
+      "madrid",
+      "murcia"
+    ],
+    "lefko": [
+      "kalamata",
+      "larissa",
+      "thessaloniki",
+      "trikala"
+    ],
+    "libellula": [
+      "ancona",
+      "bologna",
+      "livorno",
+      "milano"
+    ],
+    "lintukai_hrv": [
+      "ivalo",
+      "jyvaskyla",
+      "kuusamo",
+      "tornio"
+    ],
+    "lintukainen": [
+      "ivalo",
+      "kotka",
+      "kouvola",
+      "kuusamo",
+      "lappeenranta",
+      "pori",
+      "rovaniemi",
+      "tallinn",
+      "tartu"
+    ],
+    "lisette_log": [
+      "ajaccio",
+      "bordeaux",
+      "larochelle",
+      "lemans",
+      "nice",
+      "paris",
+      "rennes",
+      "roscoff"
+    ],
+    "lkwlog": [
+      "brno",
+      "calais",
+      "dortmund",
+      "dover",
+      "duisburg",
+      "eindhoven",
+      "felixstowe",
+      "frankfurt",
+      "gdansk",
+      "graz",
+      "kiel",
+      "koln",
+      "kosice",
+      "lodz",
+      "lublin",
+      "luxembourg",
+      "magdeburg",
+      "manchester",
+      "nurnberg",
+      "osnabruck",
+      "szeged",
+      "venezia"
+    ],
+    "log_atlan": [
+      "a_coruna",
+      "albacete",
+      "almeria",
+      "bilbao",
+      "leon",
+      "lisboa",
+      "porto",
+      "salamanca",
+      "sevilla"
+    ],
+    "lognstick": [
+      "bucuresti",
+      "galati",
+      "hunedoara",
+      "istanbul",
+      "tekirdag"
+    ],
+    "low_field": [
+      "argostoli",
+      "constanta",
+      "edirne",
+      "galati",
+      "lamia",
+      "mitilini",
+      "mostar",
+      "patras"
+    ],
+    "lvr": [
+      "daugavpils",
+      "riga"
+    ],
+    "marina": [
+      "a_coruna",
+      "ajaccio",
+      "ancona",
+      "bari",
+      "bonifacio",
+      "brest",
+      "cagliari",
+      "calvi",
+      "catania",
+      "cernavoda",
+      "durres",
+      "esbjerg",
+      "genova",
+      "helsinki",
+      "kalamata",
+      "kavala",
+      "klaipeda",
+      "kuopio",
+      "larochelle",
+      "lisboa",
+      "marseille",
+      "napoli",
+      "olbia",
+      "olhao",
+      "oslo",
+      "parnu",
+      "rhodes",
+      "riga",
+      "rostock",
+      "split",
+      "stockholm",
+      "tallinn",
+      "taranto",
+      "tekirdag",
+      "travemunde",
+      "tromso",
+      "valencia",
+      "vigo",
+      "zadar"
+    ],
+    "marmo": [
+      "firenze",
+      "livorno",
+      "olbia",
+      "palermo",
+      "sassari"
+    ],
+    "medas": [
+      "argostoli",
+      "athens",
+      "thessaloniki"
+    ],
+    "metallis": [
+      "ivalo",
+      "kiruna",
+      "narvik",
+      "ostersund",
+      "trondheim"
+    ],
+    "mjolnir_min": [
+      "arvidsjaur",
+      "ivalo",
+      "joensuu",
+      "karesuando",
+      "lulea",
+      "tornio"
+    ],
+    "ms_stein": [
+      "hamar",
+      "kristiansand",
+      "oslo",
+      "stavanger",
+      "steinkjer",
+      "trondheim"
+    ],
+    "muromec": [
+      "pskov"
+    ],
+    "mvm_carriere": [
+      "ajaccio",
+      "bastia",
+      "bordeaux",
+      "lemans",
+      "limoges",
+      "montpellier",
+      "nice",
+      "porto_vecchi"
+    ],
+    "nbfc": [
+      "aberdeen",
+      "berlin",
+      "budapest",
+      "calais",
+      "liverpool",
+      "london",
+      "ostrava"
+    ],
+    "nch": [
+      "kouvola",
+      "riga",
+      "tallinn",
+      "turku",
+      "vilnius"
+    ],
+    "nch_ru": [
+      "petersburg"
+    ],
+    "nofeba": [
+      "hamar",
+      "joensuu",
+      "kuopio",
+      "ornskoldsvik"
+    ],
+    "nord_crown": [
+      "aalborg",
+      "aarhus",
+      "bergen",
+      "kobenhavn",
+      "odense",
+      "orebro",
+      "ostersund",
+      "stavanger",
+      "umea"
+    ],
+    "nord_sten": [
+      "jonkoping",
+      "kalmar",
+      "kiruna",
+      "linkoping",
+      "ostersund",
+      "sundsvall",
+      "vaxjo"
+    ],
+    "nordic_ports": [
+      "bodo",
+      "mo_i_rana",
+      "ornskoldsvik",
+      "sundsvall",
+      "tornio",
+      "trondheim"
+    ],
+    "norr_food": [
+      "andenes",
+      "bodo",
+      "falun",
+      "gavle",
+      "helsingborg",
+      "jonkoping",
+      "kalmar",
+      "karlskrona",
+      "kobenhavn",
+      "linkoping",
+      "odense",
+      "oslo",
+      "stockholm",
+      "tromso",
+      "trondheim",
+      "uppsala",
+      "vasteraas",
+      "vaxjo"
+    ],
+    "norrsken": [
+      "aalborg",
+      "alta",
+      "borlange",
+      "falun",
+      "goteborg",
+      "hamar",
+      "karlskrona",
+      "karlstad",
+      "malmo",
+      "orebro",
+      "stockholm"
+    ],
+    "norse_rail": [
+      "gavle",
+      "kiruna",
+      "narvik",
+      "ostersund",
+      "rovaniemi"
+    ],
+    "nos_pat": [
+      "bourges",
+      "clermont",
+      "lehavre",
+      "lleida",
+      "pamplona",
+      "salamanca"
+    ],
+    "nosko": [
+      "klaipeda",
+      "utena",
+      "vilnius"
+    ],
+    "novoneft": [
+      "kirishi"
+    ],
+    "ns_chem": [
+      "barcelona",
+      "chios",
+      "kaunas",
+      "kristiansand",
+      "malmo",
+      "pori",
+      "puertollano",
+      "riga",
+      "setubal",
+      "sines",
+      "stockholm"
+    ],
+    "ns_chem_ru": [
+      "luga",
+      "volkhov"
+    ],
+    "ns_oil": [
+      "aalborg",
+      "amsterdam",
+      "berlin",
+      "bilbao",
+      "brasov",
+      "daugavpils",
+      "dresden",
+      "frankfurt",
+      "goteborg",
+      "hamburg",
+      "istanbul",
+      "kalmar",
+      "karlstad",
+      "klaipeda",
+      "kobenhavn",
+      "kokkola",
+      "kotka",
+      "madrid",
+      "ornskoldsvik",
+      "oslo",
+      "paldiski",
+      "sines",
+      "stavanger",
+      "sundsvall",
+      "tallinn",
+      "targu_mures",
+      "timisoara",
+      "tromso",
+      "vaasa",
+      "valmiera",
+      "ventspils",
+      "wien",
+      "zurich"
+    ],
+    "ns_oil_ru": [
+      "kaliningrad",
+      "pskov",
+      "volkhov"
+    ],
+    "nucleon": [
+      "alban",
+      "cernavoda",
+      "civaux",
+      "golfech",
+      "kozloduy",
+      "laurent",
+      "paluel"
+    ],
+    "nutri_molle": [
+      "hamar"
+    ],
+    "ocean_sol": [
+      "algeciras",
+      "athens",
+      "gijon",
+      "kiel",
+      "mangalia",
+      "ruse",
+      "setubal",
+      "varna",
+      "vigo"
+    ],
+    "onnelik": [
+      "narva",
+      "parnu"
+    ],
+    "onnelik_a": [
+      "parnu",
+      "tartu"
+    ],
+    "ortiz": [
+      "barcelona",
+      "lisboa",
+      "valencia",
+      "valladolid",
+      "zaragoza"
+    ],
+    "piac": [
+      "beograd",
+      "bologna",
+      "cassino",
+      "kragujevac",
+      "napoli",
+      "parma"
+    ],
+    "pk_medved_ru": [
+      "kaliningrad",
+      "petersburg",
+      "v_novgorod",
+      "volkhov"
+    ],
+    "polar_fish": [
+      "aalborg",
+      "alesund",
+      "alta",
+      "bergen",
+      "goteborg",
+      "honningsvag",
+      "kuusamo",
+      "stavanger",
+      "svolvaer",
+      "umea"
+    ],
+    "polarislines": [
+      "bergen",
+      "esbjerg",
+      "frederikshv",
+      "gedser",
+      "goteborg",
+      "helsinki",
+      "hirtshals",
+      "kapellskar",
+      "karlskrona",
+      "kiel",
+      "kokkola",
+      "kristiansand",
+      "liepaja",
+      "naantali",
+      "nynashamn",
+      "oslo",
+      "paldiski",
+      "stavanger",
+      "tallinn",
+      "trelleborg",
+      "vaasa",
+      "ventspils"
+    ],
+    "posped": [
+      "birmingham",
+      "bratislava",
+      "bystrica",
+      "carlisle",
+      "katowice",
+      "linz",
+      "lodz",
+      "london",
+      "lublin",
+      "metz",
+      "rotterdam",
+      "strasbourg",
+      "swansea",
+      "szeged",
+      "verona",
+      "warszawa"
+    ],
+    "pp_chimica": [
+      "bologna",
+      "olbia",
+      "roma",
+      "terni"
+    ],
+    "primel": [
+      "amsterdam",
+      "bodo",
+      "eindhoven",
+      "gavle",
+      "groningen",
+      "helsingborg",
+      "honningsvag",
+      "kajaani",
+      "lulea",
+      "luxembourg",
+      "odense",
+      "uppsala"
+    ],
+    "quadrelli": [
+      "bari",
+      "catania",
+      "pescara"
+    ],
+    "quarry": [
+      "bern",
+      "cardiff",
+      "glasgow",
+      "graz",
+      "hannover",
+      "innsbruck",
+      "katowice",
+      "liege",
+      "lyon",
+      "mannheim",
+      "prague",
+      "reims",
+      "salzburg",
+      "sheffield",
+      "strasbourg",
+      "wroclaw",
+      "zurich"
+    ],
+    "radus": [
+      "banja_luka",
+      "bijelo_polje",
+      "kouvola",
+      "nis",
+      "tampere",
+      "tartu",
+      "tekirdag"
+    ],
+    "radus_ru": [
+      "burgas",
+      "kirishi",
+      "petersburg",
+      "pleven",
+      "ruse",
+      "sofia",
+      "varna"
+    ],
+    "renar": [
+      "andenes",
+      "arvidsjaur",
+      "calvi",
+      "dombas",
+      "honningsvag",
+      "jyvaskyla",
+      "karesuando",
+      "kobenhavn",
+      "kokkola",
+      "kotka",
+      "kristiansund",
+      "kuusamo",
+      "lahti",
+      "lillehammer",
+      "lulea",
+      "mikkeli",
+      "narva",
+      "oslo",
+      "parnu",
+      "skelleftea",
+      "stavanger",
+      "steinkjer",
+      "tallinn",
+      "tampere",
+      "tornio",
+      "turku",
+      "vasteraas",
+      "vaxjo"
+    ],
+    "renat": [
+      "brasov",
+      "daugavpils",
+      "helsinki",
+      "leipzig",
+      "pleven",
+      "resita",
+      "rezekne",
+      "riga",
+      "salzburg",
+      "siauliai",
+      "tartu",
+      "veli_tarnovo"
+    ],
+    "renor": [
+      "dombas",
+      "gavle",
+      "kajaani",
+      "karesuando",
+      "karlstad",
+      "kiruna",
+      "kobenhavn",
+      "kristiansund",
+      "mikkeli",
+      "mo_i_rana",
+      "ornskoldsvik",
+      "skelleftea"
+    ],
+    "rimaf": [
+      "bitola",
+      "galati",
+      "iasi",
+      "tekirdag"
+    ],
+    "rock_eat_str": [
+      "beograd",
+      "podgorica",
+      "skopje"
+    ],
+    "rock_eater": [
+      "argostoli",
+      "athens",
+      "bitola",
+      "brasov",
+      "burgas",
+      "constanta",
+      "galati",
+      "hunedoara",
+      "istanbul",
+      "kavala",
+      "kragujevac",
+      "lamia",
+      "pirdop",
+      "sofia",
+      "targu_mures",
+      "tekirdag",
+      "varna"
+    ],
+    "rosmark": [
+      "liepaja",
+      "rezekne",
+      "riga"
+    ],
+    "rosmark_ru": [
+      "kaliningrad",
+      "luga",
+      "vyborg"
+    ],
+    "rt_log": [
+      "a_coruna",
+      "barcelona",
+      "bern",
+      "cordoba",
+      "geneve",
+      "graz",
+      "hamburg",
+      "innsbruck",
+      "koln",
+      "linz",
+      "madrid",
+      "nurnberg",
+      "rostock",
+      "salzburg",
+      "sevilla",
+      "travemunde",
+      "zaragoza",
+      "zurich"
+    ],
+    "rump": [
+      "craiova"
+    ],
+    "sag_tre": [
+      "lillehammer",
+      "oslo",
+      "steinkjer"
+    ],
+    "sag_tre_pln": [
+      "lillehammer",
+      "steinkjer",
+      "trondheim"
+    ],
+    "sal": [
+      "livorno",
+      "pescara",
+      "sassari",
+      "terni"
+    ],
+    "sal_fi": [
+      "helsinki",
+      "ivalo",
+      "joensuu",
+      "kajaani",
+      "kouvola",
+      "kuopio",
+      "lappeenranta",
+      "oulu",
+      "pori"
+    ],
+    "sanbuild_bas": [
+      "koln",
+      "leipzig",
+      "munchen",
+      "stuttgart"
+    ],
+    "sanbuild_cem": [
+      "aarhus",
+      "dortmund",
+      "frankfurt",
+      "hannover",
+      "pristina",
+      "split",
+      "thessaloniki",
+      "tirana",
+      "tuzla"
+    ],
+    "sanbuild_hal": [
+      "luxembourg"
+    ],
+    "sanbuild_hms": [
+      "arvidsjaur",
+      "beograd",
+      "jyvaskyla",
+      "mannheim",
+      "narvik",
+      "novi_sad",
+      "rovaniemi",
+      "salzburg",
+      "skelleftea"
+    ],
+    "sanbuild_win": [
+      "berlin",
+      "groningen",
+      "rotterdam"
+    ],
+    "sanbuilders": [
+      "berlin",
+      "bern",
+      "birmingham",
+      "brno",
+      "brussel",
+      "debrecen",
+      "edinburgh",
+      "gdansk",
+      "krakow",
+      "london",
+      "newcastle",
+      "nurnberg",
+      "salzburg",
+      "warszawa"
+    ],
+    "scania_dlr": [
+      "borlange",
+      "firenze",
+      "hannover",
+      "lisboa",
+      "manchester",
+      "milano",
+      "oulu",
+      "pitesti",
+      "stockholm",
+      "tallinn",
+      "zagreb"
+    ],
+    "scania_fac": [
+      "sodertalje"
+    ],
+    "scs_paper": [
+      "beograd",
+      "calarasi",
+      "istanbul",
+      "madrid",
+      "navia",
+      "salamanca",
+      "setubal",
+      "zaragoza",
+      "zenica"
+    ],
+    "sellplan": [
+      "antwerp",
+      "bern",
+      "dresden",
+      "erfurt",
+      "geneve",
+      "klagenfurt",
+      "koln",
+      "kosice",
+      "lodz",
+      "london",
+      "luxembourg",
+      "newcastle",
+      "nurnberg",
+      "olsztyn",
+      "prague",
+      "rostock",
+      "rotterdam",
+      "salzburg",
+      "sheffield",
+      "southampton",
+      "torino",
+      "venezia",
+      "wien"
+    ],
+    "severoatm_ru": [
+      "sosnovy_bor"
+    ],
+    "shuttle": [
+      "alesund",
+      "beograd",
+      "bihac",
+      "bremen",
+      "burgos",
+      "cordoba",
+      "iasi",
+      "ioannina",
+      "liege",
+      "lisboa",
+      "madrid",
+      "malaga",
+      "murcia",
+      "novi_sad",
+      "osijek",
+      "podgorica",
+      "salzburg",
+      "sevilla",
+      "sofia",
+      "timisoara",
+      "vlore",
+      "zadar"
+    ],
+    "sirin": [
+      "petersburg"
+    ],
+    "skoda": [
+      "prague"
+    ],
+    "skog_paper": [
+      "borlange",
+      "gavle",
+      "sundsvall",
+      "trondheim"
+    ],
+    "slava": [
+      "mostar",
+      "osijek",
+      "podgorica",
+      "pristina",
+      "tirana",
+      "tuzla",
+      "zagreb"
+    ],
+    "snl": [
+      "kirishi"
+    ],
+    "spinelli": [
+      "bilbao",
+      "cassino",
+      "milano",
+      "parma",
+      "pitesti",
+      "valladolid"
+    ],
+    "sporklift": [
+      "bucuresti",
+      "cluj_napoca",
+      "karlovo",
+      "plovdiv"
+    ],
+    "st_roza_bg": [
+      "burgas",
+      "pernik",
+      "pirdop"
+    ],
+    "steinbr_str": [
+      "dortmund",
+      "erfurt",
+      "graz",
+      "magdeburg",
+      "munchen"
+    ],
+    "stokes": [
+      "aberdeen",
+      "amsterdam",
+      "bystrica",
+      "calais",
+      "cardiff",
+      "dijon",
+      "erfurt",
+      "groningen",
+      "katowice",
+      "maribor",
+      "plymouth",
+      "poznan",
+      "pristina",
+      "rijeka",
+      "stuttgart",
+      "tirana",
+      "tuzla",
+      "warszawa",
+      "wien",
+      "zurich"
+    ],
+    "stronghold": [
+      "amsterdam"
+    ],
+    "subse": [
+      "bijelo_polje",
+      "bitola",
+      "brasov",
+      "brest",
+      "clermont",
+      "edirne",
+      "galati",
+      "larissa",
+      "nantes",
+      "osijek",
+      "skopje",
+      "sofia",
+      "veli_tarnovo"
+    ],
+    "suikersmij": [
+      "groningen"
+    ],
+    "supercesta": [
+      "albacete",
+      "badajoz",
+      "sevilla",
+      "zaragoza"
+    ],
+    "suprema": [
+      "jyvaskyla",
+      "kaunas",
+      "kokkola",
+      "kuusamo",
+      "lahti",
+      "lappeenranta",
+      "mikkeli",
+      "oulu",
+      "panevezys",
+      "parnu",
+      "rezekne",
+      "rovaniemi",
+      "tampere",
+      "tartu"
+    ],
+    "suprema_ru": [
+      "kaliningrad",
+      "pskov",
+      "volkhov"
+    ],
+    "sygomidi": [
+      "chania",
+      "trikala"
+    ],
+    "syllurgy": [
+      "banja_luka",
+      "beograd",
+      "bihac",
+      "kragujevac",
+      "nis",
+      "thessaloniki",
+      "zenica"
+    ],
+    "syschema": [
+      "beograd",
+      "kavala",
+      "osijek",
+      "tuzla"
+    ],
+    "tdc_auto": [
+      "amsterdam",
+      "bremen",
+      "koper",
+      "port_sagunt",
+      "santander",
+      "tarragona",
+      "vigo"
+    ],
+    "te_logistica": [
+      "cagliari",
+      "firenze",
+      "messina",
+      "napoli",
+      "parma",
+      "sassari"
+    ],
+    "tesore_gust": [
+      "firenze",
+      "milano",
+      "napoli",
+      "parma",
+      "roma"
+    ],
+    "timberturtle": [
+      "brasov",
+      "hunedoara",
+      "kragujevac"
+    ],
+    "tm_istanbul": [
+      "istanbul"
+    ],
+    "tqg": [
+      "aarhus",
+      "ivalo",
+      "jonkoping",
+      "karlstad",
+      "lappeenranta",
+      "lillehammer",
+      "ostersund",
+      "umea"
+    ],
+    "tradeaux": [
+      "ajaccio",
+      "brest",
+      "budapest",
+      "clermont",
+      "dusseldorf",
+      "felixstowe",
+      "grimsby",
+      "hannover",
+      "kassel",
+      "klagenfurt",
+      "krakow",
+      "lille",
+      "lyon",
+      "nice",
+      "olsztyn",
+      "paris",
+      "pecs",
+      "prague",
+      "toulouse"
+    ],
+    "trainfoundry": [
+      "karlovo",
+      "resita",
+      "zagreb",
+      "zaragoza"
+    ],
+    "trameri": [
+      "brno",
+      "budapest",
+      "carlisle",
+      "dresden",
+      "innsbruck",
+      "joensuu",
+      "klagenfurt",
+      "krakow",
+      "lille",
+      "liverpool",
+      "lyon",
+      "plymouth",
+      "strasbourg",
+      "swansea",
+      "szeged",
+      "vaasa",
+      "warszawa",
+      "wroclaw"
+    ],
+    "trans_cab": [
+      "algeciras",
+      "barcelona",
+      "lisboa",
+      "madrid",
+      "murcia",
+      "santander",
+      "valladolid",
+      "vigo"
+    ],
+    "transinet": [
+      "bialystok",
+      "brussel",
+      "cambridge",
+      "debrecen",
+      "frankfurt",
+      "kassel",
+      "mannheim",
+      "munchen",
+      "ostrava",
+      "sheffield",
+      "southampton",
+      "szczecin",
+      "torino"
+    ],
+    "tras_med": [
+      "bari",
+      "cagliari",
+      "catania",
+      "genova",
+      "roma"
+    ],
+    "tree_et": [
+      "a_coruna",
+      "aberdeen",
+      "bern",
+      "bialystok",
+      "birmingham",
+      "bratislava",
+      "burgos",
+      "bystrica",
+      "felixstowe",
+      "graz",
+      "katowice",
+      "leipzig",
+      "liege",
+      "manchester",
+      "mannheim",
+      "metz",
+      "nurnberg",
+      "olsztyn",
+      "poznan",
+      "salzburg",
+      "soria",
+      "southampton",
+      "teruel"
+    ],
+    "tree_et_log": [
+      "klagenfurt"
+    ],
+    "ts_atlas": [
+      "algeciras",
+      "barcelona",
+      "bilbao",
+      "gijon",
+      "lisboa",
+      "malaga",
+      "porto",
+      "sines",
+      "tarragona",
+      "valencia",
+      "vigo"
+    ],
+    "ttk_bg": [
+      "plovdiv",
+      "sofia",
+      "varna"
+    ],
+    "ukko": [
+      "loviisa",
+      "olkiluoto"
+    ],
+    "vainamoi_bas": [
+      "jyvaskyla"
+    ],
+    "vainamoi_fla": [
+      "kuusamo"
+    ],
+    "vainamoi_hal": [
+      "oulu"
+    ],
+    "vesna": [
+      "banja_luka",
+      "beograd",
+      "bihac"
+    ],
+    "vesna_mill": [
+      "bitola",
+      "novi_sad"
+    ],
+    "viljo_paper": [
+      "kouvola",
+      "kuopio",
+      "lappeenranta",
+      "tampere"
+    ],
+    "villco": [
+      "athens",
+      "beograd",
+      "nis",
+      "novi_sad",
+      "pristina",
+      "sarajevo",
+      "skopje"
+    ],
+    "villco_mkt": [
+      "bijelo_polje",
+      "heraklion",
+      "ioannina",
+      "kalamata",
+      "kavala",
+      "larissa",
+      "ljubljana",
+      "mitilini",
+      "novi_sad",
+      "osijek",
+      "trikala",
+      "zagreb",
+      "zenica"
+    ],
+    "viln_paper": [
+      "vilnius"
+    ],
+    "vitas_pwr": [
+      "aalborg",
+      "bilbao",
+      "ciudad_real",
+      "esbjerg",
+      "jyvaskyla",
+      "leon",
+      "magdeburg",
+      "pamplona",
+      "rostock",
+      "taranto"
+    ],
+    "vitas_pwr_co": [
+      "almeria",
+      "beograd",
+      "burgos",
+      "salamanca",
+      "sevilla",
+      "sines"
+    ],
+    "voitureux": [
+      "lehavre",
+      "paris",
+      "rennes"
+    ],
+    "volvo_dlr": [
+      "albacete",
+      "brasov",
+      "goteborg",
+      "joensuu",
+      "lillehammer",
+      "limoges",
+      "london",
+      "luxembourg",
+      "malaga",
+      "napoli",
+      "nurnberg",
+      "plovdiv",
+      "vilnius"
+    ],
+    "volvo_fac": [
+      "goteborg"
+    ],
+    "vpc": [
+      "goteborg"
+    ],
+    "vsk": [
+      "kirishi"
+    ],
+    "wgcc": [
+      "aarhus",
+      "alesund",
+      "antwerp",
+      "bratislava",
+      "brussel",
+      "frankfurt",
+      "gdansk",
+      "glasgow",
+      "grimsby",
+      "kokkola",
+      "kuopio",
+      "lulea",
+      "manchester",
+      "mannheim",
+      "oulu",
+      "strasbourg",
+      "sundsvall"
+    ],
+    "wilnet_trans": [
+      "lemans",
+      "limoges",
+      "marseille",
+      "nantes",
+      "porto_vecchi",
+      "toulouse"
+    ],
+    "zelenye": [
+      "petersburg"
+    ],
+    "zelenye_a": [
+      "kaliningrad"
+    ]
+  }
+}
