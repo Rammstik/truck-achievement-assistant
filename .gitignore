@@ -3,6 +3,7 @@
 !/.gitignore
 !/.gitattributes
 !/README.md
+!/README.en.md
 !/RELEASE_NOTES_RU.md
 !/requirements-build.txt
 !/installer/

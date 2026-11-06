@@ -4,12 +4,25 @@ from pathlib import Path
 from .steam_cache import accounts,state,find_steam
 from .profile_details import profiles,public_profiles,details
 from . import CORE_VERSION
+from . import language as languages
 def snapshot(steam, documents, control):
+    game_language = languages.detect_game_language(documents)
+    setting = control.get('language', 'auto')
+    language = languages.resolve(setting, game_language)
+    token = languages._active.set(language)
+    try:
+        result = _snapshot(steam, documents, control)
+        result.update(language=language, game_language=game_language, language_setting=setting)
+        return languages.present_snapshot(result, language)
+    finally:
+        languages._active.reset(token)
+
+def _snapshot(steam, documents, control):
     found = accounts(steam)
     account = control.get('account', '')
     if account not in {a['id'] for a in found}:
         account = found[0]['id'] if len(found) == 1 else ''
-    result = {'version': '0.6-native', 'core_version': CORE_VERSION, 'game':GAME, 'accounts': found, 'account': account, 'profiles': [], 'profile': '', 'achievements': [], 'read_at': time.time(), 'request': {k: control.get(k, '') for k in ('account', 'profile')}}
+    result = {'version': '0.6-native', 'core_version': CORE_VERSION, 'game':GAME, 'accounts': found, 'account': account, 'profiles': [], 'profile': '', 'achievements': [], 'read_at': time.time(), 'request': {**{k: control.get(k, '') for k in ('account', 'profile')}, 'language':control.get('language', 'auto')}}
     if not account:
         result['notice'] = 'Выберите свой Steam-аккаунт.' if found else f'Кэш {GAME.upper()} в Steam не найден. Запустите игру через Steam.'
         return result

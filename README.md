@@ -1,3 +1,5 @@
+**Русский** | [English](README.en.md)
+
 <div align="center">
 
 # ETS2 Achievement Assistant
@@ -6,9 +8,9 @@
 
 Помощник достижений прямо в Euro Truck Simulator 2.
 
-**[Скачать установщик](https://github.com/Rammstik/truck-achievement-assistant/releases/download/ets2-v0.6.15/ETS2-Achievement-Assistant-Setup-0.6.15.exe)** · **[Все загрузки](https://github.com/Rammstik/truck-achievement-assistant/releases)** · **[Сообщить о проблеме](https://github.com/Rammstik/truck-achievement-assistant/issues)**
+**[Скачать установщик](https://github.com/Rammstik/truck-achievement-assistant/releases/download/ets2-v0.6.16/ETS2-Achievement-Assistant-Setup-0.6.16.exe)** · **[Все загрузки](https://github.com/Rammstik/truck-achievement-assistant/releases)** · **[Сообщить о проблеме](https://github.com/Rammstik/truck-achievement-assistant/issues)**
 
-**0.6.15** · ETS2 **1.62.1.0** · Windows x64 · DirectX 11
+**0.6.16** · ETS2 **1.62.1.0** · Windows x64 · DirectX 11
 
 </div>
 
@@ -28,6 +30,7 @@
 | **Фильтр заказов** | Оставляет предложения для достижений из плана. Несколько достижений объединяют подходящие заказы. |
 | **Исключение выполненного** | Убирает подтверждённые пункты из кандидатов; неизвестный прогресс не считается выполнением. |
 | **Выбор маршрута** | Позволяет отдельно включить фильтр доставок в непосещённые города. По умолчанию он выключен. |
+| **Русский и английский** | При первом запуске используется язык игры: русский для русского, английский для остальных. Язык можно изменить в настройках. |
 
 ### Как работает план
 
@@ -42,17 +45,21 @@
 ## Установка
 
 1. **Закройте ETS2.**
-2. **[Скачайте и запустите установщик](https://github.com/Rammstik/truck-achievement-assistant/releases/download/ets2-v0.6.15/ETS2-Achievement-Assistant-Setup-0.6.15.exe).** Он ищет игру в библиотеках Steam. При необходимости укажите папку `Euro Truck Simulator 2` вручную.
+2. **[Скачайте и запустите установщик](https://github.com/Rammstik/truck-achievement-assistant/releases/download/ets2-v0.6.16/ETS2-Achievement-Assistant-Setup-0.6.16.exe).** Он ищет игру в библиотеках Steam. При необходимости укажите папку `Euro Truck Simulator 2` вручную.
 3. **Запустите игру и нажмите Ctrl+F8.** Выберите профиль и добавьте достижения в план.
 
 Python и инструменты разработки для обычной установки не нужны. Установщик обновляет файлы помощника, игровые сохранения не изменяются. Если Windows запрещает запись в папку игры, запустите установщик от имени администратора.
 
 Пока панель открыта, мышь и клавиатура управляют помощником. Повторное **Ctrl+F8** закрывает панель.
 
+### Язык помощника
+
+Откройте **Настройки → Язык** и выберите **Язык игры (автоматически)**, **Русский** или **English**. По умолчанию помощник следует языку игры: русский включается для русского языка, английский — для любого другого. Ручной выбор сохраняется между запусками и меняет язык панели сразу, без перезапуска игры.
+
 <details>
 <summary><strong>Ручная установка из Portable</strong></summary>
 
-Скачайте [Portable 0.6.15](https://github.com/Rammstik/truck-achievement-assistant/releases/download/ets2-v0.6.15/ETS2-Achievement-Assistant-Portable-0.6.15.zip), закройте игру и скопируйте содержимое папки `bin` из архива в каталог ETS2 с объединением папок.
+Скачайте [Portable 0.6.16](https://github.com/Rammstik/truck-achievement-assistant/releases/download/ets2-v0.6.16/ETS2-Achievement-Assistant-Portable-0.6.16.zip), закройте игру и скопируйте содержимое папки `bin` из архива в каталог ETS2 с объединением папок.
 
 В `bin/win_x64/plugins` должны находиться:
 
@@ -81,7 +88,6 @@ map-probe.json
 
 Наличие подробного правила не означает поддержку каждого условия фильтром или картой. Часть прогресса обновляется после сохранения игры. Отсутствие записи в журнале не доказывает невыполнение; неизвестные пункты остаются кандидатами. Некоторые условия предложения, включая точный маршрут Special Transport, недоступны для полной автоматической проверки.
 
-Совместимость с 1.62.1.0, логика фильтров, установка, обновление и удаление проверены. Игровая проверка сборки подтверждена пользователем 6 ноября 2026 года.
 
 ## Обновление и удаление
 

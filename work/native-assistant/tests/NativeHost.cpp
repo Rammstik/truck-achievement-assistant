@@ -19,6 +19,18 @@ static SCSAPI_RESULT register_event(const scs_event_t type,const scs_telemetry_e
 static SCSAPI_RESULT unregister_event(const scs_event_t type){callbacks.erase(type);return SCS_RESULT_ok;}
 static SCSAPI_VOID log_message(const scs_log_type_t,const scs_string_t message){OutputDebugStringA(message);}
 static bool quit=false;
+// Share delete access so the worker can atomically replace snapshots while this
+// harness polls them. Parse only after closing the file, as the plugin does.
+static nlohmann::json read_snapshot(const std::filesystem::path& path) {
+    HANDLE file=CreateFileW(path.c_str(),GENERIC_READ,FILE_SHARE_READ|FILE_SHARE_WRITE|FILE_SHARE_DELETE,nullptr,OPEN_EXISTING,FILE_ATTRIBUTE_NORMAL,nullptr);
+    if(file==INVALID_HANDLE_VALUE)return nlohmann::json();
+    LARGE_INTEGER size{};std::string content;
+    if(GetFileSizeEx(file,&size)&&size.QuadPart>0&&size.QuadPart<32*1024*1024) {
+        content.resize(static_cast<size_t>(size.QuadPart));DWORD read=0;
+        if(!ReadFile(file,content.data(),static_cast<DWORD>(content.size()),&read,nullptr)||read!=content.size())content.clear();
+    }
+    CloseHandle(file);return nlohmann::json::parse(content,nullptr,false);
+}
 static LRESULT CALLBACK proc(HWND w,UINT m,WPARAM p,LPARAM l){
     if(m==WM_CLOSE){quit=true;return 0;}
     return DefWindowProcW(w,m,p,l);
@@ -89,13 +101,13 @@ int wmain(int argc,wchar_t** argv){
         if(FAILED(swap->Present(1,0)))return 8;++frames;
         if(capture&&frames>90){
             const auto statePath=std::filesystem::path(data_root)/L"sessions"/std::to_wstring(GetCurrentProcessId())/L"state.json";
-            nlohmann::json snapshot;{std::ifstream file(statePath);if(file)snapshot=nlohmann::json::parse(file,nullptr,false);}
+            const auto snapshot=read_snapshot(statePath);
             if(snapshot.is_object()&&snapshot.contains("details")){
                 if(!readyFrame)readyFrame=frames;
                 if(frames<readyFrame+120)continue;
                 captured=capture_frame(device.Get(),context.Get(),swap.Get(),argv[3]);
                 const auto diagnosticPath=std::filesystem::path(data_root)/L"sessions"/std::to_wstring(GetCurrentProcessId())/L"diagnostics.json";
-                {std::ifstream file(diagnosticPath);nlohmann::json diagnostic;if(file){file>>diagnostic;auto sidecar=std::filesystem::path(argv[3]);sidecar.replace_extension(L".json");std::ofstream output(sidecar);output<<diagnostic.dump();}}
+                {const auto diagnostic=read_snapshot(diagnosticPath);if(diagnostic.is_object()){auto sidecar=std::filesystem::path(argv[3]);sidecar.replace_extension(L".json");std::ofstream output(sidecar);output<<diagnostic.dump();}}
                 quit=true;
             }
         }
@@ -106,8 +118,7 @@ int wmain(int argc,wchar_t** argv){
         }
         if(timed){
             auto diagnostics=std::filesystem::path(data_root)/L"sessions"/std::to_wstring(GetCurrentProcessId())/L"diagnostics.json";
-            nlohmann::json info;
-            {std::ifstream file(diagnostics);if(file)info=nlohmann::json::parse(file,nullptr,false);}
+            const auto info=read_snapshot(diagnostics);
             if(info.is_object()&&info.value("renderer_ready",false)&&info.value("drawn_frames",uint64_t(0))>previous_drawn+5){
                 bool shown=info.value("panel_visible",false),is_paused=info.value("paused",true);
                 bool captured=info.contains("input")&&info["input"].value("captured",false);

@@ -79,6 +79,7 @@ Source: staging\bin\win_x64\plugins\AchievementAssistant\*; DestDir: {app}\bin\w
 Source: staging\bin\win_x64\plugins\map-probe.json; DestDir: {app}\bin\win_x64\plugins; Flags: onlyifdoesntexist uninsneveruninstall
 Source: staging\licenses\*; DestDir: {app}\bin\win_x64\plugins\AchievementAssistant\licenses; Flags: ignoreversion
 Source: staging\README_RU.md; DestDir: {app}\bin\win_x64\plugins\AchievementAssistant; Flags: ignoreversion
+Source: staging\README_EN.md; DestDir: {app}\bin\win_x64\plugins\AchievementAssistant; Flags: ignoreversion
 Source: staging\manifest-sha256.json; DestDir: {app}\bin\win_x64\plugins\AchievementAssistant; Flags: ignoreversion
 
 [Code]
@@ -160,7 +161,7 @@ function NextButtonClick(CurPageID: Integer): Boolean;
 var Error: String;
 begin
   Result := True;
-  if CurPageID = wpSelectDir then begin
+  if (CurPageID = wpSelectDir) and (not WizardSilent) then begin
     Error := ValidateGame();
     if Error <> '' then begin MsgBox(Error, mbError, MB_OK); Result := False; end;
   end;
@@ -177,5 +178,5 @@ var Error: String;
 begin
   Error := ClosedGameError();
   Result := Error = '';
-  if not Result then MsgBox(Error, mbError, MB_OK);
+  if not Result then SuppressibleMsgBox(Error, mbError, MB_OK, IDOK);
 end;

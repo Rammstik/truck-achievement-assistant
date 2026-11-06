@@ -1,8 +1,11 @@
-param([switch]$TestsOnly,[ValidateSet('ets2','ats')][string]$Game='ets2')
+param([switch]$TestsOnly,[ValidateSet('ets2','ats')][string]$Game='ets2',[string]$BuildToolsRoot)
 $ErrorActionPreference = 'Stop'
 $nativeRoot = $PSScriptRoot
 $vswhere = Join-Path ${env:ProgramFiles(x86)} 'Microsoft Visual Studio\Installer\vswhere.exe'
-$vsRoot = & $vswhere -latest -products '*' -requires Microsoft.VisualStudio.Component.VC.Tools.x86.x64 -property installationPath
+$vsRoot=$BuildToolsRoot
+if(-not $vsRoot -and (Test-Path -LiteralPath $vswhere)) {$vsRoot = & $vswhere -latest -products '*' -requires Microsoft.VisualStudio.Component.VC.Tools.x86.x64 -property installationPath}
+if(-not $vsRoot){$vsRoot=$env:AA_BUILD_TOOLS_ROOT}
+if(-not $vsRoot){$portableTools=Join-Path $nativeRoot '../../../tools/BuildTools';if(Test-Path -LiteralPath (Join-Path $portableTools 'VC/Tools/MSVC')){$vsRoot=(Resolve-Path -LiteralPath $portableTools).Path}}
 if (-not $vsRoot) { throw 'Visual Studio C++ x64 tools are required.' }
 $compilerRoot = Get-ChildItem -LiteralPath (Join-Path $vsRoot 'VC\Tools\MSVC') -Directory | Sort-Object Name -Descending | Select-Object -First 1
 $sdkRoot = Join-Path ${env:ProgramFiles(x86)} 'Windows Kits\10'
@@ -23,6 +26,8 @@ try {
     $env:INCLUDE = $includes -join ';'
     $env:LIB = $libs -join ';'
     if(-not $TestsOnly){
+    python (Join-Path $nativeRoot 'generate_localization.py')
+    if($LASTEXITCODE -ne 0){throw 'Localization generation failed'}
     $sources=@('third_party/minhook/src/buffer.c','third_party/minhook/src/hook.c','third_party/minhook/src/trampoline.c','third_party/minhook/src/hde/hde64.c',
         'third_party/imgui/imgui.cpp','third_party/imgui/imgui_draw.cpp','third_party/imgui/imgui_tables.cpp','third_party/imgui/imgui_widgets.cpp',
         'third_party/imgui/backends/imgui_impl_dx11.cpp','third_party/imgui/backends/imgui_impl_win32.cpp','src/InputGate.cpp','src/MapProbe.cpp','src/JobProbe.cpp','src/MapTint.cpp','src/Overlay.cpp','src/Plugin.cpp')
@@ -68,6 +73,8 @@ try {
         & $compiler @compileGame '/nologo' '/std:c++17' '/EHsc' '/O2' '/MT' '/utf-8' (Join-Path $nativeRoot 'tests/JobProbeTests.cpp') ('/Fo'+(Join-Path $objRoot 'JobProbeTests.obj')) ('/Fe'+(Join-Path $binRoot 'JobProbeTests.exe')) @jobObjects '/link' 'User32.lib'
         if ($LASTEXITCODE -ne 0) { throw 'Job probe test build failed.' }
     }
+    & $compiler @compileGame '/nologo' '/std:c++17' '/EHsc' '/O2' '/MT' '/utf-8' (Join-Path $nativeRoot 'tests/LocalizationTests.cpp') ('/Fo'+(Join-Path $objRoot 'LocalizationTests.obj')) ('/Fe'+(Join-Path $binRoot 'LocalizationTests.exe')) '/link' 'Shell32.lib' 'Ole32.lib'
+    if($LASTEXITCODE -ne 0){throw 'Localization test build failed'}
     $filterTest=if($Game -eq 'ats'){'ATSCoreTests'}else{'OfferFilterTests'}
     & $compiler @compileGame '/nologo' '/std:c++17' '/EHsc' '/O2' '/MT' '/utf-8' (Join-Path $nativeRoot ('tests/'+$filterTest+'.cpp')) ('/Fo'+(Join-Path $objRoot 'OfferFilterTests.obj')) ('/Fe'+(Join-Path $binRoot 'OfferFilterTests.exe'))
     if ($LASTEXITCODE -ne 0) { throw 'Offer filter test build failed.' }

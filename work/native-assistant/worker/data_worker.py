@@ -11,6 +11,7 @@ if '--game' in sys.argv:
     index=sys.argv.index('--game');os.environ['AA_GAME']=sys.argv[index+1]
 from ets2_achievements.steam_cache import find_steam
 from ets2_achievements.service import snapshot,documents_directory
+from ets2_achievements.language import detect_game_language,resolve,translate
 def atomic_json(path, value):
     temp = path.with_suffix('.tmp')
     temp.write_text(json.dumps(value, ensure_ascii=False, allow_nan=False), encoding='utf-8')
@@ -58,7 +59,8 @@ def main():
                     result = snapshot(args.steam_dir, args.ets_dir, control)
                     atomic_json(args.session / 'state.json', result)
                 except Exception as exc:
-                    atomic_json(args.session / 'error.json', {'error': f'Ошибка чтения: {type(exc).__name__}', 'at': time.time()})
+                    language=resolve(control.get('language','auto'),detect_game_language(args.ets_dir))
+                    atomic_json(args.session / 'error.json', {'error': translate('Ошибка чтения: ',language)+type(exc).__name__, 'language':language, 'at': time.time()})
                 else:
                     (args.session / 'error.json').unlink(missing_ok=True)
                 last_control = control

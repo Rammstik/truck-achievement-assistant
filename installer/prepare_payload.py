@@ -44,6 +44,7 @@ def main():
                 shutil.copy2(dist.locate_file(file), licenses / (package + '-' + file.name))
     shutil.copy2(Path(sys.base_prefix) / 'LICENSE.txt', licenses / 'Python-PSF.txt')
     shutil.copy2(ROOT / 'publication/public/README.md', STAGE / 'README_RU.md')
+    shutil.copy2(ROOT / 'publication/public/README_EN.md', STAGE / 'README_EN.md')
     shutil.copy2(ROOT / 'publication/public/RELEASE_NOTES_RU.md', STAGE / 'RELEASE_NOTES_RU.md')
     paths = sorted(p for p in STAGE.rglob('*') if p.is_file())
     forbidden_names = {'preferences.json', 'state.json', 'control.json', 'error.json', 'AA_plugins.zip'}

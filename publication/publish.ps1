@@ -18,7 +18,7 @@ if($LASTEXITCODE -ne 0 -or $remote -ne ('https://github.com/'+$repo+'.git')){thr
 $tracked=@(Invoke-Git ls-files)
 if($LASTEXITCODE -ne 0){throw 'Could not inspect tracked files'}
 $unexpected=@($tracked | Where-Object {
-    $_ -notmatch '^(\.gitattributes|\.gitignore|README\.md|RELEASE_NOTES_RU\.md|requirements-build\.txt|installer/|publication/|work/(native-assistant|achievement-core|achievement-lab)/)' -or
+    $_ -notmatch '^(\.gitattributes|\.gitignore|README(?:\.en)?\.md|RELEASE_NOTES_RU\.md|requirements-build\.txt|installer/|publication/|work/(native-assistant|achievement-core|achievement-lab)/)' -or
     $_ -match '(^|/)(player-data|sessions|staging|test-area|test-results|public-repo|bin|bin-ats|build|build-ats|pybuild|__pycache__)/|\.(exe|dll|zip|log|pyc|obj|pdb)$'
 })
 if($unexpected.Count -gt 0){$unexpected; throw 'Unexpected file in the public source tree'}

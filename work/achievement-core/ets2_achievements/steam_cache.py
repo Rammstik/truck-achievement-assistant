@@ -1,4 +1,5 @@
 from .game_config import APP_ID
+from .language import current as current_language
 import math,re,struct
 from pathlib import Path
 from datetime import datetime,timezone
@@ -17,7 +18,8 @@ def read_stable(path):
 
 def localized(value, fallback=''):
     if isinstance(value, dict):
-        return value.get('russian') or value.get('english') or fallback
+        key = 'russian' if current_language() == 'ru' else 'english'
+        return value.get(key) or value.get('english') or fallback
     return value if isinstance(value, str) and value else fallback
 
 def accounts(steam):
@@ -34,7 +36,8 @@ def accounts(steam):
     for p in sorted((steam / 'appcache/stats').glob(f'UserGameStats_*_{APP_ID}.bin')):
         m = re.fullmatch(r'UserGameStats_(\d+)_'+APP_ID+r'.bin', p.name)
         if m:
-            found.append({'id': m[1], 'name': names.get(m[1], f'Аккаунт {m[1]}')})
+            fallback = f'Аккаунт {m[1]}' if current_language() == 'ru' else f'Account {m[1]}'
+            found.append({'id': m[1], 'name': names.get(m[1], fallback)})
     return found
 
 def state(steam, account):

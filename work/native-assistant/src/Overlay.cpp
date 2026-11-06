@@ -1,4 +1,5 @@
 #include "GameConfig.h"
+#include "Localization.h"
 #define WIN32_LEAN_AND_MEAN
 #define NOMINMAX
 #include "Overlay.h"
@@ -32,6 +33,7 @@ namespace fs=std::filesystem;
 using Present=HRESULT(STDMETHODCALLTYPE*)(IDXGISwapChain*,UINT,UINT);
 extern IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND,UINT,WPARAM,LPARAM);
 namespace {
+const char* tr(const char* value) { return aa::i18n::Text(value); }
 std::recursive_mutex ui_mutex;
 std::mutex data_mutex,event_mutex;
 std::atomic<bool> stopping{false},paused{true};
@@ -80,10 +82,10 @@ void flush_telemetry() {
     std::lock_guard lock(event_mutex);
     if(telemetry_queue.empty())return;
     std::ofstream out(telemetry_journal,std::ios::app|std::ios::binary);
-    if(!out){telemetry_error="Не удалось открыть журнал телеметрии";return;}
+    if(!out){telemetry_error=tr("Не удалось открыть журнал телеметрии");return;}
     while(!telemetry_queue.empty()) {
         out<<telemetry_queue.front().dump()<<"\n";out.flush();
-        if(!out){telemetry_error="Ошибка записи журнала телеметрии";return;}
+        if(!out){telemetry_error=tr("Ошибка записи журнала телеметрии");return;}
         telemetry_queue.pop_front();++telemetry_written;
     }
     telemetry_error.clear();
@@ -135,7 +137,7 @@ void save_control(bool stop=false) {
     update_map_selection();
     write_json(settings_path,preferences);
     write_json(session/L"control.json",{{"account",string_value(preferences,"account")},{"profile",string_value(preferences,"profile")},
-               {"refresh",++refresh_id},{"stop",stop}});
+               {"language",string_value(preferences,"language","auto")},{"refresh",++refresh_id},{"stop",stop}});
 }
 void text(const std::string& value) { ImGui::TextWrapped("%s",value.c_str()); }
 void dim(const std::string& value) { ImGui::PushStyleColor(ImGuiCol_Text,ImVec4(.64f,.72f,.75f,1));text(value);ImGui::PopStyleColor(); }
@@ -146,10 +148,10 @@ std::string number(const json& value) {
     return "?";
 }
 std::string status_name(const std::string& value) {
-    if(value=="done")return "Получено";
-    if(value=="progress")return "В процессе";
-    if(value=="locked")return "Не получено";
-    return "Нет данных";
+    if(value=="done")return tr("Получено");
+    if(value=="progress")return tr("В процессе");
+    if(value=="locked")return tr("Не получено");
+    return tr("Нет данных");
 }
 std::string plan_key(const json& current,const json& a) {
     return string_value(current,"account")+":"+string_value(current,"profile")+":"+string_value(a,"id");
@@ -159,12 +161,12 @@ bool pinned(const std::string& key) {
     auto i=preferences["plan"].find(key);return i!=preferences["plan"].end()&&i->is_boolean()&&i->get<bool>();
 }
 void render_details(const json& a,const json& info) {
-    ImGui::SeparatorText("Условие");text(string_value(a,"action"));
+    ImGui::SeparatorText(tr("Условие"));text(string_value(a,"action"));
     if(a.contains("guidance")&&a["guidance"].is_array()&&!a["guidance"].empty()) {
         ImGui::Spacing();
         if(ImGui::BeginTable("execution_guidance",2,ImGuiTableFlags_SizingStretchProp)) {
-            ImGui::TableSetupColumn("Условие",ImGuiTableColumnFlags_WidthFixed,120);
-            ImGui::TableSetupColumn("Подробности",ImGuiTableColumnFlags_WidthStretch);
+            ImGui::TableSetupColumn(tr("Условие"),ImGuiTableColumnFlags_WidthFixed,120);
+            ImGui::TableSetupColumn(tr("Подробности"),ImGuiTableColumnFlags_WidthStretch);
             for(const auto& line:a["guidance"]) {
                 ImGui::TableNextRow();ImGui::TableNextColumn();
                 ImGui::PushStyleColor(ImGuiCol_Text,ImVec4(.95f,.74f,.39f,1));text(string_value(line,"label"));ImGui::PopStyleColor();
@@ -174,77 +176,77 @@ void render_details(const json& a,const json& info) {
         }
         ImGui::Spacing();
     }
-    if(info.empty()){dim("Выберите игровой профиль для проверки выполненных пунктов.");return;}
+    if(info.empty()){dim(tr("Выберите игровой профиль для проверки выполненных пунктов."));return;}
     std::string kind=string_value(info,"kind");
     if(kind=="truck_brands") {
-        ImGui::SeparatorText("Пробег по маркам · оценка");
+        ImGui::SeparatorText(tr("Пробег по маркам · оценка"));
         if(!info.value("available",false)){dim(string_value(info,"reason"));return;}
-        dim("Оценка по журналу заказов. Отдельные отметки Steam не найдены. История может быть неполной; пробег достижения может отличаться. Нет записей — статус неизвестен.");
-        text("Марок с записанным пробегом от 999 км: "+number(info["observed_completed"])+". Цель: 5 из 7.");
+        dim(tr("Оценка по журналу заказов. Отдельные отметки Steam не найдены. История может быть неполной; пробег достижения может отличаться. Нет записей — статус неизвестен."));
+        text(tr("Марок с записанным пробегом от 999 км: ")+number(info["observed_completed"])+tr(". Цель: 5 из 7."));
         if(a.contains("current")&&a["current"].is_number()) {
             const int observed=std::min(info["observed_completed"].get<int>(),5);
-            dim(a["current"].get<double>()==observed?"Общее число совпадает со Steam; это не подтверждает каждую марку.":"Число отличается от Steam. Проверьте профиль и время сохранения.");
+            dim(a["current"].get<double>()==observed?tr("Общее число совпадает со Steam; это не подтверждает каждую марку."):tr("Число отличается от Steam. Проверьте профиль и время сохранения."));
         }
         std::string candidates;
         if(ImGui::BeginTable("brands",3,ImGuiTableFlags_BordersInnerH|ImGuiTableFlags_RowBg|ImGuiTableFlags_SizingStretchProp)) {
-            ImGui::TableSetupColumn("Марка");ImGui::TableSetupColumn("Км в журнале");ImGui::TableSetupColumn("Сведения");ImGui::TableHeadersRow();
+            ImGui::TableSetupColumn(tr("Марка"));ImGui::TableSetupColumn(tr("Км в журнале"));ImGui::TableSetupColumn(tr("Сведения"));ImGui::TableHeadersRow();
             for(const auto& row:info["items"]) {
                 ImGui::TableNextRow();ImGui::TableNextColumn();text(string_value(row,"name"));ImGui::TableNextColumn();
                 text(row["logged_km"].is_null()?"—":number(row["logged_km"]));ImGui::TableNextColumn();
                 bool threshold=row.value("threshold_seen",false);
-                text(threshold?"Порог виден в журнале":row["logged_km"].is_null()?"Статус неизвестен":"Порог пока не виден в журнале");
+                text(threshold?tr("Порог виден в журнале"):row["logged_km"].is_null()?tr("Статус неизвестен"):tr("Порог пока не виден в журнале"));
                 if(!threshold){if(!candidates.empty())candidates+=", ";candidates+=string_value(row,"name");}
             }
             ImGui::EndTable();
         }
-        if(!candidates.empty())text("Кандидаты для проверки: "+candidates+". Выполняйте заказы на собственном грузовике; ориентир — 999 км на марку. После сохранения проверьте Steam-счётчик.");
-        dim("Учтено заказов: "+number(info["counted_jobs"])+"; исключено: "+number(info["excluded_records"])+"; неизвестный формат: "+number(info["unreadable_records"])+"; владение/марка не подтверждены: "+number(info["unverified_records"]));
+        if(!candidates.empty())text(tr("Кандидаты для проверки: ")+candidates+tr(". Выполняйте заказы на собственном грузовике; ориентир — 999 км на марку. После сохранения проверьте Steam-счётчик."));
+        dim(tr("Учтено заказов: ")+number(info["counted_jobs"])+tr("; исключено: ")+number(info["excluded_records"])+tr("; неизвестный формат: ")+number(info["unreadable_records"])+tr("; владение/марка не подтверждены: ")+number(info["unverified_records"]));
     } else if(kind=="visited_cities"||kind=="transported_cargos") {
-        ImGui::SeparatorText(kind=="visited_cities"?"Города выбранного профиля":"Грузы выбранного профиля");
-        text("Отмечено: "+number(info["completed"])+"; нужно ещё: "+number(info["needed"]));
+        ImGui::SeparatorText(kind=="visited_cities"?tr("Города выбранного профиля"):tr("Грузы выбранного профиля"));
+        text(tr("Отмечено: ")+number(info["completed"])+tr("; нужно ещё: ")+number(info["needed"]));
         if(a.contains("current")&&a["current"].is_number()&&
            a["current"].get<double>()!=std::min(info["completed"].get<int>(),info["target"].get<int>()))
-            text("Счётчик Steam отличается от выбранного сохранения. Возможны другой профиль или задержка записи.");
+            text(tr("Счётчик Steam отличается от выбранного сохранения. Возможны другой профиль или задержка записи."));
         if(ImGui::BeginTable("checklist",2,ImGuiTableFlags_BordersInnerH|ImGuiTableFlags_RowBg)) {
-            ImGui::TableSetupColumn("Пункт");ImGui::TableSetupColumn("В сохранении");ImGui::TableHeadersRow();
+            ImGui::TableSetupColumn(tr("Пункт"));ImGui::TableSetupColumn(tr("В сохранении"));ImGui::TableHeadersRow();
             for(const auto& row:info["items"]) {
                 ImGui::TableNextRow();ImGui::TableNextColumn();text(string_value(row,"name"));
-                ImGui::TableNextColumn();text(row.value("visited",false)?"Отмечен":"Не отмечен");
+                ImGui::TableNextColumn();text(row.value("visited",false)?tr("Отмечен"):tr("Не отмечен"));
             }
             ImGui::EndTable();
         }
     }
     else {
-        ImGui::SeparatorText(string_value(info,"title","Оставшиеся пункты").c_str());
+        ImGui::SeparatorText(string_value(info,"title",tr("Оставшиеся пункты")).c_str());
         for(const char* key : {"reason","action_hint"}) {
             auto value=string_value(info,key); if(!value.empty())text(value);
         }
-        if(info.value("estimated",false)||info.value("mode",std::string())=="history"||info.value("mode",std::string())=="sequence")dim("По журналу: найденные записи учтены, неизвестные пункты остаются.");
+        if(info.value("estimated",false)||info.value("mode",std::string())=="history"||info.value("mode",std::string())=="sequence")dim(tr("По журналу: найденные записи учтены, неизвестные пункты остаются."));
         for(const char* key : {"observed","observed_completed","observed_deliveries","completed"}) {
             if(info.contains(key)) {
                 const bool same=a["current"].is_number()&&info[key].is_number()&&a["current"]==info[key]&&a["target"]==info.value("target",json());
-                if(!same)text("Найдено: "+number(info[key])+" / "+number(info.value("target",json())));break;
+                if(!same)text(tr("Найдено: ")+number(info[key])+" / "+number(info.value("target",json())));break;
             }
         }
         const auto summary=string_value(info,"summary");if(!summary.empty())text(summary);
         if(info.contains("items")&&info["items"].is_array()) {
             if(ImGui::BeginTable("extended_details",2,ImGuiTableFlags_BordersInnerH|ImGuiTableFlags_RowBg)) {
-                ImGui::TableSetupColumn("Пункт",ImGuiTableColumnFlags_WidthStretch,.72f);ImGui::TableSetupColumn("Данные",ImGuiTableColumnFlags_WidthStretch,.28f);ImGui::TableHeadersRow();
+                ImGui::TableSetupColumn(tr("Пункт"),ImGuiTableColumnFlags_WidthStretch,.72f);ImGui::TableSetupColumn(tr("Данные"),ImGuiTableColumnFlags_WidthStretch,.28f);ImGui::TableHeadersRow();
                 for(const auto& row:info["items"]) {
                     ImGui::TableNextRow();ImGui::TableNextColumn();text(string_value(row,"name"));
                     const auto requirements=string_value(row,"requirements");if(!requirements.empty())dim(requirements);
                     ImGui::TableNextColumn();
-                    if(row.value("manual",false))dim("Нет данных");
-                    else if(row.value("blocked",false))dim("Позже в цепочке");
+                    if(row.value("manual",false))dim(tr("Нет данных"));
+                    else if(row.value("blocked",false))dim(tr("Позже в цепочке"));
                     else if(row.contains("current")) {
-                        if(row["current"].is_null())dim("Неизвестно");
+                        if(row["current"].is_null())dim(tr("Неизвестно"));
                         else {const auto value=number(row["current"])+" / "+number(row.value("target",json()));
                             if(aa::offers::completedItem(row))ImGui::TextColored(ImVec4(.40f,.83f,.65f,1),"%s",value.c_str());else text(value);}
                     }
-                    else if(row.contains("viewed")&&row["viewed"].is_boolean())text(row["viewed"].get<bool>()?"Просмотрено":"Не отмечено в сохранении");
-                    else if(row.contains("logged")&&row["logged"].is_boolean())text(row["logged"].get<bool>()?"Есть запись в журнале":"Нет записи в журнале");
-                    else if(row.contains("deliveries")) {const auto& v=row["deliveries"];text("Записей: "+(v.is_array()?std::to_string(v.size()):number(v)));}
-                    else text("Нет данных");
+                    else if(row.contains("viewed")&&row["viewed"].is_boolean())text(row["viewed"].get<bool>()?tr("Просмотрено"):tr("Не отмечено в сохранении"));
+                    else if(row.contains("logged")&&row["logged"].is_boolean())text(row["logged"].get<bool>()?tr("Есть запись в журнале"):tr("Нет записи в журнале"));
+                    else if(row.contains("deliveries")) {const auto& v=row["deliveries"];text(tr("Записей: ")+(v.is_array()?std::to_string(v.size()):number(v)));}
+                    else text(tr("Нет данных"));
                 }
                 ImGui::EndTable();
             }
@@ -298,7 +300,7 @@ bool initialize_gui(IDXGISwapChain* swap) {
     io.ConfigFlags|=ImGuiConfigFlags_NavEnableKeyboard;
     wchar_t windows[MAX_PATH];GetWindowsDirectoryW(windows,MAX_PATH);
     const auto font=utf8((fs::path(windows)/L"Fonts/segoeui.ttf").wstring());
-    static const ImWchar glyphs[]={0x0020,0x00FF,0x0400,0x052F,0x2000,0x206F,0x2190,0x21FF,0x2DE0,0x2DFF,0xA640,0xA69F,0};
+    static const ImWchar glyphs[]={0x0020,0x024F,0x0400,0x052F,0x1E00,0x1EFF,0x2000,0x206F,0x2190,0x21FF,0x2DE0,0x2DFF,0xA640,0xA69F,0};
     io.Fonts->AddFontFromFileTTF(font.c_str(),19,nullptr,glyphs);
     const auto bold=fs::path(windows)/L"Fonts/segoeuib.ttf";heading_font=fs::exists(bold)?io.Fonts->AddFontFromFileTTF(utf8(bold.wstring()).c_str(),22,nullptr,glyphs):nullptr;
     ImGui::StyleColorsDark();auto& style=ImGui::GetStyle();style.WindowRounding=12;style.ChildRounding=8;style.FrameRounding=6;style.PopupRounding=9;
@@ -382,7 +384,7 @@ void read_loop() {
     std::wstring command=L"\""+executable.wstring()+L"\" --game "+aa::game::IdWide+L" --parent "+std::to_wstring(GetCurrentProcessId())+L" --session \""+session.wstring()+L"\"";
     STARTUPINFOW startup{};startup.cb=sizeof startup;startup.dwFlags=STARTF_USESHOWWINDOW;startup.wShowWindow=SW_HIDE;PROCESS_INFORMATION process{};
     if(!CreateProcessW(executable.c_str(),command.data(),nullptr,nullptr,FALSE,CREATE_NO_WINDOW,nullptr,executable.parent_path().c_str(),&startup,&process)) {
-        std::lock_guard lock(data_mutex);runtime_error="Не удалось запустить модуль чтения. Скопируйте папку AchievementAssistant рядом с DLL.";return;
+        std::lock_guard lock(data_mutex);runtime_error=tr("Не удалось запустить модуль чтения. Скопируйте папку AchievementAssistant рядом с DLL.");return;
     }
     child=process.hProcess;CloseHandle(process.hThread);
     auto last_stamp=fs::file_time_type::min();
@@ -411,18 +413,18 @@ void read_loop() {
             if(!ec&&stamp!=last_stamp) {
                 json next=read_json(session/L"state.json");
                 const auto request=read_json(session/L"control.json");
-                const bool matches=next.contains("request")&&string_value(next["request"],"account")==string_value(request,"account")&&string_value(next["request"],"profile")==string_value(request,"profile");
+                const bool matches=next.contains("request")&&string_value(next["request"],"account")==string_value(request,"account")&&string_value(next["request"],"profile")==string_value(request,"profile")&&string_value(next["request"],"language","auto")==string_value(request,"language","auto");
                 if(matches&&next.contains("achievements")&&next["achievements"].is_array()&&next.contains("accounts")&&next["accounts"].is_array()) {
-                    std::lock_guard lock(data_mutex);model=std::move(next);last_stamp=stamp;runtime_error.clear();
+                    std::lock_guard lock(data_mutex);aa::i18n::SetLanguage(string_value(next,"language","en"));model=std::move(next);last_stamp=stamp;runtime_error.clear();
                 }
             }
             update_map_selection();
             const auto error=read_json(session/L"error.json");
-            if(error.contains("error")){std::lock_guard lock(data_mutex);runtime_error=string_value(error,"error")+". Показан последний успешный результат.";}
+            if(error.contains("error")){std::lock_guard lock(data_mutex);runtime_error=string_value(error,"error")+tr(". Показан последний успешный результат.");}
             if(WaitForSingleObject(child,0)==WAIT_OBJECT_0) {
-                std::lock_guard lock(data_mutex);runtime_error="Модуль чтения остановился. Данные на панели могут быть устаревшими.";break;
+                std::lock_guard lock(data_mutex);runtime_error=tr("Модуль чтения остановился. Данные на панели могут быть устаревшими.");break;
             }
-        }catch(const std::exception&) {std::lock_guard lock(data_mutex);runtime_error="Ошибка чтения данных. Последний успешный результат сохранён.";}
+        }catch(const std::exception&) {std::lock_guard lock(data_mutex);runtime_error=tr("Ошибка чтения данных. Последний успешный результат сохранён.");}
         std::this_thread::sleep_for(std::chrono::milliseconds(250));
     }
 }
@@ -442,6 +444,9 @@ bool StartAssistant() {
     fs::create_directories(root/L"telemetry",ec);if(ec)return false;
     telemetry_journal=root/L"telemetry"/(telemetry_run+".jsonl");
     preferences=read_json(settings_path);if(!preferences.contains("plan")||!preferences["plan"].is_object())preferences["plan"]=json::object();
+    const auto language=string_value(preferences,"language","auto");
+    if(language!="ru"&&language!="en")preferences["language"]="auto";
+    aa::i18n::SetLanguage(language=="ru"||language=="en"?language:aa::i18n::DefaultGameLanguage());
     model=json::object();runtime_error.clear();visible=preferences.contains("open_on_start")&&preferences["open_on_start"]==true;
     selected_id=string_value(preferences,"selected_id");filter=std::clamp(preferences.value("achievement_view",0),0,4);stopping=false;toggle_held=false;toggle_keyup_pending=false;renderer_ready=false;panel_active=false;presented_frames=0;drawn_frames=0;save_control();
     // A new session must not display stale data left by a reused Windows PID.
