@@ -43,7 +43,6 @@ UninstallFilesDir={app}\.assistant-uninstall
 #else
 UninstallFilesDir={localappdata}\Programs\ETS2AchievementAssistant\Uninstall
 #endif
-InfoBeforeFile=staging\RELEASE_NOTES_RU.md
 #ifdef AA_TEST
 CreateUninstallRegKey=no
 UsePreviousAppDir=no

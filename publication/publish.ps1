@@ -1,4 +1,4 @@
-param([Parameter(Mandatory=$true)][string]$GitHubCLI, [switch]$ValidateOnly)
+param([Parameter(Mandatory=$true)][string]$GitHubCLI, [switch]$ValidateOnly, [switch]$Prerelease)
 $ErrorActionPreference='Stop'
 $root=Split-Path -Parent $PSScriptRoot
 $version=(Get-Content -LiteralPath (Join-Path $root 'installer/release.json') -Raw | ConvertFrom-Json).version
@@ -30,9 +30,11 @@ foreach($asset in $assets){if(-not (Test-Path -LiteralPath $asset -PathType Leaf
 if($ValidateOnly){Write-Output "Validated public repository, committed source and release assets for $version"; return}
 Invoke-Git push -u origin main
 # A new release tag points to the exact source commit. Existing releases are never overwritten.
-Invoke-Gh release create "ets2-v$version" @assets --repo $repo --target $commit --prerelease --title "ETS2 Achievement Assistant $version" --notes-file (Join-Path $PSScriptRoot 'public/RELEASE_NOTES_RU.md')
+$releaseFlags=@()
+if($Prerelease){$releaseFlags+='--prerelease'}
+Invoke-Gh release create "ets2-v$version" @assets --repo $repo --target $commit @releaseFlags --title "ETS2 Achievement Assistant $version" --notes-file (Join-Path $PSScriptRoot 'public/RELEASE_NOTES_RU.md')
 $release=Invoke-Gh api ("repos/$repo/releases/tags/ets2-v$version") | ConvertFrom-Json
-if($release.draft -or -not $release.prerelease -or $release.assets.Count -ne $assets.Count){throw 'Unexpected published release state'}
+if($release.draft -or $release.prerelease -ne [bool]$Prerelease -or $release.assets.Count -ne $assets.Count){throw 'Unexpected published release state'}
 foreach($asset in $assets){
     $remoteAsset=$release.assets | Where-Object name -eq ([IO.Path]::GetFileName($asset))
     $hash=(Get-FileHash -LiteralPath $asset -Algorithm SHA256).Hash.ToLowerInvariant()
