@@ -1,5 +1,5 @@
 {
-  "source": "Exact company nodes extracted from ETS2 1.62.1.0",
+  "source": "Exact company nodes extracted from ETS2 1.62.2.1",
   "companies": {
     "aaa": [
       "cagliari",
@@ -80,6 +80,9 @@
       "skopje"
     ],
     "alumcore": [
+      "borgarnes",
+      "egilsstadir",
+      "reykjavik",
       "sundsvall"
     ],
     "aluxion": [
@@ -206,6 +209,7 @@
       "jonkoping",
       "kajaani",
       "kaunas",
+      "keflavik",
       "kristiansand",
       "kristiansund",
       "lahti",
@@ -245,6 +249,19 @@
       "kiruna",
       "ostersund"
     ],
+    "blatt_voruhu": [
+      "blonduos",
+      "borgarnes",
+      "egilsstadir",
+      "hofn",
+      "holmavik",
+      "keflavik",
+      "olafsvik",
+      "patreksfjord",
+      "reykjavik",
+      "selfoss",
+      "thorshofn"
+    ],
     "blt": [
       "kaunas",
       "kunda",
@@ -277,7 +294,9 @@
       "marseille"
     ],
     "borealis": [
+      "akureyri",
       "bodo",
+      "keflavik",
       "mikkeli",
       "svolvaer"
     ],
@@ -301,11 +320,14 @@
     "byggpro": [
       "alta",
       "andenes",
+      "blonduos",
+      "borgarnes",
       "dombas",
       "falun",
       "ivalo",
       "kajaani",
       "lulea",
+      "selfoss",
       "skelleftea",
       "vaasa"
     ],
@@ -470,6 +492,7 @@
       "oslo",
       "oulu",
       "pori",
+      "reykjavik",
       "rijeka",
       "rotterdam",
       "tallinn",
@@ -558,6 +581,14 @@
       "athens",
       "chania",
       "patras"
+    ],
+    "djup_vinnsla": [
+      "egilsstadir",
+      "hofn",
+      "isafjordur",
+      "olafsvik",
+      "patreksfjord",
+      "thorshofn"
     ],
     "dobr_ferm_bg": [
       "karlovo",
@@ -819,6 +850,11 @@
     "fintyre_ru": [
       "petersburg"
     ],
+    "fjallafeadi": [
+      "akureyri",
+      "husavik",
+      "selfoss"
+    ],
     "fjoste": [
       "borlange",
       "kajaani",
@@ -990,6 +1026,7 @@
       "pescara",
       "porto",
       "rennes",
+      "reykjavik",
       "rijeka",
       "roma",
       "sofia",
@@ -1094,6 +1131,7 @@
       "vyborg"
     ],
     "kathode": [
+      "akureyri",
       "dusseldorf",
       "eindhoven",
       "geneve",
@@ -1103,6 +1141,9 @@
       "nurnberg",
       "oulu",
       "zurich"
+    ],
+    "kisilverksmi": [
+      "husavik"
     ],
     "kivi": [
       "helsinki",
@@ -1119,6 +1160,9 @@
       "gavle",
       "oslo",
       "stockholm"
+    ],
+    "konstnr_epw": [
+      "selfoss"
     ],
     "konstnr_hal": [
       "kiruna",
@@ -1326,6 +1370,7 @@
     ],
     "mjolnir_min": [
       "arvidsjaur",
+      "egilsstadir",
       "ivalo",
       "joensuu",
       "karesuando",
@@ -1333,9 +1378,12 @@
       "tornio"
     ],
     "ms_stein": [
+      "blonduos",
       "hamar",
       "kristiansand",
       "oslo",
+      "patreksfjord",
+      "selfoss",
       "stavanger",
       "steinkjer",
       "trondheim"
@@ -1501,6 +1549,7 @@
       "ornskoldsvik",
       "oslo",
       "paldiski",
+      "reykjavik",
       "sines",
       "stavanger",
       "sundsvall",
@@ -1584,6 +1633,7 @@
       "umea"
     ],
     "polarislines": [
+      "akureyri",
       "bergen",
       "esbjerg",
       "frederikshv",
@@ -1591,6 +1641,8 @@
       "goteborg",
       "helsinki",
       "hirtshals",
+      "husavik",
+      "isafjordur",
       "kapellskar",
       "karlskrona",
       "kiel",
@@ -1742,7 +1794,9 @@
       "kristiansund",
       "mikkeli",
       "mo_i_rana",
+      "olafsvik",
       "ornskoldsvik",
+      "reykjavik",
       "skelleftea"
     ],
     "rimaf": [
@@ -1858,6 +1912,7 @@
     "sanbuild_hms": [
       "arvidsjaur",
       "beograd",
+      "borgarnes",
       "jyvaskyla",
       "mannheim",
       "narvik",
@@ -2037,6 +2092,12 @@
       "warszawa",
       "wien",
       "zurich"
+    ],
+    "stormarka": [
+      "egilsstadir",
+      "hofn",
+      "holmavik",
+      "keflavik"
     ],
     "stronghold": [
       "amsterdam"
@@ -2293,6 +2354,14 @@
     "vesna_mill": [
       "bitola",
       "novi_sad"
+    ],
+    "vikingabyli": [
+      "blonduos",
+      "borgarnes",
+      "hofn",
+      "reykjavik",
+      "selfoss",
+      "thorshofn"
     ],
     "viljo_paper": [
       "kouvola",

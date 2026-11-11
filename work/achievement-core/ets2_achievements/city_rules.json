@@ -371,6 +371,26 @@
       "target": 12,
       "source_game_version": "1.61.1.9",
       "country": "greece"
+    },
+    "is_visit_cities": {
+      "cities": [
+        "akureyri",
+        "blonduos",
+        "borgarnes",
+        "egilsstadir",
+        "hofn",
+        "holmavik",
+        "husavik",
+        "isafjordur",
+        "keflavik",
+        "olafsvik",
+        "patreksfjord",
+        "reykjavik",
+        "selfoss",
+        "thorshofn"
+      ],
+      "target": 12,
+      "source_game_version": "1.62.2.1"
     }
   },
   "labels": {
@@ -662,7 +682,22 @@
     "lahti": "Лахти",
     "bitola": "Битола",
     "vigo": "Виго",
-    "kotka": "Котка"
+    "kotka": "Котка",
+    "akureyri": "Акюрейри",
+    "blonduos": "Блёндюоус",
+    "borgarnes": "Боргарнес",
+    "egilsstadir": "Эйильсстадир",
+    "hofn": "Хёбн",
+    "holmavik": "Хоульмавик",
+    "husavik": "Хусавик",
+    "isafjordur": "Исафьордюр",
+    "keflavik": "Кеблавик",
+    "olafsvik": "Оулафсвик",
+    "patreksfjord": "Патрексфьордюр",
+    "reykjavik": "Рейкьявик",
+    "selfoss": "Сельфосс",
+    "thorshofn": "Тоурсхёбн",
+    "vik": "Вик"
   },
   "cargo_rules": {
     "st_all_cargos": {

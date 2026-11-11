@@ -35,4 +35,4 @@ for uid,u in UNITS.items():
  if u['class'].startswith('achievement_delivery_') and 'steam_id' not in u['attrs']:
   assert 'пока не расшифрована' not in describe_condition(uid),uid
 before=copy.deepcopy(CAT);tracking_details([],{},set());assert CAT==before
-print('PASS: all 106 installed goal instructions; exact Scania/Volvo origin, any destination, N-of-M, industry quotas, ordered/reversible routes, distance/mass and exclusion text; immutable rules.')
+print('PASS: all installed goal instructions; exact Scania/Volvo origin, any destination, N-of-M, industry quotas, ordered/reversible routes, distance/mass and exclusion text; immutable rules.')

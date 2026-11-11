@@ -4,6 +4,7 @@ import sys,copy,json,tempfile
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'achievement-core'))
 from ets2_achievements.tracking import *
 from ets2_achievements.save_reader import text_sii,load_save
+from ets2_achievements.viewpoint_progress import CATALOGUE as VIEWPOINTS,viewpoint_details
 
 def raw(uid,src='other.paris',dst='other.strasbourg',cargo='petrol',damage='0',remaining='10',time=1,kind='compn',mass='50000',park='3',pay='1000',fine='0',auto='0'):
     p=['0']*24;p[0]=str(time);p[1]='company.volatile.'+src;p[2]='company.volatile.'+dst;p[3]='cargo.'+cargo
@@ -13,7 +14,7 @@ def raw(uid,src='other.paris',dst='other.strasbourg',cargo='petrol',damage='0',r
 def history(*units):return delivery_history([{'class':'delivery_log','id':'log','attrs':{'version':1,'entries':[u['id'] for u in units]}},*units])[0]
 def details(*units):return tracking_details([{'class':'delivery_log','id':'log','attrs':{'version':1,'entries':[u['id'] for u in units]}},*units],{},set())
 
-assert len(CAT['goals'])==106 and len(tracking_details([],{},set()))==106
+assert len(CAT['goals'])==110 and len(tracking_details([],{},set()))==110
 assert all(u['attrs'].get('condition') in UNITS for u in UNITS.values() if 'condition' in u['attrs'])
 assert all(s in CAT['scenarios'] for c in CAT['chapters'].values() for s in c['scenarios'])
 assert not any('//' in s for c in CAT['chapters'].values() for s in c['scenarios'])
@@ -62,6 +63,24 @@ assert all3([False,None]) is False and any3([True,None]) is True and any3([False
 r=tracking_details([],{'discovered_items':[2514406638413545473]},set())['it_volcanoes']
 assert all(i['current'] is None for i in r['items'])
 assert len(tracking_details([],{},set())['it_roads_to_rome']['items'])==4
+# Iceland: only completed stages in order, and only distinct eligible farms.
+ring=[raw('a','other.hofn','other.akureyri'),raw('b','other.reykjavik','other.hofn',time=2),
+      raw('c','other.hofn','other.akureyri',damage='.1',time=3),
+      raw('d','other.hofn','other.akureyri',remaining='-1',time=4),
+      raw('e','other.hofn','other.akureyri',time=5),raw('f','other.akureyri','other.reykjavik',time=6)]
+assert [i['current'] for i in details(*ring[:4])['is_ringroad']['items']]==[1,None,None]
+assert details(*ring)['is_ringroad']['observed']==3
+sheep=details(raw('a','vikingabyli.hofn',cargo='live_sheep'),
+              raw('b',dst='vikingabyli.hofn',cargo='live_sheep',time=2),
+              raw('c',dst='vikingabyli.selfoss',cargo='live_sheep',time=3),
+              raw('d',dst='vikingabyli.reykjavik',time=4),
+              raw('e','vikingabyli.borgarnes','vikingabyli.thorshofn','live_sheep',time=5))['is_sheep']
+assert sheep['observed']==2 and len(sheep['items'])==6
+assert {i['id'] for i in sheep['items'] if i['current']==1}=={'vikingabyli.hofn','vikingabyli.selfoss'}
+viewpoint_ids=[int(i['id']) for i in VIEWPOINTS['rules']['is_cutscenes']['items']]
+views=viewpoint_details({'discovered_cutscene_items':viewpoint_ids[:2],
+                         'discovered_cutscene_items_states':[2,1]})['is_cutscenes']
+assert (views['total'],views['target'],views['completed'],views['unknown'])==(11,8,1,1)
 # Chapter membership comes from official chapter lists, not ID prefixes.
 r=tracking_details([],{},set())['aca_interior']
 assert len(r['items'])==8 and all(CAT['scenarios'][i['id']]['chapter']=='academy.chapter.book1.4' for i in r['items'])
@@ -87,4 +106,4 @@ assert b[1]['attrs']['discovary_distance']==1000
 assert 'visited_cities' not in text_sii(t.replace('[1]','[0]'))[0]['attrs']
 before=copy.deepcopy(b);tracking_details(b,b[0]['attrs'],set());assert b==before
 json.dumps(tracking_details(b,b[0]['attrs'],set()),allow_nan=False)
-print('PASS: 106 conditions; ADR, factory direction, industrial quotas, slab damage, country uniqueness, ordered chains, series resets, mass windows, malformed/duplicate logs, unknown triggers, academy membership, text-save scalars/arrays, immutable input.')
+print('PASS: 110 goals, including Iceland routes, unique farms and viewpoint states; existing delivery, map and save regressions.')

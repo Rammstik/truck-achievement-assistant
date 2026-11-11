@@ -1,5 +1,5 @@
 {
-  "source_game_version": "1.61.1.9",
+  "source_game_version": "1.62.2.1",
   "sources": [
     {
       "archive": "dlc_balkan_w.scs",
@@ -72,7 +72,8 @@
           "z": 47821.766,
           "source_archive": "dlc_iberia.scs",
           "source_sector": "map/europe/sec-0010+0011.base",
-          "label_key": "ibe_cut_barcelona"
+          "label_key": "ibe_cut_barcelona",
+          "y": 6
         },
         {
           "id": "4322712974819524608",
@@ -82,7 +83,8 @@
           "z": 62374.492,
           "source_archive": "dlc_iberia.scs",
           "source_sector": "map/europe/sec-0019+0015.base",
-          "label_key": "ibe_cut_gemasolar"
+          "label_key": "ibe_cut_gemasolar",
+          "y": 10
         },
         {
           "id": "4302904945408409600",
@@ -92,7 +94,8 @@
           "z": 33244.32,
           "source_archive": "dlc_iberia.scs",
           "source_sector": "map/europe/sec-0018+0008.base",
-          "label_key": "ibe_cut_reservoir"
+          "label_key": "ibe_cut_reservoir",
+          "y": 44.265625
         },
         {
           "id": "4326872823996743681",
@@ -102,7 +105,8 @@
           "z": 36905.684,
           "source_archive": "dlc_iberia.scs",
           "source_sector": "map/europe/sec-0022+0009.base",
-          "label_key": "ibe_cut_porto"
+          "label_key": "ibe_cut_porto",
+          "y": 30.449219
         },
         {
           "id": "4325872420823433217",
@@ -112,7 +116,8 @@
           "z": 34766.09,
           "source_archive": "dlc_iberia.scs",
           "source_sector": "map/europe/sec-0019+0008.base",
-          "label_key": "ibe_cut_quarry"
+          "label_key": "ibe_cut_quarry",
+          "y": 13.316406
         },
         {
           "id": "4233202316612075521",
@@ -122,7 +127,8 @@
           "z": 61884.758,
           "source_archive": "dlc_iberia.scs",
           "source_sector": "map/europe/sec-0022+0015.base",
-          "label_key": "ibe_cut_guadiana"
+          "label_key": "ibe_cut_guadiana",
+          "y": 16.515625
         },
         {
           "id": "4297270052703895552",
@@ -132,7 +138,8 @@
           "z": 50689.082,
           "source_archive": "dlc_iberia.scs",
           "source_sector": "map/europe/sec-0024+0012.base",
-          "label_key": "ibe_cut_lisboa"
+          "label_key": "ibe_cut_lisboa",
+          "y": 0.921875
         },
         {
           "id": "4316248567285481472",
@@ -142,7 +149,8 @@
           "z": 59275.37,
           "source_archive": "dlc_iberia.scs",
           "source_sector": "map/europe/sec-0018+0014.base",
-          "label_key": "ibe_cut_puertollano"
+          "label_key": "ibe_cut_puertollano",
+          "y": 68.78125
         },
         {
           "id": "4325880684701220865",
@@ -152,7 +160,8 @@
           "z": 62374.867,
           "source_archive": "dlc_iberia.scs",
           "source_sector": "map/europe/sec-0023+0015.base",
-          "label_key": "ibe_cut_olhao"
+          "label_key": "ibe_cut_olhao",
+          "y": 4
         },
         {
           "id": "4325874895647342593",
@@ -162,7 +171,8 @@
           "z": 66065.734,
           "source_archive": "dlc_iberia.scs",
           "source_sector": "map/europe/sec-0017+0016.base",
-          "label_key": "ibe_cut_andasol"
+          "label_key": "ibe_cut_andasol",
+          "y": 36.546875
         },
         {
           "id": "4228974900642512897",
@@ -172,7 +182,8 @@
           "z": 31764.543,
           "source_archive": "dlc_iberia.scs",
           "source_sector": "map/europe/sec-0016+0007.base",
-          "label_key": "ibe_cut_santander"
+          "label_key": "ibe_cut_santander",
+          "y": 3
         },
         {
           "id": "4325890201597968385",
@@ -182,7 +193,8 @@
           "z": 56801.965,
           "source_archive": "dlc_iberia.scs",
           "source_sector": "map/europe/sec-0013+0014.base",
-          "label_key": "ibe_cut_valencia"
+          "label_key": "ibe_cut_valencia",
+          "y": 3
         },
         {
           "id": "4325883745565868033",
@@ -192,7 +204,8 @@
           "z": 56829.15,
           "source_archive": "dlc_iberia.scs",
           "source_sector": "map/europe/sec-0024+0014.base",
-          "label_key": "ibe_cut_sines"
+          "label_key": "ibe_cut_sines",
+          "y": 2.9921875
         },
         {
           "id": "4323983495641104384",
@@ -202,7 +215,8 @@
           "z": 69757.55,
           "source_archive": "dlc_iberia.scs",
           "source_sector": "map/europe/sec-0017+0017.base",
-          "label_key": "ibe_cut_ejido"
+          "label_key": "ibe_cut_ejido",
+          "y": 15.1796875
         },
         {
           "id": "4325884690127323137",
@@ -212,7 +226,8 @@
           "z": 44345.59,
           "source_archive": "dlc_iberia.scs",
           "source_sector": "map/europe/sec-0014+0011.base",
-          "label_key": "ibe_cut_zaragoza"
+          "label_key": "ibe_cut_zaragoza",
+          "y": 6.4765625
         }
       ]
     },
@@ -227,7 +242,8 @@
           "z": -93767.56,
           "source_archive": "dlc_polar.scs",
           "source_sector": "map/europe/sec+0003-0024.base",
-          "label_key": "poc_cut_bodo"
+          "label_key": "poc_cut_bodo",
+          "y": 7
         },
         {
           "id": "6790942893425623040",
@@ -237,7 +253,8 @@
           "z": -73377.7,
           "source_archive": "dlc_polar.scs",
           "source_sector": "map/europe/sec+0010-0019.base",
-          "label_key": "poc_cut_viitasaari"
+          "label_key": "poc_cut_viitasaari",
+          "y": 4
         },
         {
           "id": "6786433153379139585",
@@ -247,7 +264,8 @@
           "z": -92444.25,
           "source_archive": "dlc_polar.scs",
           "source_sector": "map/europe/sec+0010-0024.base",
-          "label_key": "poc_cut_santa"
+          "label_key": "poc_cut_santa",
+          "y": 23
         },
         {
           "id": "6799750965046018048",
@@ -257,7 +275,8 @@
           "z": -55920.855,
           "source_archive": "base_map.scs",
           "source_sector": "map/europe/sec+0005-0014.base",
-          "label_key": "poc_cut_gavle"
+          "label_key": "poc_cut_gavle",
+          "y": 12.6484375
         },
         {
           "id": "6800980974389690368",
@@ -267,7 +286,8 @@
           "z": -107298.984,
           "source_archive": "dlc_polar.scs",
           "source_sector": "map/europe/sec+0006-0027.base",
-          "label_key": "poc_cut_heia"
+          "label_key": "poc_cut_heia",
+          "y": 19.625
         },
         {
           "id": "6795075835387248641",
@@ -277,7 +297,8 @@
           "z": -121849.2,
           "source_archive": "dlc_polar.scs",
           "source_sector": "map/europe/sec+0009-0031.base",
-          "label_key": "poc_cut_nordkapp"
+          "label_key": "poc_cut_nordkapp",
+          "y": 25.132812
         },
         {
           "id": "6798021953558937600",
@@ -287,7 +308,8 @@
           "z": -66192.14,
           "source_archive": "dlc_polar.scs",
           "source_sector": "map/europe/sec+0008-0017.base",
-          "label_key": "poc_cut_lalby"
+          "label_key": "poc_cut_lalby",
+          "y": 14.300781
         },
         {
           "id": "6798388233713483776",
@@ -297,7 +319,8 @@
           "z": -85096.984,
           "source_archive": "dlc_polar.scs",
           "source_sector": "map/europe/sec+0008-0022.base",
-          "label_key": "poc_cut_lulea"
+          "label_key": "poc_cut_lulea",
+          "y": 5
         },
         {
           "id": "6808542008057593856",
@@ -307,7 +330,8 @@
           "z": -67316.56,
           "source_archive": "dlc_polar.scs",
           "source_sector": "map/europe/sec-0002-0017.base",
-          "label_key": "poc_cut_alesund"
+          "label_key": "poc_cut_alesund",
+          "y": 4
         },
         {
           "id": "6799713489651302401",
@@ -317,7 +341,8 @@
           "z": -105415.984,
           "source_archive": "dlc_polar.scs",
           "source_sector": "map/europe/sec+0007-0027.base",
-          "label_key": "poc_cut_muotkatakka"
+          "label_key": "poc_cut_muotkatakka",
+          "y": 60
         },
         {
           "id": "6798064169428516865",
@@ -327,7 +352,8 @@
           "z": -101633.33,
           "source_archive": "dlc_polar.scs",
           "source_sector": "map/europe/sec+0006-0026.base",
-          "label_key": "poc_cut_bjornfjell"
+          "label_key": "poc_cut_bjornfjell",
+          "y": 32.714844
         },
         {
           "id": "6796693553426726912",
@@ -337,7 +363,8 @@
           "z": -117020.414,
           "source_archive": "dlc_polar.scs",
           "source_sector": "map/europe/sec+0009-0030.base",
-          "label_key": "poc_cut_porsanger"
+          "label_key": "poc_cut_porsanger",
+          "y": 6.1445312
         },
         {
           "id": "6801404378632683520",
@@ -347,7 +374,8 @@
           "z": -99953,
           "source_archive": "dlc_polar.scs",
           "source_sector": "map/europe/sec+0003-0025.base",
-          "label_key": "poc_cut_svolvaer"
+          "label_key": "poc_cut_svolvaer",
+          "y": 3.9804688
         },
         {
           "id": "6838080605766287360",
@@ -357,7 +385,8 @@
           "z": -73102.33,
           "source_archive": "dlc_polar.scs",
           "source_sector": "map/europe/sec+0000-0019.base",
-          "label_key": "poc_cut_trondheim"
+          "label_key": "poc_cut_trondheim",
+          "y": 4
         },
         {
           "id": "6735695312101900288",
@@ -367,7 +396,8 @@
           "z": -75422.7,
           "source_archive": "dlc_polar.scs",
           "source_sector": "map/europe/sec+0007-0019.base",
-          "label_key": "poc_cut_umea"
+          "label_key": "poc_cut_umea",
+          "y": 12.3671875
         },
         {
           "id": "6821798302067523585",
@@ -377,7 +407,8 @@
           "z": -69752.95,
           "source_archive": "dlc_polar.scs",
           "source_sector": "map/europe/sec+0014-0018.base",
-          "label_key": "poc_cut_farm"
+          "label_key": "poc_cut_farm",
+          "y": 18.601562
         },
         {
           "id": "6829341793253392384",
@@ -387,7 +418,8 @@
           "z": -97983.414,
           "source_archive": "dlc_polar.scs",
           "source_sector": "map/europe/sec+0006-0025.base",
-          "label_key": "poc_cut_kiruna"
+          "label_key": "poc_cut_kiruna",
+          "y": 46
         }
       ]
     },
@@ -402,7 +434,8 @@
           "z": 32820.508,
           "source_archive": "dlc_balkan_w.scs",
           "source_sector": "map/europe/sec+0005+0008.base",
-          "label_key": "blkw_cut_bihac"
+          "label_key": "blkw_cut_bihac",
+          "y": 13.4609375
         },
         {
           "id": "5673255168430833665",
@@ -412,7 +445,8 @@
           "z": 29165.387,
           "source_archive": "base_map.scs",
           "source_sector": "map/europe/sec+0010+0007.base",
-          "label_key": "blkw_cut_kovacica_wind_park"
+          "label_key": "blkw_cut_kovacica_wind_park",
+          "y": 12.96875
         },
         {
           "id": "5672897618993348608",
@@ -422,7 +456,8 @@
           "z": 44116.86,
           "source_archive": "dlc_balkan_w.scs",
           "source_sector": "map/europe/sec+0007+0011.base",
-          "label_key": "blkw_cut_dubrovnik"
+          "label_key": "blkw_cut_dubrovnik",
+          "y": 43
         },
         {
           "id": "5714674303582535680",
@@ -432,7 +467,8 @@
           "z": 48990.184,
           "source_archive": "dlc_balkan_w.scs",
           "source_sector": "map/europe/sec+0010+0012.base",
-          "label_key": "blkw_cut_gostivar_quarry"
+          "label_key": "blkw_cut_gostivar_quarry",
+          "y": 18.941406
         },
         {
           "id": "5683261107758170113",
@@ -442,7 +478,8 @@
           "z": 29664.64,
           "source_archive": "base_map.scs",
           "source_sector": "map/europe/sec+0002+0007.base",
-          "label_key": "blkw_cut_koper"
+          "label_key": "blkw_cut_koper",
+          "y": 3.25
         },
         {
           "id": "5686402058225778688",
@@ -452,7 +489,8 @@
           "z": 25673.086,
           "source_archive": "base_map.scs",
           "source_sector": "map/europe/sec+0003+0006.base",
-          "label_key": "blkw_cut_ljubljana"
+          "label_key": "blkw_cut_ljubljana",
+          "y": 29
         },
         {
           "id": "5579709199926362113",
@@ -462,7 +500,8 @@
           "z": 41675.89,
           "source_archive": "dlc_balkan_w.scs",
           "source_sector": "map/europe/sec+0008+0010.base",
-          "label_key": "blkw_cut_durdevica"
+          "label_key": "blkw_cut_durdevica",
+          "y": 83.50391
         },
         {
           "id": "5674503406346174471",
@@ -472,7 +511,8 @@
           "z": 30143.559,
           "source_archive": "base_map.scs",
           "source_sector": "map/europe/sec+0003+0007.base",
-          "label_key": "blkw_cut_rijeka"
+          "label_key": "blkw_cut_rijeka",
+          "y": 3
         },
         {
           "id": "5352259586727673857",
@@ -482,7 +522,8 @@
           "z": 51912.453,
           "source_archive": "dlc_balkan_w.scs",
           "source_sector": "map/europe/sec+0008+0012.base",
-          "label_key": "blkw_cut_durres"
+          "label_key": "blkw_cut_durres",
+          "y": 2.3007812
         },
         {
           "id": "5686455304604549120",
@@ -492,7 +533,8 @@
           "z": 40750.78,
           "source_archive": "dlc_balkan_w.scs",
           "source_sector": "map/europe/sec+0010+0010.base",
-          "label_key": "blkw_cut_prokuplje"
+          "label_key": "blkw_cut_prokuplje",
+          "y": 56.597656
         },
         {
           "id": "5674506806660038657",
@@ -502,7 +544,8 @@
           "z": 41212.824,
           "source_archive": "dlc_balkan_w.scs",
           "source_sector": "map/europe/sec+0005+0010.base",
-          "label_key": "blkw_cut_split"
+          "label_key": "blkw_cut_split",
+          "y": 11.496094
         },
         {
           "id": "5663915744096223233",
@@ -512,7 +555,8 @@
           "z": 38489.086,
           "source_archive": "dlc_balkan_w.scs",
           "source_sector": "map/europe/sec+0007+0009.base",
-          "label_key": "blkw_cut_sarajevo"
+          "label_key": "blkw_cut_sarajevo",
+          "y": 26.617188
         },
         {
           "id": "5337536147453560599",
@@ -522,7 +566,8 @@
           "z": 51030.496,
           "source_archive": "dlc_balkan_w.scs",
           "source_sector": "map/europe/sec+0009+0012.base",
-          "label_key": "blkw_cut_tirana"
+          "label_key": "blkw_cut_tirana",
+          "y": 14.609375
         },
         {
           "id": "5674501807519432704",
@@ -532,7 +577,8 @@
           "z": 55367.887,
           "source_archive": "dlc_balkan_w.scs",
           "source_sector": "map/europe/sec+0009+0013.base",
-          "label_key": "blkw_cut_fier_oil_fields"
+          "label_key": "blkw_cut_fier_oil_fields",
+          "y": 10.7890625
         },
         {
           "id": "5667285918404771840",
@@ -542,7 +588,8 @@
           "z": 43138.92,
           "source_archive": "dlc_balkan_w.scs",
           "source_sector": "map/europe/sec+0010+0010.base",
-          "label_key": "blkw_cut_pristina"
+          "label_key": "blkw_cut_pristina",
+          "y": 48.26953
         }
       ]
     },
@@ -557,7 +604,8 @@
           "z": 61351.19,
           "source_archive": "dlc_greece.scs",
           "source_sector": "map/europe/sec+0011+0015.base",
-          "label_key": "gr_cut_kalabaka"
+          "label_key": "gr_cut_kalabaka",
+          "y": 25.90625
         },
         {
           "id": "6351370404188717056",
@@ -567,7 +615,8 @@
           "z": 70703.8,
           "source_archive": "dlc_greece.scs",
           "source_sector": "map/europe/sec+0013+0017.base",
-          "label_key": "gr_cut_corinth"
+          "label_key": "gr_cut_corinth",
+          "y": 62.964844
         },
         {
           "id": "6351438061105643520",
@@ -577,7 +626,8 @@
           "z": 61513.906,
           "source_archive": "dlc_greece.scs",
           "source_sector": "map/europe/sec+0016+0015.base",
-          "label_key": "gr_cut_hotel"
+          "label_key": "gr_cut_hotel",
+          "y": 12.0625
         },
         {
           "id": "6337960593503813633",
@@ -587,7 +637,8 @@
           "z": 70698.83,
           "source_archive": "dlc_greece.scs",
           "source_sector": "map/europe/sec+0010+0017.base",
-          "label_key": "gr_cut_lixouri"
+          "label_key": "gr_cut_lixouri",
+          "y": 1.9648438
         },
         {
           "id": "6332130975043551233",
@@ -597,7 +648,8 @@
           "z": 78678.81,
           "source_archive": "dlc_greece.scs",
           "source_sector": "map/europe/sec+0018+0019.base",
-          "label_key": "gr_cut_monastery"
+          "label_key": "gr_cut_monastery",
+          "y": 17.667969
         },
         {
           "id": "6338058193179508737",
@@ -607,7 +659,8 @@
           "z": 59165.785,
           "source_archive": "dlc_greece.scs",
           "source_sector": "map/europe/sec+0011+0014.base",
-          "label_key": "gr_cut_polyfytos"
+          "label_key": "gr_cut_polyfytos",
+          "y": 88.97656
         },
         {
           "id": "6351332661727395840",
@@ -617,7 +670,8 @@
           "z": 71171.59,
           "source_archive": "dlc_greece.scs",
           "source_sector": "map/europe/sec+0014+0017.base",
-          "label_key": "gr_cut_piraeus"
+          "label_key": "gr_cut_piraeus",
+          "y": 2
         },
         {
           "id": "6339575772935749640",
@@ -627,7 +681,8 @@
           "z": 77925,
           "source_archive": "dlc_greece.scs",
           "source_sector": "map/europe/sec+0019+0019.base",
-          "label_key": "gr_cut_beach"
+          "label_key": "gr_cut_beach",
+          "y": 15.890625
         },
         {
           "id": "6343962157494960129",
@@ -637,7 +692,8 @@
           "z": 84675.1,
           "source_archive": "dlc_greece.scs",
           "source_sector": "map/europe/sec+0014+0021.base",
-          "label_key": "gr_cut_souda"
+          "label_key": "gr_cut_souda",
+          "y": 2.0742188
         },
         {
           "id": "6348505698297905153",
@@ -647,7 +703,8 @@
           "z": 52692.727,
           "source_archive": "dlc_greece.scs",
           "source_sector": "map/europe/sec+0014+0013.base",
-          "label_key": "gr_cut_kavala"
+          "label_key": "gr_cut_kavala",
+          "y": 2.0039062
         },
         {
           "id": "6339977090673672192",
@@ -657,9 +714,93 @@
           "z": 54147.574,
           "source_archive": "dlc_greece.scs",
           "source_sector": "map/europe/sec+0013+0013.base",
-          "label_key": "gr_cut_cement"
+          "label_key": "gr_cut_cement",
+          "y": 25.765625
         }
       ]
+    },
+    "is_cutscenes": {
+      "target": 8,
+      "items": [
+        {
+          "id": "7276329227177164800",
+          "name": "Бардастрандарвегюр",
+          "x": -74952.06,
+          "y": 62.027344,
+          "z": -109289.836
+        },
+        {
+          "id": "7057931629395247105",
+          "name": "Водопад Гюдльфосс",
+          "x": -66344.8,
+          "y": 33.98047,
+          "z": -98558.43
+        },
+        {
+          "id": "6308584199890206720",
+          "name": "Водопад Сельяландсфосс",
+          "x": -70263.99,
+          "y": 3,
+          "z": -95001.625
+        },
+        {
+          "id": "7255490703759114240",
+          "name": "Гейзер Строккюр",
+          "x": -67750.234,
+          "y": 14.5703125,
+          "z": -98874.42
+        },
+        {
+          "id": "7273317476126949376",
+          "name": "Годафосс",
+          "x": -59558.51,
+          "y": 14,
+          "z": -103561.07
+        },
+        {
+          "id": "6281437902315257857",
+          "name": "Йёкюльсаурлоун",
+          "x": -61365.715,
+          "y": 5.703125,
+          "z": -93131.125
+        },
+        {
+          "id": "7329650060484476928",
+          "name": "Каньон Студлагил",
+          "x": -57002.59,
+          "y": 50.273438,
+          "z": -97432.91
+        },
+        {
+          "id": "7244750478497939457",
+          "name": "Курорт-лагуна",
+          "x": -76675.5,
+          "y": 6.4921875,
+          "z": -97192.625
+        },
+        {
+          "id": "7252421773783728128",
+          "name": "Металлообрабатывающий завод, г. Хусавик",
+          "x": -58026.87,
+          "y": 2.5742188,
+          "z": -106596.94
+        },
+        {
+          "id": "7262784683223941121",
+          "name": "Национальный парк Тингведлир",
+          "x": -70166.04,
+          "y": 6.8398438,
+          "z": -99388.9
+        },
+        {
+          "id": "5943277347361325057",
+          "name": "Сельфосс",
+          "x": -70981.92,
+          "y": 8.621094,
+          "z": -96451.09
+        }
+      ],
+      "source_game_version": "1.62.2.1"
     }
   }
 }

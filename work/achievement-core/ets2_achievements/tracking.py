@@ -162,6 +162,24 @@ def condition_progress(uid,jobs):
         return [row(c,cargo_name(c),1,evidence=[evidence(j)]) for c,j in sorted(found.items())],'history'
     if t=='achievement_unique_delivery_points':
         key=a['unique'];r=a['role'];counts=Counter()
+        if key=='company_instance' and 'company_instances' in u:
+            candidates=set(u['company_instances']);found={}
+            for job in jobs or []:
+                if match(a['condition'],job) is not True:continue
+                points=set()
+                for role in ('source','target'):
+                    condition=a.get(role+'_collect_condition')
+                    if condition and job[role] in candidates and match(condition,job) is True:
+                        points.add(job[role])
+                # A delivery involving two eligible farms does not identify
+                # which farm the game credited. Keep those items unknown.
+                if len(points)==1:found.setdefault(points.pop(),job)
+            items=[]
+            for token in sorted(candidates):
+                company,city=token.split('.',1);job=found.get(token)
+                items.append(row(token,company_name(company)+' · '+city_name(city),1 if job else None,
+                                 evidence=[evidence(job)] if job else []))
+            return items,'history'
         for j in jobs or []:
             if match(a['condition'],j) is True:
                 value=endpoint(j,r,key)

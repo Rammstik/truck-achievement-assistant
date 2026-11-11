@@ -29,6 +29,7 @@ inline bool completedItem(const json& item){
     return target>0&&item["current"].get<double>()>=target;
 }
 inline std::string country(const std::string& city){const auto& countries=catalogue()["countries"];return countries.contains(city)?countries[city].get<std::string>():std::string();}
+inline bool companyList(const json& list,const json& offer,const char* role,const Plan& plan);
 inline int match(const std::string& uid,const json& offer,const Plan& plan,unsigned depth=0){
     const auto& units=catalogue()["units"];
     if(depth>40||!units.contains(uid))return 0;
@@ -39,6 +40,18 @@ inline int match(const std::string& uid,const json& offer,const Plan& plan,unsig
     }
     if(type=="achievement_unique_delivery_points"&&a.contains("condition")){
         const auto role=a.value("role",std::string("target"));const auto key=a.value("unique",std::string());
+        if(key=="company_instance"&&u.contains("company_instances")){
+            const int cargo=match(a["condition"],offer,plan,depth+1);
+            if(cargo<0)return -1;
+            int best=-1;
+            for(const char* endpoint:{"source","target"}){
+                const auto condition=std::string(endpoint)+"_collect_condition";
+                if(!a.contains(condition)||!companyList(u["company_instances"],offer,endpoint,plan))continue;
+                const int place=match(a[condition],offer,plan,depth+1);
+                if(place>=0)best=std::max(best,std::min(place,cargo));
+            }
+            return best;
+        }
         auto value=name(offer,role.c_str(),"city");if(key=="country")value=country(value);
         if(!value.empty()&&plan.confirmed.count(role+":"+key+":"+value))return -1;
         return match(a["condition"],offer,plan,depth+1);
@@ -209,6 +222,13 @@ inline void collectGeography(const std::string& uid,const Plan& plan,std::vector
     const auto& units=catalogue()["units"];if(depth>40||plan.confirmed.count(uid)||!units.contains(uid))return;
     const auto& unit=units[uid];const auto& a=unit["attrs"];const auto type=unit["class"].get<std::string>();
     if(type=="achievement_delivery_not")return;
+    if(type=="achievement_unique_delivery_points"&&unit.contains("company_instances")){
+        for(const auto& value:unit["company_instances"]){
+            const auto token=value.get<std::string>();const auto dot=token.find('.');
+            if(dot!=std::string::npos&&!plan.confirmed.count(token))out.push_back({{},token.substr(0,dot),token.substr(dot+1),{}});
+        }
+        return;
+    }
     if(a.contains("condition")){collectGeography(a["condition"],plan,out,roleOverride,depth+1);return;}
     if(a.contains("list")){
         for(const auto& child:a["list"]){auto id=child.get<std::string>();if(plan.confirmed.count(id))continue;

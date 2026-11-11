@@ -32,8 +32,10 @@ def describe_condition(uid,role=None,depth=0):
     def child(c):return describe_condition(c,role,depth+1)
     if unit['class']=='achievement_unique_cargos':return child(a['condition'])+f"; разных видов груза: {a.get('count',1)}"
     if unit['class']=='achievement_unique_delivery_points':
-        noun={'country':'стран','city':'городов','company':'предприятий'}.get(a.get('unique'),'пунктов')
-        return child(a['condition'])+f"; разных {noun}: {a.get('count',1)}"
+        noun={'country':'стран','city':'городов','company':'предприятий','company_instance':'ферм'}.get(a.get('unique'),'пунктов')
+        locations=[child(a[key]) for key in ('source_collect_condition','target_collect_condition') if key in a]
+        direction='; ('+' ИЛИ '.join(locations)+')' if locations else ''
+        return child(a['condition'])+direction+f"; разных {noun}: {a.get('count',1)}"
     if typ in ('each','any','sequence'):
         parts=list(dict.fromkeys(child(c) for c in a['list']))
         if typ=='each':return '; '.join('('+child(c)+')' if UNITS[c]['class']=='achievement_delivery_any' else child(c) for c in dict.fromkeys(a['list']))

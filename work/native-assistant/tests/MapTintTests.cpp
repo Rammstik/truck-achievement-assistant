@@ -93,7 +93,7 @@ int main() {
         }
                 auto services=model;services["achievements"]=json::array({{{"id","use_gas_station"},{"status","locked"}}});services["details"]["achievements"]["use_gas_station"]={{"kind","tracking"}};
         auto servicePrefs=prefs;servicePrefs["plan"]={{"a:p:use_gas_station",true}};SetSelection(services,servicePrefs);
-        check(Status()["service_positions"]==3303&&Markers().size()>128&&Markers().size()<=8192,"large service marker set missing or exceeds native cap");
+        check(Status()["service_positions"]==3385&&Markers().size()>128&&Markers().size()<=8192,"large service marker set missing or exceeds native cap");
         services["achievements"][0]["id"]="use_all_ports";services["details"]["achievements"]["use_all_ports"]={{"kind","tracking"}};
         const FeaturePosition* port=nullptr;for(const auto& f:FeaturePositions)if(f.kind==3){port=&f;break;}
         check(port!=nullptr,"ferry table empty");services["details"]["map_progress"]["used_ports"]=json::array({port->port});servicePrefs["plan"]={{"a:p:use_all_ports",true}};SetSelection(services,servicePrefs);

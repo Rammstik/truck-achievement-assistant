@@ -1,5 +1,5 @@
 {
-  "game_version": "1.61.1.9",
+  "game_version": "1.62.2.1",
   "goals": {
     "job_urgent": {
       "unit": ".achievement.job_urgent",
@@ -530,6 +530,26 @@
       "unit": ".achievement.ba_farm",
       "class": "achievement_each_company_data",
       "target": 4
+    },
+    "is_visit_cities": {
+      "unit": ".achievement.is_visit_cit",
+      "class": "achievement_visit_city_data",
+      "target": 12
+    },
+    "is_cutscenes": {
+      "unit": ".achievement.is_cutscenes",
+      "class": "achievement_trigger_data",
+      "target": 8
+    },
+    "is_ringroad": {
+      "unit": ".achievement.is_ringroad",
+      "class": "achievement_delivery",
+      "target": 3
+    },
+    "is_sheep": {
+      "unit": ".achievement.is_sheep",
+      "class": "achievement_delivery",
+      "target": 3
     }
   },
   "units": {
@@ -5267,6 +5287,217 @@
         "steam_progress_id": "ba_farm-progress",
         "steam_id": "ba_farm"
       }
+    },
+    ".is_ringroad.condition": {
+      "class": "achievement_delivery_sequence",
+      "attrs": {
+        "in_order": true,
+        "list": [
+          ".is_ringroad.reykjavik.hofn",
+          ".is_ringroad.hofn.akureyri",
+          ".is_ringroad.akureyri.reykjavik"
+        ]
+      }
+    },
+    ".is_ringroad.reykjavik.hofn": {
+      "class": "achievement_delivery_each",
+      "attrs": {
+        "list": [
+          ".is_ringroad.reykjavik.hofn.source",
+          ".is_ringroad.reykjavik.hofn.target",
+          ".is_ringroad.reykjavik.hofn.damage",
+          ".is_ringroad.reykjavik.hofn.late"
+        ]
+      }
+    },
+    ".is_ringroad.reykjavik.hofn.source": {
+      "class": "achievement_delivery_point_city",
+      "attrs": {
+        "role": "source",
+        "city_name": "reykjavik"
+      }
+    },
+    ".is_ringroad.reykjavik.hofn.target": {
+      "class": "achievement_delivery_point_city",
+      "attrs": {
+        "role": "target",
+        "city_name": "hofn"
+      }
+    },
+    ".is_ringroad.reykjavik.hofn.damage": {
+      "class": "achievement_delivery_cargo_damage",
+      "attrs": {
+        "damage_max": 0.0
+      }
+    },
+    ".is_ringroad.reykjavik.hofn.late": {
+      "class": "achievement_delivery_late",
+      "attrs": {
+        "late": false
+      }
+    },
+    ".is_ringroad.hofn.akureyri": {
+      "class": "achievement_delivery_each",
+      "attrs": {
+        "list": [
+          ".is_ringroad.hofn.akureyri.source",
+          ".is_ringroad.hofn.akureyri.target",
+          ".is_ringroad.hofn.akureyri.damage",
+          ".is_ringroad.hofn.akureyri.late"
+        ]
+      }
+    },
+    ".is_ringroad.hofn.akureyri.source": {
+      "class": "achievement_delivery_point_city",
+      "attrs": {
+        "role": "source",
+        "city_name": "hofn"
+      }
+    },
+    ".is_ringroad.hofn.akureyri.target": {
+      "class": "achievement_delivery_point_city",
+      "attrs": {
+        "role": "target",
+        "city_name": "akureyri"
+      }
+    },
+    ".is_ringroad.hofn.akureyri.damage": {
+      "class": "achievement_delivery_cargo_damage",
+      "attrs": {
+        "damage_max": 0.0
+      }
+    },
+    ".is_ringroad.hofn.akureyri.late": {
+      "class": "achievement_delivery_late",
+      "attrs": {
+        "late": false
+      }
+    },
+    ".is_ringroad.akureyri.reykjavik": {
+      "class": "achievement_delivery_each",
+      "attrs": {
+        "list": [
+          ".is_ringroad.akureyri.reykjavik.source",
+          ".is_ringroad.akureyri.reykjavik.target",
+          ".is_ringroad.akureyri.reykjavik.damage",
+          ".is_ringroad.akureyri.reykjavik.late"
+        ]
+      }
+    },
+    ".is_ringroad.akureyri.reykjavik.source": {
+      "class": "achievement_delivery_point_city",
+      "attrs": {
+        "role": "source",
+        "city_name": "akureyri"
+      }
+    },
+    ".is_ringroad.akureyri.reykjavik.target": {
+      "class": "achievement_delivery_point_city",
+      "attrs": {
+        "role": "target",
+        "city_name": "reykjavik"
+      }
+    },
+    ".is_ringroad.akureyri.reykjavik.damage": {
+      "class": "achievement_delivery_cargo_damage",
+      "attrs": {
+        "damage_max": 0.0
+      }
+    },
+    ".is_ringroad.akureyri.reykjavik.late": {
+      "class": "achievement_delivery_late",
+      "attrs": {
+        "late": false
+      }
+    },
+    ".is_sheep.condition": {
+      "class": "achievement_unique_delivery_points",
+      "attrs": {
+        "condition": ".is_sheep.cargo",
+        "source_collect_condition": ".is_sheep.source",
+        "target_collect_condition": ".is_sheep.target",
+        "role": "any",
+        "unique": "company_instance",
+        "count": 3
+      },
+      "company_instances": [
+        "vikingabyli.blonduos",
+        "vikingabyli.borgarnes",
+        "vikingabyli.hofn",
+        "vikingabyli.reykjavik",
+        "vikingabyli.selfoss",
+        "vikingabyli.thorshofn"
+      ]
+    },
+    ".is_sheep.cargo": {
+      "class": "achievement_delivery_cargo",
+      "attrs": {
+        "cargo_name": "live_sheep"
+      }
+    },
+    ".is_sheep.source": {
+      "class": "achievement_delivery_company",
+      "attrs": {
+        "role": "source",
+        "company_name": "vikingabyli",
+        "country_name": "iceland"
+      }
+    },
+    ".is_sheep.target": {
+      "class": "achievement_delivery_company",
+      "attrs": {
+        "role": "target",
+        "company_name": "vikingabyli",
+        "country_name": "iceland"
+      }
+    },
+    ".achievement.is_visit_cit": {
+      "class": "achievement_visit_city_data",
+      "attrs": {
+        "event_name": "city_visited",
+        "initial_check": true,
+        "country_name": "iceland",
+        "target": 12,
+        "achievement_name": "is_visit_cities",
+        "steam_progress_id": "is_visit_cities-progress",
+        "steam_id": "is_visit_cities"
+      }
+    },
+    ".achievement.is_cutscenes": {
+      "class": "achievement_trigger_data",
+      "attrs": {
+        "event_name": "trig_activat",
+        "initial_check": true,
+        "trigger_param": "is_cutscenes",
+        "target": 8,
+        "achievement_name": "is_cutscenes",
+        "steam_progress_id": "is_cutscenes-progress",
+        "steam_id": "is_cutscenes"
+      }
+    },
+    ".achievement.is_ringroad": {
+      "class": "achievement_delivery",
+      "attrs": {
+        "event_name": "job_done",
+        "initial_check": true,
+        "condition": ".is_ringroad.condition",
+        "target": 3,
+        "achievement_name": "is_ringroad",
+        "steam_progress_id": "is_ringroad-progress",
+        "steam_id": "is_ringroad"
+      }
+    },
+    ".achievement.is_sheep": {
+      "class": "achievement_delivery",
+      "attrs": {
+        "event_name": "job_done",
+        "initial_check": true,
+        "condition": ".is_sheep.condition",
+        "target": 3,
+        "achievement_name": "is_sheep",
+        "steam_progress_id": "is_sheep-progress",
+        "steam_id": "is_sheep"
+      }
     }
   },
   "cargos": {
@@ -8711,6 +8942,14 @@
         "oversize"
       ],
       "mass": 45000
+    },
+    "live_sheep": {
+      "name": "Овцы",
+      "adr": 0,
+      "groups": [
+        "livestock"
+      ],
+      "mass": 85
     }
   },
   "companies": {
@@ -8987,7 +9226,8 @@
     "sag_tre_pln": "Sag & Tre",
     "vainamoi_fla": "Väinämöinen Oy",
     "nordic_ports": "Associated Nordic Ports",
-    "bjork_hrv": "Bjork"
+    "bjork_hrv": "Bjork",
+    "vikingabyli": "Víkingabýli"
   },
   "scenarios": {
     "academy.scenario.book1.3_01": {
@@ -9668,6 +9908,7 @@
     "estonia": "Эстония",
     "luxembourg": "Люксембург",
     "croatia": "Хорватия",
-    "kosovo": "Косово"
+    "kosovo": "Косово",
+    "iceland": "Исландия"
   }
 }

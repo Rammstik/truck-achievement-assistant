@@ -1,12 +1,12 @@
 English | [Русский](README_RU.md)
 
-# ETS2 Achievement Assistant 0.6.16
+# ETS2 Achievement Assistant 0.6.17
 
 An in-game achievement plan, red map highlighting and matching job offers for Euro Truck Simulator 2.
 
 ## Requirements
 
-ETS2 **1.62.1.0**, Windows x64 and DirectX 11. This package is for ETS2 only. Other game versions require a compatible assistant build.
+ETS2 **1.62.2.1**, Windows x64 and DirectX 11. Other game versions require a compatible assistant build.
 
 ## Installation
 
@@ -28,7 +28,7 @@ Open **Settings → Language**. Choose **Game language (automatic)**, **Русс
 - Confirmed items are excluded; unknown items remain candidates.
 - An optional unvisited-city job filter, off by default. Map highlighting works independently.
 
-Detailed rules cover 106 of 114 Steam achievements. Eight additional bus and Iceland goals do not have detailed support yet. Not every condition can be filtered or highlighted. Some progress updates after saving; missing records do not prove an item is incomplete.
+Detailed rules cover 110 of 114 Steam achievements, including all four Iceland goals. City and viewpoint checklists can highlight targets on the map. The job filter uses the next Ringroad leg and the remaining farms for sheep deliveries. Some progress updates after saving. Delivery targets remain eligible until the log confirms completion.
 
 ## Updating and uninstalling
 

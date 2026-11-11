@@ -1,19 +1,17 @@
-ETS2 Achievement Assistant 0.6.16 для ETS2 1.62.1.0.
+ETS2 Achievement Assistant 0.6.17 для ETS2 1.62.2.1.
 
-- Добавлен английский язык интерфейса, условий достижений и подробностей прогресса.
-- В настройках доступны язык игры (автоматически), Русский и English. Ручной выбор сохраняется между запусками.
-- По умолчанию для русского языка игры включается русский; для любого другого — английский.
-- Добавлены английский README и английская инструкция в комплекте.
+- Восстановлена совместимость подсветки карты и фильтра заказов с текущей версией игры.
+- Добавлены списки и подсветка 14 городов и 11 обзорных точек Исландии.
+- Фильтр предлагает очередной этап кольцевой дороги и рейсы с овцами для ферм, по которым ещё нет подтверждения.
 
-Закройте игру перед установкой. Скачайте ETS2-Achievement-Assistant-Setup-0.6.16.exe и выберите папку игры. Для ручной установки есть Portable. Планы и настройки сохраняются.
+Закройте игру перед установкой. Запустите ETS2-Achievement-Assistant-Setup-0.6.17.exe и выберите папку игры. Для ручной установки есть архив Portable.
 
-English
+## English
 
-- Added English UI, achievement requirements and progress details.
-- Choose Game language (automatic), Русский or English in Settings. Manual choices persist between sessions.
-- Automatic mode uses Russian for Russian game language and English for every other language.
-- Added English documentation and a bundled English installation guide.
+ETS2 Achievement Assistant 0.6.17 for ETS2 1.62.2.1.
 
-Close ETS2 before installing. Download ETS2-Achievement-Assistant-Setup-0.6.16.exe and select the game folder. Portable is available for manual installation. Your plan and preferences are preserved.
+- Updated map highlighting and job filtering for the current game version.
+- Added checklists and highlighting for Iceland's 14 cities and 11 viewpoints.
+- The filter suggests the next Ringroad leg and sheep jobs for farms without a confirmed delivery.
 
-Контрольные суммы / Checksums: SHA256SUMS.txt.
+Close ETS2 before running ETS2-Achievement-Assistant-Setup-0.6.17.exe. The Portable archive is available for manual installation.

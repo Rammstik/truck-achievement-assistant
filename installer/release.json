@@ -1,6 +1,6 @@
 {
-  "version": "0.6.16",
-  "game_version": "1.62.1.0",
-  "game_sha256": "a938cb388121f9b884a2e1b0f048c230a7bc19638ef6d641a70775f8c7fea956",
-  "dll_sha256": "59a5cbdb90ce201cdc040e3393928c80cda7ba65b24f70cd41cbaf16f834f3e1"
+  "version": "0.6.17",
+  "game_version": "1.62.2.1",
+  "game_sha256": "8f17d3505c2e6c25a93f38a1119ffbbccfba6a3be2edda3771e0186276ad9434",
+  "dll_sha256": "d755a1ec845560e1ce0c2f2e786a1a155b895f43eb89aeb9aacab78b1c072257"
 }

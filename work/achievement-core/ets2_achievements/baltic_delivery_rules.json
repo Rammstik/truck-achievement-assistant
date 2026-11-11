@@ -452,7 +452,22 @@
     "zagreb": "croatia",
     "zaragoza": "spain",
     "zenica": "bosnia",
-    "zurich": "switzerland"
+    "zurich": "switzerland",
+    "akureyri": "iceland",
+    "blonduos": "iceland",
+    "borgarnes": "iceland",
+    "egilsstadir": "iceland",
+    "hofn": "iceland",
+    "holmavik": "iceland",
+    "husavik": "iceland",
+    "isafjordur": "iceland",
+    "keflavik": "iceland",
+    "olafsvik": "iceland",
+    "patreksfjord": "iceland",
+    "reykjavik": "iceland",
+    "selfoss": "iceland",
+    "thorshofn": "iceland",
+    "vik": "iceland"
   },
   "city_labels": {
     "a_coruna": "А-Корунья",
@@ -837,6 +852,21 @@
     "zagreb": "Загреб",
     "zaragoza": "Сарагоса",
     "zenica": "Зеница",
-    "zurich": "Цюрих"
+    "zurich": "Цюрих",
+    "akureyri": "Акюрейри",
+    "blonduos": "Блёндюоус",
+    "borgarnes": "Боргарнес",
+    "egilsstadir": "Эйильсстадир",
+    "hofn": "Хёбн",
+    "holmavik": "Хоульмавик",
+    "husavik": "Хусавик",
+    "isafjordur": "Исафьордюр",
+    "keflavik": "Кеблавик",
+    "olafsvik": "Оулафсвик",
+    "patreksfjord": "Патрексфьордюр",
+    "reykjavik": "Рейкьявик",
+    "selfoss": "Сельфосс",
+    "thorshofn": "Тоурсхёбн",
+    "vik": "Вик"
   }
 }

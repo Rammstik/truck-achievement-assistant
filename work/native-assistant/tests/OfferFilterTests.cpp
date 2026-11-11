@@ -109,6 +109,30 @@ int main(int argc,char** argv){try{
     auto countries=ship;countries["source"]=endpoint("other","vilnius");countries["target"]=endpoint("other","luga");SetSelection(model,prefs);check(accepts(countries),"country pair reverse direction rejected");
     model["details"]["achievements"]["ba_job_countries"]={{"kind","country_pairs"},{"items",json::array({{{"countries",json::array({"russia","lithuania"})},{"deliveries",json::array({json::object()})}}})}};
     SetSelection(model,prefs);check(!accepts(countries),"positive Baltic country-pair evidence ignored");
+    model["achievements"]=json::array({{{"id","is_ringroad"},{"status","progress"}}});prefs["plan"]={{"a:p:is_ringroad",true}};
+    auto first=ship;first["source"]=endpoint("other","reykjavik");first["target"]=endpoint("other","hofn");
+    auto second=ship;second["source"]=endpoint("other","hofn");second["target"]=endpoint("other","akureyri");
+    SetSelection(model,prefs);check(accepts(first)&&!accepts(second),"Iceland ring road admitted a later leg");
+    model["details"]["achievements"]["is_ringroad"]["items"]=json::array({{{"id",".is_ringroad.reykjavik.hofn"},{"current",1},{"target",1}}});
+    SetSelection(model,prefs);check(!accepts(first)&&accepts(second),"Iceland ring road failed to advance to the next leg");
+    const auto leg=geography(*std::atomic_load(&current));
+    check(leg.size()==2&&leg[0].city=="hofn"&&leg[1].city=="akureyri","Iceland ring road map shows the wrong leg");
+    model["achievements"]=json::array({{{"id","is_sheep"},{"status","progress"}}});prefs["plan"]={{"a:p:is_sheep",true}};
+    auto farm=first;farm["target"]=endpoint("vikingabyli","hofn");farm["cargo"]["text_candidate"]="live_sheep";
+    auto fromFarm=farm;std::swap(fromFarm["source"],fromFarm["target"]);
+    auto otherFarm=farm;otherFarm["target"]=endpoint("vikingabyli","selfoss");
+    auto unknownFarm=farm;unknownFarm["target"]["city"]=nullptr;
+    auto wrongCargo=farm;wrongCargo["cargo"]["text_candidate"]="live_cattle";
+    SetSelection(model,prefs);check(accepts(farm)&&accepts(fromFarm)&&!accepts(wrongCargo)&&!accepts(first),"Iceland farm cargo or endpoint matching is wrong");
+    model["details"]["achievements"]["is_sheep"]["items"]=json::array({{{"id","vikingabyli.hofn"},{"current",1},{"target",1}}});
+    SetSelection(model,prefs);check(!accepts(farm)&&!accepts(fromFarm)&&accepts(otherFarm)&&accepts(unknownFarm),"Iceland farm completion excludes wrong candidates");
+    const auto farms=geography(*std::atomic_load(&current));
+    check(farms.size()==5,"Iceland farm map did not exclude the completed farm");
+    for(const auto& point:farms)check(point.company=="vikingabyli"&&point.city!="hofn","Iceland farm map has a wrong endpoint");
+    model["achievements"]=json::array({{{"id","is_visit_cities"},{"status","locked"}}});prefs["plan"]={{"a:p:is_visit_cities",true}};
+    auto hiddenCity=first;hiddenCity["target"]=endpoint("other","vik");
+    prefs["filter_unvisited_cities"]=true;SetSelection(model,prefs);check(accepts(first)&&!accepts(hiddenCity),"Iceland city filter includes a hidden city");
+    prefs["filter_unvisited_cities"]=false;SetSelection(model,prefs);check(accepts(hiddenCity),"Iceland city filter ignored the preference");
     if(argc>=3){std::ifstream file(argv[2]);json actual;file>>actual;auto capturedPrefs=prefs;capturedPrefs["plan"]={{"a:p:gr_hotels",true}};SetSelection(actual,capturedPrefs);
         check(!accepts(hotel)&&accepts(nextHotel),"actual captured hotel snapshot regression");}
     if(argc>=2){json ids=json::array();for(auto it=catalogue()["goals"].begin();it!=catalogue()["goals"].end();++it)
