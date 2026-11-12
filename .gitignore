@@ -2,6 +2,10 @@
 /*
 !/.gitignore
 !/.gitattributes
+!/.github/
+/.github/*
+!/.github/FUNDING.yml
+!/.github/rammstik-donate.png
 !/README.md
 !/README.en.md
 !/RELEASE_NOTES_RU.md

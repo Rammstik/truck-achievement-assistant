@@ -126,6 +126,12 @@ Distribution files are written to `outputs/public`. If the DLL hash changes, val
 
 Use `build.ps1 -Game ats` to build the ATS DLL. Saves, user preferences, research dumps and build outputs are excluded from Git. Third-party licences are stored with their source and included in distributions. No separate open-source licence has been assigned to the project's own code yet.
 
+## Support the project
+
+If the assistant has been useful to you, you can support its development with a one-time donation. [Support on Boosty](https://boosty.to/rammstik/donate)
+
+[![QR code for a donation on Boosty](.github/rammstik-donate.png)](https://boosty.to/rammstik/donate)
+
 ## Feedback
 
 [Open an issue](https://github.com/Rammstik/truck-achievement-assistant/issues) with your game version, assistant version, expected behaviour and what happened. Include a screenshot without personal information if useful.
