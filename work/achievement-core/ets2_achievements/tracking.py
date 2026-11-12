@@ -307,6 +307,65 @@ def academy_progress(aid,a):
     if a.get('consecutive'):r['series_target']=a['target'];r['next_step']='Нужна серия разных сценариев без неудач. Список хранит выполненные сценарии; длину текущей серии укажите отдельно после проверки в игре.'
     return r
 
+COACH_SKILLS = {
+    'long_duty': 'Длительные поездки',
+    'tight_schedule': 'Требовательные расписания',
+    'satisfaction_decrease': 'Премиум-обслуживание',
+    'low_acceleration': 'Мягкая поездка',
+    'satisfaction_increase': 'Любимчик пассажиров',
+    'ecodriving': 'Эко-вождение',
+}
+
+
+def coach_history(blocks,economy):
+    logs=[u['attrs'] for u in blocks if u['class']=='bus_job_log' and u['id']==economy.get('bus_job_log')]
+    if len(logs)!=1 or logs[0].get('version')!=0 or not isinstance(logs[0].get('entries'),list):
+        return None,None
+    entries={}
+    for unit in blocks:
+        if unit['class']=='bus_job_log_entry':
+            uid=unit['id']
+            entries[uid]=None if uid in entries else unit['attrs']
+    best=None
+    owned_distance=None
+    seen=set()
+    for uid in logs[0]['entries']:
+        if not isinstance(uid,str) or uid in seen:continue
+        seen.add(uid)
+        job=entries.get(uid)
+        if not job:continue
+        market=job.get('type')
+        # The history stores both contract and tourist work in the company category.
+        if market not in ('quick_job','company_job'):continue
+        satisfaction=number(job.get('satisfaction'))
+        if satisfaction is not None and 0<=satisfaction<=1:
+            best=max(best or 0,satisfaction*100)
+        distance=job.get('travelled_distance')
+        if type(distance) is int and distance>=0:
+            owned_distance=(owned_distance or 0)+(0 if market=='quick_job' else distance)
+    return best,owned_distance
+
+
+def coach_progress(a,economy,history):
+    target=a['target']
+    kind=a['type']
+    if kind=='skills':
+        items=[]
+        for key,label in COACH_SKILLS.items():
+            rank=economy.get(key)
+            items.append(row(key,label,int(rank>0) if type(rank) is int and rank>=0 else None))
+        return report('Навыки водителя автобуса',items,target)
+    if kind=='jobs_consecutive':
+        title='Серия автобусных рейсов'
+        return report(title,[row(kind,title,None,target)],target,'steam',source='Локальный кэш Steam')
+    satisfaction,distance=history
+    title,value=(('Лучшая удовлетворённость пассажиров, %',satisfaction) if kind=='job_satisfaction'
+                 else ('Пробег на своём автобусе по журналу, км',distance))
+    result=report(title,[row(kind,title,value,target)],target,'history',source='Журнал автобусных рейсов выбранного профиля')
+    result['observed']=value
+    return result
+
+
 def tracking_details(blocks,economy,existing):
     jobs,bad=delivery_history(blocks);docks,docks_known=transport_docks(blocks,economy)
     player=next((u['attrs'] for u in blocks if u['class']=='player' and u['id']==economy.get('player')),None)
@@ -315,6 +374,7 @@ def tracking_details(blocks,economy,existing):
         candidates=[u['attrs'] for u in blocks if u['class']=='player'];player=candidates[0] if len(candidates)==1 else {}
     refs=economy.get('garages');garages=[u for u in blocks if u['class']=='garage' and isinstance(refs,list) and u['id'] in refs]
     owned=[u for u in garages if u['attrs'].get('status') in (1,2,3)]
+    coach_jobs=coach_history(blocks,economy) if GAME=='ets2' else (None,None)
     result={}
     for aid,g in CAT['goals'].items():
         if aid in existing:continue
@@ -326,6 +386,7 @@ def tracking_details(blocks,economy,existing):
         elif cls=='achievement_each_delivery_point':r=pair_progress(a,jobs)
         elif cls=='achievement_delivery_log_data':r=log_progress(aid,a,jobs)
         elif cls=='achievement_academy':r=academy_progress(aid,a)
+        elif cls=='achievement_bus':r=coach_progress(a,economy,coach_jobs)
         elif cls=='achievement_deliver_cargo_data':
             r=log_progress(aid,{'target_companies':a['targets'],**({'cargos':[a['cargo']]} if 'cargo' in a else {})},jobs)
         elif cls=='achievement_garages_data':
@@ -399,7 +460,7 @@ def tracking_details(blocks,economy,existing):
         elif cls in ('achievement_data','achievement_ferry_data','achievement_position_data','achievement_paintjob_data'):
             r=report('Условие получения',[row(aid,'Действие выполнено',None,manual=True)],1,'manual',reason='Отдельная историческая отметка действия в доступных полях не определена. Факт получения берётся из Steam.')
         if r is None:r=report('Проверка условия',[row(aid,'Выполнено по условию игры',None,target,manual=True)],target,'manual',reason='В доступном сохранении нет подтверждённого источника подробного прогресса.')
-        if r.get('mode') in ('history','sequence','series'):
+        if cls!='achievement_bus' and r.get('mode') in ('history','sequence','series'):
             r['unreadable_records']=bad
             if jobs is None:r['reason']='Поддерживаемый журнал доставок отсутствует. Пункты остаются неизвестными.'
         r['rule_version']=CAT['game_version'];r['rule_class']=cls

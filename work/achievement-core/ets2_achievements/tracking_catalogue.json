@@ -1,5 +1,5 @@
 {
-  "game_version": "1.62.2.1",
+  "game_version": "1.62.3.2",
   "goals": {
     "job_urgent": {
       "unit": ".achievement.job_urgent",
@@ -549,6 +549,26 @@
     "is_sheep": {
       "unit": ".achievement.is_sheep",
       "class": "achievement_delivery",
+      "target": 3
+    },
+    "bus_job_satisfaction": {
+      "unit": ".achievement.bus_satisfac",
+      "class": "achievement_bus",
+      "target": 90
+    },
+    "bus_jobs_owned_distance": {
+      "unit": ".achievement.bus_owned_di",
+      "class": "achievement_bus",
+      "target": 5000
+    },
+    "bus_skills": {
+      "unit": ".achievement.bus_skills",
+      "class": "achievement_bus",
+      "target": 6
+    },
+    "bus_jobs_consecutive": {
+      "unit": ".achievement.bus_con_sati",
+      "class": "achievement_bus",
       "target": 3
     }
   },
@@ -5497,6 +5517,48 @@
         "achievement_name": "is_sheep",
         "steam_progress_id": "is_sheep-progress",
         "steam_id": "is_sheep"
+      }
+    },
+    ".achievement.bus_satisfac": {
+      "class": "achievement_bus",
+      "attrs": {
+        "event_name": "bus_job_done",
+        "type": "job_satisfaction",
+        "target": 90,
+        "achievement_name": "bus_job_satisfaction",
+        "steam_id": "bus_job_satisfaction"
+      }
+    },
+    ".achievement.bus_owned_di": {
+      "class": "achievement_bus",
+      "attrs": {
+        "event_name": "bus_job_done",
+        "type": "jobs_owned_distance",
+        "target": 5000,
+        "achievement_name": "bus_jobs_owned_distance",
+        "steam_id": "bus_jobs_owned_distance"
+      }
+    },
+    ".achievement.bus_skills": {
+      "class": "achievement_bus",
+      "attrs": {
+        "event_name": "skill_pt_app",
+        "type": "skills",
+        "target": 6,
+        "achievement_name": "bus_skills",
+        "steam_progress_id": "bus_skills-progress",
+        "steam_id": "bus_skills"
+      }
+    },
+    ".achievement.bus_con_sati": {
+      "class": "achievement_bus",
+      "attrs": {
+        "event_name": "bus_job_done",
+        "type": "jobs_consecutive",
+        "target": 3,
+        "achievement_name": "bus_jobs_consecutive",
+        "steam_progress_id": "bus_jobs_consecutive-progress",
+        "steam_id": "bus_jobs_consecutive"
       }
     }
   },

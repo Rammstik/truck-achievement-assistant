@@ -8,9 +8,9 @@
 
 Помощник достижений прямо в Euro Truck Simulator 2.
 
-**[Скачать установщик](https://github.com/Rammstik/truck-achievement-assistant/releases/download/ets2-v0.6.17/ETS2-Achievement-Assistant-Setup-0.6.17.exe)** · **[Все загрузки](https://github.com/Rammstik/truck-achievement-assistant/releases)** · **[Сообщить о проблеме](https://github.com/Rammstik/truck-achievement-assistant/issues)**
+**[Скачать установщик](https://github.com/Rammstik/truck-achievement-assistant/releases/download/ets2-v0.6.18/ETS2-Achievement-Assistant-Setup-0.6.18.exe)** · **[Все загрузки](https://github.com/Rammstik/truck-achievement-assistant/releases)** · **[Сообщить о проблеме](https://github.com/Rammstik/truck-achievement-assistant/issues)**
 
-**0.6.17** · ETS2 **1.62.2.1** · Windows x64 · DirectX 11
+**0.6.18** · ETS2 **1.62.3.2** · Windows x64 · DirectX 11
 
 </div>
 
@@ -18,7 +18,7 @@
 
 Добавьте достижение в план — помощник покажет доступные подробности прогресса, подсветит поддерживаемые цели на карте и отберёт подходящие предложения в списках заказов. Панель открывается сочетанием **Ctrl+F8**.
 
-> Текущая версия предназначена для ETS2 **1.62.2.1**. Установщик проверяет совместимость перед копированием файлов. После обновления игры может потребоваться новая версия помощника.
+> Текущая версия предназначена для ETS2 **1.62.3.2**. Установщик проверяет совместимость перед копированием файлов. После обновления игры может потребоваться новая версия помощника.
 
 ## Возможности
 
@@ -45,7 +45,7 @@
 ## Установка
 
 1. **Закройте ETS2.**
-2. **[Скачайте и запустите установщик](https://github.com/Rammstik/truck-achievement-assistant/releases/download/ets2-v0.6.17/ETS2-Achievement-Assistant-Setup-0.6.17.exe).** Он ищет игру в библиотеках Steam. При необходимости укажите папку `Euro Truck Simulator 2` вручную.
+2. **[Скачайте и запустите установщик](https://github.com/Rammstik/truck-achievement-assistant/releases/download/ets2-v0.6.18/ETS2-Achievement-Assistant-Setup-0.6.18.exe).** Он ищет игру в библиотеках Steam. При необходимости укажите папку `Euro Truck Simulator 2` вручную.
 3. **Запустите игру и нажмите Ctrl+F8.** Выберите профиль и добавьте достижения в план.
 
 Python и инструменты разработки для обычной установки не нужны. Установщик обновляет файлы помощника, игровые сохранения не изменяются. Если Windows запрещает запись в папку игры, запустите установщик от имени администратора.
@@ -59,7 +59,7 @@ Python и инструменты разработки для обычной ус
 <details>
 <summary><strong>Ручная установка из Portable</strong></summary>
 
-Скачайте [Portable 0.6.17](https://github.com/Rammstik/truck-achievement-assistant/releases/download/ets2-v0.6.17/ETS2-Achievement-Assistant-Portable-0.6.17.zip), закройте игру и скопируйте содержимое папки `bin` из архива в каталог ETS2 с объединением папок.
+Скачайте [Portable 0.6.18](https://github.com/Rammstik/truck-achievement-assistant/releases/download/ets2-v0.6.18/ETS2-Achievement-Assistant-Portable-0.6.18.zip), закройте игру и скопируйте содержимое папки `bin` из архива в каталог ETS2 с объединением папок.
 
 В `bin/win_x64/plugins` должны находиться:
 
@@ -81,10 +81,10 @@ map-probe.json
 
 | Компонент | Состояние |
 | --- | --- |
-| ETS2 | **1.62.2.1**, Windows x64, DirectX 11 |
+| ETS2 | **1.62.3.2**, Windows x64, DirectX 11 |
 | Другие версии ETS2 | Нужна совместимая сборка помощника; привязки проверяются по точному файлу игры. |
 | ATS | Исходники включены в общий проект. Текущий установщик предназначен только для ETS2. Сборка ATS 0.1.0 рассчитана на 1.61.3.18. |
-| Подробные правила | **110 из 114** достижений Steam, включая все четыре достижения Исландии. |
+| Подробные правила | **114 из 114** достижений Steam, включая Исландию и Coaches. |
 
 Наличие подробного правила не означает поддержку каждого условия фильтром или картой. Часть прогресса обновляется после сохранения игры. Отсутствие записи в журнале не доказывает невыполнение; неизвестные пункты остаются кандидатами. Некоторые условия предложения, включая точный маршрут Special Transport, недоступны для полной автоматической проверки.
 

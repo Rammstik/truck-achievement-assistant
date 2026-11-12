@@ -462,5 +462,20 @@
   "Дорожная точка ": "Road location ",
   "Обзорная точка": "Viewpoint",
   "Ошибка чтения: ": "Read error: ",
-  "ферм": "farms"
+  "ферм": "farms",
+  "Завершить автобусный рейс с удовлетворённостью пассажиров не ниже 90%.": "Complete a coach job with at least 90% passenger satisfaction.",
+  "Проехать суммарно 5000 км во время рейсов на собственном автобусе.": "Drive a total of 5,000 km during jobs in your own coach.",
+  "Вложить по одному очку в каждый из 6 навыков водителя автобуса.": "Spend at least one point in each of the six coach skills.",
+  "Завершить 3 автобусных рейса подряд. Длина каждого рейса должна быть не менее 300 км, удовлетворённость пассажиров — 100%.": "Complete three coach jobs in a row. Each must be at least 300 km with 100% passenger satisfaction.",
+  "Длительные поездки": "Longer Duties",
+  "Требовательные расписания": "Demanding Timetables",
+  "Премиум-обслуживание": "Premium Service",
+  "Мягкая поездка": "Cushioned Journey",
+  "Любимчик пассажиров": "Passenger Favourite",
+  "Эко-вождение": "Ecodriving",
+  "Навыки водителя автобуса": "Coach skills",
+  "Серия автобусных рейсов": "Consecutive coach jobs",
+  "Лучшая удовлетворённость пассажиров, %": "Best passenger satisfaction, %",
+  "Пробег на своём автобусе по журналу, км": "Recorded distance in your own coach, km",
+  "Журнал автобусных рейсов выбранного профиля": "Coach job log of the selected profile"
 }

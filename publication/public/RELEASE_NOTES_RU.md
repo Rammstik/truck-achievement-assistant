@@ -1,17 +1,17 @@
-ETS2 Achievement Assistant 0.6.17 для ETS2 1.62.2.1.
+ETS2 Achievement Assistant 0.6.18 для ETS2 1.62.3.2.
 
-- Восстановлена совместимость подсветки карты и фильтра заказов с текущей версией игры.
-- Добавлены списки и подсветка 14 городов и 11 обзорных точек Исландии.
-- Фильтр предлагает очередной этап кольцевой дороги и рейсы с овцами для ферм, по которым ещё нет подтверждения.
+- Добавлены условия и подробности всех четырёх достижений Coaches на русском и английском.
+- В журнале автобусных рейсов учитываются лучшая удовлетворённость пассажиров и пробег на своём автобусе. Отдельно показаны шесть навыков и серия рейсов по данным Steam.
+- Обновлена совместимость подсветки карты и фильтра грузовых заказов с ETS2 1.62.3.2.
 
-Закройте игру перед установкой. Запустите ETS2-Achievement-Assistant-Setup-0.6.17.exe и выберите папку игры. Для ручной установки есть архив Portable.
+Закройте ETS2 перед установкой. Для ручной установки используйте архив Portable.
 
 ## English
 
-ETS2 Achievement Assistant 0.6.17 for ETS2 1.62.2.1.
+ETS2 Achievement Assistant 0.6.18 for ETS2 1.62.3.2.
 
-- Updated map highlighting and job filtering for the current game version.
-- Added checklists and highlighting for Iceland's 14 cities and 11 viewpoints.
-- The filter suggests the next Ringroad leg and sheep jobs for farms without a confirmed delivery.
+- Added requirements and progress details for all four Coaches achievements in English and Russian.
+- The assistant shows the best passenger satisfaction and owned-coach mileage recorded in the job log, the six coach skills and the Steam streak counter.
+- Updated map highlighting and freight job filtering for ETS2 1.62.3.2.
 
-Close ETS2 before running ETS2-Achievement-Assistant-Setup-0.6.17.exe. The Portable archive is available for manual installation.
+Close ETS2 before installing. The Portable archive is available for manual installation.

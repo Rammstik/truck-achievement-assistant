@@ -14,7 +14,7 @@ def raw(uid,src='other.paris',dst='other.strasbourg',cargo='petrol',damage='0',r
 def history(*units):return delivery_history([{'class':'delivery_log','id':'log','attrs':{'version':1,'entries':[u['id'] for u in units]}},*units])[0]
 def details(*units):return tracking_details([{'class':'delivery_log','id':'log','attrs':{'version':1,'entries':[u['id'] for u in units]}},*units],{},set())
 
-assert len(CAT['goals'])==110 and len(tracking_details([],{},set()))==110
+assert len(CAT['goals'])==114 and len(tracking_details([],{},set()))==114
 assert all(u['attrs'].get('condition') in UNITS for u in UNITS.values() if 'condition' in u['attrs'])
 assert all(s in CAT['scenarios'] for c in CAT['chapters'].values() for s in c['scenarios'])
 assert not any('//' in s for c in CAT['chapters'].values() for s in c['scenarios'])
@@ -81,6 +81,27 @@ viewpoint_ids=[int(i['id']) for i in VIEWPOINTS['rules']['is_cutscenes']['items'
 views=viewpoint_details({'discovered_cutscene_items':viewpoint_ids[:2],
                          'discovered_cutscene_items_states':[2,1]})['is_cutscenes']
 assert (views['total'],views['target'],views['completed'],views['unknown'])==(11,8,1,1)
+# The coach log uses a separate economy reference and stores satisfaction as a fraction.
+def coach_entry(uid,market,distance,satisfaction,flags=1):
+    return {'class':'bus_job_log_entry','id':uid,'attrs':{'type':market,'travelled_distance':distance,
+                                                       'satisfaction':satisfaction,'flags':flags}}
+
+coach_economy={'bus_job_log':'coachlog','long_duty':2,'tight_schedule':0}
+coach_log={'class':'bus_job_log','id':'coachlog','attrs':{'version':0,'entries':['quick']}}
+quick=coach_entry('quick','quick_job',11,0.8497899770736694)
+coach=tracking_details([coach_log,quick],coach_economy,set())
+assert round(coach['bus_job_satisfaction']['observed'],2)==84.98
+assert coach['bus_jobs_owned_distance']['observed']==0
+assert [i['current'] for i in coach['bus_skills']['items']]==[1,0,None,None,None,None]
+assert coach['bus_jobs_consecutive']['mode']=='steam' and coach['bus_jobs_consecutive']['observed'] is None
+coach_log['attrs']['entries']+=['owned','owned','unknown','missing']
+owned=coach_entry('owned','company_job',340,0.95,flags=0)
+unknown=coach_entry('unknown','unsupported_market',5000,1)
+coach=tracking_details([coach_log,quick,owned,unknown],coach_economy,set())
+assert coach['bus_jobs_owned_distance']['observed']==340 and coach['bus_job_satisfaction']['observed']==95
+assert coach_history([coach_log,quick,owned],{})==(None,None)
+coach_log['attrs']['version']=2
+assert coach_history([coach_log,quick,owned],coach_economy)==(None,None)
 # Chapter membership comes from official chapter lists, not ID prefixes.
 r=tracking_details([],{},set())['aca_interior']
 assert len(r['items'])==8 and all(CAT['scenarios'][i['id']]['chapter']=='academy.chapter.book1.4' for i in r['items'])
@@ -106,4 +127,4 @@ assert b[1]['attrs']['discovary_distance']==1000
 assert 'visited_cities' not in text_sii(t.replace('[1]','[0]'))[0]['attrs']
 before=copy.deepcopy(b);tracking_details(b,b[0]['attrs'],set());assert b==before
 json.dumps(tracking_details(b,b[0]['attrs'],set()),allow_nan=False)
-print('PASS: 110 goals, including Iceland routes, unique farms and viewpoint states; existing delivery, map and save regressions.')
+print('PASS: 114 goals, including coach job history, owned distance and skills, plus existing delivery, map and save regressions.')

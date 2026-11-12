@@ -45,10 +45,11 @@ def _snapshot(steam, documents, control):
         try:
             result['details'] = details(steam, account, profile, documents)
             for item in result['achievements']:
-                if item['id']=='hc_1000xps':
-                    info=dict(result['details']['achievements'][item['id']])
-                    info['observed']=item['current'];info['available']=item['current'] is not None
-                    info['items']=[{**r,'current':item['current'],'manual':item['current'] is None} for r in info['items']]
+                info=result['details']['achievements'].get(item['id'],{})
+                if info.get('mode')=='steam':
+                    current=item['current']
+                    info={**info,'observed':current,'available':current is not None,
+                          'items':[{**row,'current':current,'manual':current is None} for row in info['items']]}
                     result['details']['achievements'][item['id']]=info
                 if item['id'] not in CAT['goals']:
                     result['details']['achievements'][item['id']]={'kind':'tracking','title':'Поддержка новой цели' if item['id'] in EXTRA_GOALS else 'Будущее дополнение','mode':'unimplemented' if item['id'] in EXTRA_GOALS else 'upcoming','available':False,
