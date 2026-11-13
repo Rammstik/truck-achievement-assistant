@@ -24,7 +24,7 @@ void check(bool value,const char* message){if(!value)throw std::runtime_error(me
 int wmain(int argc,wchar_t** argv) {
     using namespace aa::mapprobe;
     try {
-        if(argc!=2)throw std::runtime_error("Provide output directory");
+        if(argc!=2&&argc!=3)throw std::runtime_error("Provide output directory and optional ETS2 executable");
         const std::filesystem::path directory=argv[1];std::filesystem::create_directories(directory);
         {std::ofstream known(directory/L"sha-test.txt",std::ios::binary);known<<"abc";}
         check(fileHash(directory/L"sha-test.txt")=="ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad","SHA256 mismatch");
@@ -32,7 +32,11 @@ int wmain(int argc,wchar_t** argv) {
         {std::ofstream config(directory/L"map-probe.json");config<<"{\"enabled\":true}";}
         Install(directory,directory);
         check(!Status()["installed"].get<bool>(),"unknown executable accepted");
+#ifdef AA_GAME_ATS
         check(Status()["reason"]=="unsupported_executable","wrong refusal reason");
+#else
+        check(Status()["reason"]=="signature_mismatch"&&!aa::jobprobe::Status()["active"].get<bool>(),"unknown executable accepted by a feature");
+#endif
         check(!drawTarget&&!materialTarget,"targets set for unknown executable");
         check(inspectWidget(reinterpret_cast<void*>(1),nullptr).contains("array_error"),"invalid pointer accepted");
         std::array<unsigned char,0x900> widget{};std::array<unsigned char,0x80> context{};
@@ -64,14 +68,57 @@ int wmain(int argc,wchar_t** argv) {
          check(scope.Installed(),"expanded service marker array not installed");}
         check(widget==originalWidget&&item==originalItem,"expanded UI marker array not restored");
         {MapMarkerScope invalid(reinterpret_cast<void*>(1),{{1,2,3}});check(!invalid.Installed(),"invalid widget accepted");}
-        std::vector<unsigned char> signatureImage(target::DrawRva+64);
+        std::vector<unsigned char> signatureImage(std::max(target::DrawRva+64,target::PackCallRva+5));
         memcpy(signatureImage.data()+target::DrawRva,target::DrawSignature,32);
         memcpy(signatureImage.data()+target::MaterialRva,target::MaterialSignature,32);
-        check(signaturesMatch(signatureImage.data()),"exact signatures rejected");
+        memcpy(signatureImage.data()+target::PackRva,target::PackSignature,32);
+        memcpy(signatureImage.data()+target::PackCallRva,target::PackCallSignature,5);
+        const auto signatureBase=reinterpret_cast<uintptr_t>(signatureImage.data());
+        check(knownMap(signatureBase).draw,"exact signatures rejected");
         signatureImage[target::MaterialRva]^=1;
-        check(!signaturesMatch(signatureImage.data()),"mutated material signature accepted");
+        check(!knownMap(signatureBase).draw,"mutated material signature accepted");
         signatureImage[target::MaterialRva]^=1;signatureImage[target::DrawRva]^=1;
-        check(!signaturesMatch(signatureImage.data()),"mutated draw signature accepted");
+        check(!knownMap(signatureBase).draw,"mutated draw signature accepted");
+#ifndef AA_GAME_ATS
+        if(argc==3) {
+            HANDLE file=CreateFileW(argv[2],GENERIC_READ,FILE_SHARE_READ|FILE_SHARE_WRITE,nullptr,OPEN_EXISTING,0,nullptr);
+            check(file!=INVALID_HANDLE_VALUE,"could not open the game image");
+            HANDLE mapping=CreateFileMappingW(file,nullptr,PAGE_READONLY|SEC_IMAGE_NO_EXECUTE,0,0,nullptr);
+            CloseHandle(file);
+            check(mapping!=nullptr,"could not map the game image");
+            auto* image=static_cast<unsigned char*>(MapViewOfFile(mapping,FILE_MAP_READ,0,0,0));
+            CloseHandle(mapping);
+            check(image!=nullptr,"could not view the game image");
+            aa::compatibility::CodeSection section(image);
+            const auto map=aa::compatibility::resolveMap(section);
+            const auto jobs=aa::compatibility::resolveJobs(section);
+            check(map.draw&&jobs.predicate,"map or job bindings did not resolve on the updated executable");
+            check(fileHash(argv[2])!=target::Sha256,"test requires a different executable hash");
+            const auto* dos=reinterpret_cast<const IMAGE_DOS_HEADER*>(image);
+            const auto* nt=reinterpret_cast<const IMAGE_NT_HEADERS64*>(image+dos->e_lfanew);
+            const auto* sections=IMAGE_FIRST_SECTION(nt);
+            const auto* code=std::find_if(sections,sections+nt->FileHeader.NumberOfSections,[](const auto& s){
+                return !std::memcmp(s.Name,".text\0\0",8);
+            });
+            check(code!=sections+nt->FileHeader.NumberOfSections,"missing executable section");
+            std::vector<unsigned char> patched(nt->OptionalHeader.SizeOfImage);
+            memcpy(patched.data(),image,nt->OptionalHeader.SizeOfHeaders);
+            memcpy(patched.data()+code->VirtualAddress,image+code->VirtualAddress,code->Misc.VirtualSize);
+            const auto mapOffset=map.draw-reinterpret_cast<uintptr_t>(image);
+            const auto jobOffset=jobs.predicate-reinterpret_cast<uintptr_t>(image);
+            UnmapViewOfFile(image);
+            patched[mapOffset+aa::compatibility::drawRule.size-1]^=1;
+            aa::compatibility::CodeSection mapChanged(patched.data());
+            check(!aa::compatibility::resolveMap(mapChanged).draw&&aa::compatibility::resolveJobs(mapChanged).predicate,
+                  "map change also disabled jobs");
+            patched[mapOffset+aa::compatibility::drawRule.size-1]^=1;
+            patched[jobOffset+aa::compatibility::predicateRule.size-1]^=1;
+            aa::compatibility::CodeSection jobsChanged(patched.data());
+            check(aa::compatibility::resolveMap(jobsChanged).draw&&!aa::compatibility::resolveJobs(jobsChanged).predicate,
+                  "job change also disabled the map");
+            std::cout<<"PASS: updated EXE bindings and independent fallback for changes inside either feature.\n";
+        }
+#endif
         auto init=MH_Initialize();check(init==MH_OK||init==MH_ERROR_ALREADY_INITIALIZED,"MinHook initialization");
         drawTarget=reinterpret_cast<void*>(&fixtureDraw);materialTarget=reinterpret_cast<void*>(&fixtureMaterial);
         check(MH_CreateHook(drawTarget,reinterpret_cast<void*>(&drawHook),reinterpret_cast<void**>(&originalDraw))==MH_OK,"draw fixture hook");

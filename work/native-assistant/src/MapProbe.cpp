@@ -5,6 +5,8 @@
 #include "JobProbe.h"
 #include "MapMarkerScope.h"
 #include "MapProbeTarget.h"
+#include "JobProbeTarget.h"
+#include "ExecutableCompatibility.h"
 #include <windows.h>
 #include <wincrypt.h>
 #include <MinHook.h>
@@ -152,11 +154,30 @@ void* __fastcall materialHook(void* context,void* widget,void* name) {
     }catch(...){++dropped;}
     return result;
 }
-bool signaturesMatch(void* base) {
-    std::array<unsigned char,32> a{},b{};
-    auto address=reinterpret_cast<uintptr_t>(base);
-    return copy(address+target::DrawRva,a.data(),a.size())&&copy(address+target::MaterialRva,b.data(),b.size())&&
-        !memcmp(a.data(),target::DrawSignature,a.size())&&!memcmp(b.data(),target::MaterialSignature,b.size());
+template<size_t N> bool signature(uintptr_t address,const unsigned char (&expected)[N]) {
+    std::array<unsigned char,N> bytes{};
+    return copy(address,bytes.data(),N)&&!memcmp(bytes.data(),expected,N);
+}
+compatibility::MapAddresses knownMap(uintptr_t base) {
+    if(!signature(base+target::DrawRva,target::DrawSignature) ||
+       !signature(base+target::MaterialRva,target::MaterialSignature) ||
+       !signature(base+target::PackRva,target::PackSignature) ||
+       !signature(base+target::PackCallRva,target::PackCallSignature))return {};
+    return {base+target::DrawRva,base+target::MaterialRva,base+target::PackRva,base+target::PackCallRva};
+}
+jobprobe::Addresses knownJobs(uintptr_t base) {
+    using namespace jobprobe;
+    if(!signature(base+jobprobe::target::PredicateRva,jobprobe::target::PredicateSignature) ||
+       !signature(base+jobprobe::target::SpecialPredicateRva,jobprobe::target::SpecialPredicateSignature) ||
+       !signature(base+jobprobe::target::CityRva,jobprobe::target::CitySignature) ||
+       !signature(base+jobprobe::target::DestinationRva,jobprobe::target::DestinationSignature) ||
+       !signature(base+jobprobe::target::NameRva,jobprobe::target::NameSignature) ||
+       !signature(base+jobprobe::target::UpdateRva,jobprobe::target::UpdateSignature) ||
+       !signature(base+jobprobe::target::RebuildRva,jobprobe::target::RebuildSignature) ||
+       !signature(base+jobprobe::target::SetStatusRva,jobprobe::target::SetStatusSignature))return {};
+    return {base+jobprobe::target::PredicateRva,base+jobprobe::target::SpecialPredicateRva,
+        base+jobprobe::target::CityRva,base+jobprobe::target::DestinationRva,base+jobprobe::target::NameRva,
+        base+jobprobe::target::UpdateRva,base+jobprobe::target::RebuildRva,base+jobprobe::target::SetStatusRva};
 }
 void removeHooks() {
     if(drawTarget)MH_DisableHook(drawTarget);
@@ -179,19 +200,35 @@ void Install(const std::filesystem::path& pluginDirectory,const std::filesystem:
         wchar_t path[32768]{};auto length=GetModuleFileNameW(nullptr,path,32768);
         if(!length||length>=32768){reason="executable_path_error";return;}
         observedHash=fileHash(path);
-        if(observedHash!=target::Sha256){reason="unsupported_executable";return;}
         auto base=GetModuleHandleW(nullptr);
-        aa::jobprobe::Install(base,sessionDirectory);
-        if(!signaturesMatch(base)){reason="signature_mismatch";return;}
-        drawTarget=reinterpret_cast<void*>(reinterpret_cast<uintptr_t>(base)+target::DrawRva);
-        materialTarget=reinterpret_cast<void*>(reinterpret_cast<uintptr_t>(base)+target::MaterialRva);
+        const auto image=reinterpret_cast<uintptr_t>(base);
+        compatibility::MapAddresses map{};
+        jobprobe::Addresses jobs{};
+        if(observedHash==target::Sha256) {
+            map=knownMap(image);
+            jobs=knownJobs(image);
+        }else{
+#ifdef AA_GAME_ATS
+            reason="unsupported_executable";return;
+#else
+            const compatibility::CodeSection code(base);
+            map=compatibility::resolveMap(code);
+            jobs=compatibility::resolveJobs(code);
+#endif
+        }
+        aa::jobprobe::Install(base,sessionDirectory,jobs);
+        if(!map.draw){reason="signature_mismatch";return;}
+        drawTarget=reinterpret_cast<void*>(map.draw);
+        materialTarget=reinterpret_cast<void*>(map.material);
         const bool created=MH_CreateHook(drawTarget,reinterpret_cast<void*>(&drawHook),reinterpret_cast<void**>(&originalDraw))==MH_OK&&
             MH_CreateHook(materialTarget,reinterpret_cast<void*>(&materialHook),reinterpret_cast<void**>(&originalMaterial))==MH_OK;
         if(!created){removeHooks();reason="hook_create_failed";return;}
         stopping=false;
         if(MH_QueueEnableHook(materialTarget)!=MH_OK||MH_QueueEnableHook(drawTarget)!=MH_OK||MH_ApplyQueued()!=MH_OK){stopping=true;removeHooks();reason="hook_enable_failed";return;}
         installed=true;reason="ready";
-        if(config.value("highlight_viewpoints",false))aa::maptint::Install(base);
+        if(config.value("highlight_viewpoints",false)&&!aa::maptint::Install(map.pack,map.packCall)){
+            stopping=true;removeHooks();reason="recoloring_failed";
+        }
     }catch(...){stopping=true;removeHooks();reason="installation_error";}
 }
 void Stop(){aa::jobprobe::Stop();aa::maptint::Stop();stopping=true;until=0;removeHooks();Flush();}

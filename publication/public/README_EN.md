@@ -1,12 +1,12 @@
 English | [Русский](README_RU.md)
 
-# ETS2 Achievement Assistant 0.6.18
+# ETS2 Achievement Assistant 0.6.19
 
 An in-game achievement plan, red map highlighting and matching job offers for Euro Truck Simulator 2.
 
 ## Requirements
 
-ETS2 **1.62.3.2**, Windows x64 and DirectX 11. Other game versions require a compatible assistant build.
+Version **0.6.19** was tested with **ETS2 1.62.3.2 and 1.62.3.3**, Windows x64 and DirectX 11. After a game update, the assistant checks map highlighting and job filtering independently and reports unavailable features in the panel.
 
 ## Installation
 

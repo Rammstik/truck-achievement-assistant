@@ -47,6 +47,10 @@ def main():
     assert install('unsupported-exe') != 0
     assert not (plugins / 'AchievementAssistant.dll').exists()
     shutil.copy2(REAL_EXE, exe)
+    with exe.open('ab') as stream:
+        stream.write(b'ETS2 compatibility test overlay')
+    game_hash = sha(exe)
+    assert game_hash != CONFIG['game_sha256']
 
     # A separate sleeping process tests the running-game guard without launching ETS2.
     fixture_source = area / 'GameRunningFixture.cs'
@@ -84,9 +88,9 @@ def main():
     assert sentinel.read_bytes() == b'UNRELATED PLUGIN'
     assert extra.read_text() == 'preserve unknown files'
     assert probe.read_text() == '{"existing_user_option":true}'
-    assert sha(exe) == CONFIG['game_sha256']
+    assert sha(exe) == game_hash
     assert (sha(settings) if settings.exists() else None) == original_settings
-    result = {'passed': True, 'test_folder': str(area), 'checks': ['missing game rejected', 'unsupported hash rejected', 'running-game fixture rejected', 'install in Unicode path', 'update replaces own DLL', 'uninstall removes own runtime', 'other plugins and unknown files preserved', 'existing map configuration preserved', 'real user settings unchanged', 'game executable unchanged'], 'actual_game_started': False, 'test_build_has_no_uninstall_registration': True}
+    result = {'passed': True, 'test_folder': str(area), 'checks': ['missing game rejected', 'invalid executable rejected', 'different executable hash accepted', 'running-game fixture rejected', 'install in Unicode path', 'update replaces own DLL', 'uninstall removes own runtime', 'other plugins and unknown files preserved', 'existing map configuration preserved', 'real user settings unchanged', 'game executable unchanged'], 'actual_game_started': False, 'test_build_has_no_uninstall_registration': True}
     (HERE / 'test-results/installer-validation.json').write_text(json.dumps(result, ensure_ascii=False, indent=2), encoding='utf-8')
     print(json.dumps(result, ensure_ascii=False, indent=2))
 

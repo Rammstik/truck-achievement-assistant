@@ -62,12 +62,12 @@ english.FinishedLabelNoIcons=The assistant is installed. Start ETS2 and press Ct
 
 [CustomMessages]
 russian.InvalidGame=В выбранной папке не найден bin\win_x64\eurotrucks2.exe. Укажите корневую папку Euro Truck Simulator 2.
-russian.UnsupportedGame=Эта сборка помощника поддерживает ETS2 {#ExpectedGameVersion}. Выбранный файл игры несовместим. Установите совместимую версию помощника.
+russian.UnsupportedGame=У выбранного файла нет сведений о версии. Проверьте папку установки ETS2.
 russian.CloseGame=Закройте ETS2 перед установкой, обновлением или удалением помощника, затем повторите действие.
 russian.ProcessCheckFailed=Не удалось проверить, закрыта ли игра. Закройте ETS2 и повторите действие.
 russian.GameReadFailed=Не удалось прочитать файл игры. Проверьте доступ к папке и повторите действие.
 english.InvalidGame=The selected folder does not contain bin\win_x64\eurotrucks2.exe. Select the Euro Truck Simulator 2 root folder.
-english.UnsupportedGame=This assistant supports ETS2 {#ExpectedGameVersion}. The selected game executable is incompatible. Download a compatible assistant version.
+english.UnsupportedGame=The selected executable has no version information. Check your ETS2 installation folder.
 english.CloseGame=Close ETS2 before installing, updating or uninstalling the assistant, then try again.
 english.ProcessCheckFailed=Setup could not check whether the game is closed. Close ETS2 and try again.
 english.GameReadFailed=The game executable could not be read. Check folder permissions and try again.
@@ -144,13 +144,13 @@ begin
 end;
 
 function ValidateGame(): String;
-var ExePath: String;
+var ExePath, GameVersion: String;
 begin
   Result := '';
   ExePath := AddBackslash(WizardDirValue) + 'bin\win_x64\eurotrucks2.exe';
   if not FileExists(ExePath) then begin Result := CustomMessage('InvalidGame'); Exit; end;
   try
-    if CompareText(GetSHA256OfFile(ExePath), '{#ExpectedGameHash}') <> 0 then
+    if not GetVersionNumbersString(ExePath, GameVersion) then
       Result := CustomMessage('UnsupportedGame');
   except
     Result := CustomMessage('GameReadFailed');

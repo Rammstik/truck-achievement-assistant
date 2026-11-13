@@ -8,9 +8,9 @@
 
 An achievement assistant built into Euro Truck Simulator 2.
 
-**[Download the Windows installer](https://github.com/Rammstik/truck-achievement-assistant/releases/download/ets2-v0.6.18/ETS2-Achievement-Assistant-Setup-0.6.18.exe)** · **[All downloads](https://github.com/Rammstik/truck-achievement-assistant/releases)** · **[Report a problem](https://github.com/Rammstik/truck-achievement-assistant/issues)**
+**[Download the Windows installer](https://github.com/Rammstik/truck-achievement-assistant/releases/download/ets2-v0.6.19/ETS2-Achievement-Assistant-Setup-0.6.19.exe)** · **[All downloads](https://github.com/Rammstik/truck-achievement-assistant/releases)** · **[Report a problem](https://github.com/Rammstik/truck-achievement-assistant/issues)**
 
-**0.6.18** · ETS2 **1.62.3.2** · Windows x64 · DirectX 11
+**0.6.19** · ETS2 **1.62.3.2 / 1.62.3.3** · Windows x64 · DirectX 11
 
 </div>
 
@@ -18,7 +18,7 @@ An achievement assistant built into Euro Truck Simulator 2.
 
 Add an achievement to your plan to see available progress details, highlight supported map targets and filter job offers. Press **Ctrl+F8** to open the assistant.
 
-> This version supports ETS2 **1.62.3.2**. The installer checks compatibility before copying files. A game update may require a new assistant version.
+> After an ETS2 update, the assistant checks map highlighting and job filtering independently. The panel reports if either feature is unavailable.
 
 ## Features
 
@@ -45,7 +45,7 @@ Map highlighting works independently of the unvisited-city job filter. You can t
 ## Installation
 
 1. **Close ETS2.**
-2. **[Download and run the installer](https://github.com/Rammstik/truck-achievement-assistant/releases/download/ets2-v0.6.18/ETS2-Achievement-Assistant-Setup-0.6.18.exe).** It searches Steam libraries. If necessary, select your `Euro Truck Simulator 2` folder manually.
+2. **[Download and run the installer](https://github.com/Rammstik/truck-achievement-assistant/releases/download/ets2-v0.6.19/ETS2-Achievement-Assistant-Setup-0.6.19.exe).** It searches Steam libraries. If necessary, select your `Euro Truck Simulator 2` folder manually.
 3. **Start the game and press Ctrl+F8.** Select your profile and add achievements to your plan.
 
 You do not need Python or development tools for normal installation. The installer updates assistant files without changing game saves. If Windows prevents writing to the game folder, run the installer as administrator.
@@ -59,7 +59,7 @@ Open **Settings → Language** and choose **Game language (automatic)**, **Ру�
 <details>
 <summary><strong>Manual installation with Portable</strong></summary>
 
-Download [Portable 0.6.18](https://github.com/Rammstik/truck-achievement-assistant/releases/download/ets2-v0.6.18/ETS2-Achievement-Assistant-Portable-0.6.18.zip), close the game and merge the archive's `bin` folder into your ETS2 directory.
+Download [Portable 0.6.19](https://github.com/Rammstik/truck-achievement-assistant/releases/download/ets2-v0.6.19/ETS2-Achievement-Assistant-Portable-0.6.19.zip), close the game and merge the archive's `bin` folder into your ETS2 directory.
 
 The `bin/win_x64/plugins` folder should contain:
 
@@ -81,7 +81,7 @@ To remove Portable, close the game and delete only `AchievementAssistant.dll` an
 
 | Component | Status |
 | --- | --- |
-| ETS2 | **1.62.3.2**, Windows x64, DirectX 11. |
+| ETS2 | **1.62.3.2 / 1.62.3.3**, Windows x64, DirectX 11. |
 | Other ETS2 versions | Require a matching assistant build. Native bindings are checked against the exact game executable. |
 | ATS | Source is included in the shared project. This installer is for ETS2 only. ATS 0.1.0 targets game version 1.61.3.18. |
 | Detailed rules | **114 of 114** Steam achievements, including Iceland and Coaches. |

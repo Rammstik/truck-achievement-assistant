@@ -5,7 +5,6 @@
 #include "TriggerMapTargets.h"
 #include "FeatureMapTargets.h"
 #include "OfferFilter.h"
-#include "MapProbeTarget.h"
 #include <windows.h>
 #include <MinHook.h>
 #include <atomic>
@@ -60,16 +59,10 @@ uint32_t tint(uint32_t packed,float alpha,uintptr_t frame,uintptr_t returnAddres
     return (packed&0xff000000u)|(original(1.0f,0.0f,0.0f,alpha)&0x00ffffffu);
 }
 }
-bool Install(void* imageBase) {
+bool Install(uintptr_t pack,uintptr_t packCall) {
     Stop();points.clear();mapColors=changed=unreadable=0;
-    const auto base=reinterpret_cast<uintptr_t>(imageBase);
-    std::array<unsigned char,32> signature{};std::array<unsigned char,5> call{};
-    if(!copy(base+mapprobe::target::PackRva,signature.data(),signature.size())||
-       !copy(base+mapprobe::target::PackCallRva,call.data(),call.size())||
-       memcmp(signature.data(),mapprobe::target::PackSignature,signature.size())||
-       memcmp(call.data(),mapprobe::target::PackCallSignature,call.size())){reason="signature_mismatch";return false;}
-    hookTarget=reinterpret_cast<void*>(base+mapprobe::target::PackRva);
-    expectedReturn=base+mapprobe::target::PackReturnRva;
+    hookTarget=reinterpret_cast<void*>(pack);
+    expectedReturn=packCall+5;
     if(MH_CreateHook(hookTarget,reinterpret_cast<void*>(&AAMapTintBridge),reinterpret_cast<void**>(&original))!=MH_OK){hookTarget=nullptr;reason="hook_create_failed";return false;}
     active=true;
     if(MH_EnableHook(hookTarget)!=MH_OK){Stop();reason="hook_enable_failed";return false;}

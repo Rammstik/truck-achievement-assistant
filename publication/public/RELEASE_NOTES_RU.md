@@ -1,17 +1,13 @@
-ETS2 Achievement Assistant 0.6.18 для ETS2 1.62.3.2.
+ETS2 Achievement Assistant 0.6.19 для ETS2 1.62.3.2 и 1.62.3.3.
 
-- Добавлены условия и подробности всех четырёх достижений Coaches на русском и английском.
-- В журнале автобусных рейсов учитываются лучшая удовлетворённость пассажиров и пробег на своём автобусе. Отдельно показаны шесть навыков и серия рейсов по данным Steam.
-- Обновлена совместимость подсветки карты и фильтра грузовых заказов с ETS2 1.62.3.2.
-
-Закройте ETS2 перед установкой. Для ручной установки используйте архив Portable.
+- Карта и фильтр заказов отдельно проверяют совместимость с обновлённой игрой.
+- Помощник автоматически находит нужные функции, если их код сохранился и изменилось расположение в файле игры.
+- Установщик принимает обновлённый файл ETS2. Панель показывает, если подсветка или фильтр временно недоступны.
 
 ## English
 
-ETS2 Achievement Assistant 0.6.18 for ETS2 1.62.3.2.
+ETS2 Achievement Assistant 0.6.19 for ETS2 1.62.3.2 and 1.62.3.3.
 
-- Added requirements and progress details for all four Coaches achievements in English and Russian.
-- The assistant shows the best passenger satisfaction and owned-coach mileage recorded in the job log, the six coach skills and the Steam streak counter.
-- Updated map highlighting and freight job filtering for ETS2 1.62.3.2.
-
-Close ETS2 before installing. The Portable archive is available for manual installation.
+- Map highlighting and job filtering run independent compatibility checks after game updates.
+- The assistant can find the required functions when their code is unchanged and their addresses have moved.
+- Setup accepts an updated ETS2 executable. The panel reports when highlighting or filtering is temporarily unavailable.

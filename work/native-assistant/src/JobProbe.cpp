@@ -2,7 +2,6 @@
 #define NOMINMAX
 #include "JobProbe.h"
 #include "OfferFilter.h"
-#include "JobProbeTarget.h"
 #include <windows.h>
 #include <MinHook.h>
 #include <atomic>
@@ -124,19 +123,17 @@ void __fastcall updateHook(Address handler){
         if(plan->active){const char* message="Фильтр достижений включён. Если список пуст — подходящих предложений сейчас нет.";setStatus(handler,&message);}
     }catch(...){++errors;}
 }
-template<size_t N> bool signature(Address address,const unsigned char (&expected)[N]){std::array<unsigned char,N> bytes{};return read(address,bytes)&&!memcmp(bytes.data(),expected,N);}
 }
-void Install(void* imageBase,const std::filesystem::path& session){
+void Install(void* imageBase,const std::filesystem::path& session,const Addresses& addresses){
     Stop();base=reinterpret_cast<Address>(imageBase);journal=session/L"job-offers-probe.jsonl";
     calls=written=errors=0;seen.clear();pending.clear();providers.clear();specialProviders.clear();specialCalls=specialRejected=specialCargoUnreadable=0;totalCaptured=0;screenRevision.clear();rejectedByPlan=0;rebuildRequests=0;
-    if(!signature(base+target::PredicateRva,target::PredicateSignature)||!signature(base+target::SpecialPredicateRva,target::SpecialPredicateSignature)||!signature(base+target::CityRva,target::CitySignature)||
-       !signature(base+target::DestinationRva,target::DestinationSignature)||!signature(base+target::NameRva,target::NameSignature)||!signature(base+target::UpdateRva,target::UpdateSignature)||!signature(base+target::RebuildRva,target::RebuildSignature)||!signature(base+target::SetStatusRva,target::SetStatusSignature)){reason="signature_mismatch";return;}
-    city=reinterpret_cast<City>(base+target::CityRva);destination=reinterpret_cast<Destination>(base+target::DestinationRva);name=reinterpret_cast<Name>(base+target::NameRva);
-    hookTarget=reinterpret_cast<void*>(base+target::PredicateRva);
+    if(!addresses.predicate){reason="signature_mismatch";return;}
+    city=reinterpret_cast<City>(addresses.city);destination=reinterpret_cast<Destination>(addresses.destination);name=reinterpret_cast<Name>(addresses.name);
+    hookTarget=reinterpret_cast<void*>(addresses.predicate);
     if(MH_CreateHook(hookTarget,reinterpret_cast<void*>(&hook),reinterpret_cast<void**>(&original))!=MH_OK){hookTarget=nullptr;reason="hook_create_failed";return;}
-    specialTarget=reinterpret_cast<void*>(base+target::SpecialPredicateRva);
+    specialTarget=reinterpret_cast<void*>(addresses.specialPredicate);
     if(MH_CreateHook(specialTarget,reinterpret_cast<void*>(&specialHook),reinterpret_cast<void**>(&originalSpecial))!=MH_OK){specialTarget=nullptr;Stop();reason="special_hook_failed";return;}
-    updateTarget=reinterpret_cast<void*>(base+target::UpdateRva);rebuild=reinterpret_cast<Update>(base+target::RebuildRva);setStatus=reinterpret_cast<SetStatus>(base+target::SetStatusRva);
+    updateTarget=reinterpret_cast<void*>(addresses.update);rebuild=reinterpret_cast<Update>(addresses.rebuild);setStatus=reinterpret_cast<SetStatus>(addresses.setStatus);
     if(MH_CreateHook(updateTarget,reinterpret_cast<void*>(&updateHook),reinterpret_cast<void**>(&originalUpdate))!=MH_OK){updateTarget=nullptr;Stop();reason="refresh_hook_failed";return;}
     active=true;if(MH_EnableHook(hookTarget)!=MH_OK||MH_EnableHook(specialTarget)!=MH_OK||MH_EnableHook(updateTarget)!=MH_OK){Stop();reason="hook_enable_failed";return;}reason="ready";
 }

@@ -133,12 +133,12 @@ void draw_panel() {
     const auto filterState=aa::offers::Status();
     if(ImGui::GetContentRegionAvail().x>950)ImGui::SameLine(0,28);
     const auto nativeJobs=aa::jobprobe::Status(),nativeMap=aa::mapprobe::Status();
-    const auto mapReason=string_value(nativeMap,"reason");
-    if(mapReason=="unsupported_executable"||mapReason=="signature_mismatch") {
+    if(!nativeMap.value("installed",false)&&string_value(nativeMap,"reason")!="disabled") {
         ImGui::PushStyleColor(ImGuiCol_Text,ImVec4(.98f,.72f,.43f,1));
-        text(tr("Версия игры не поддерживается: подсветка карты и отбор заказов отключены. План сохранён."));
+        text(tr("Подсветка карты временно недоступна. Подробности в диагностике."));
         ImGui::PopStyleColor();
-    }else if(filterState.value("active",false)&&!nativeJobs.value("active",false)) {
+    }
+    if(filterState.value("active",false)&&!nativeJobs.value("active",false)) {
         ImGui::PushStyleColor(ImGuiCol_Text,ImVec4(.98f,.72f,.43f,1));text(tr("Отбор заказов сейчас недоступен. План сохранён; подробности — в диагностике."));ImGui::PopStyleColor();
     }else if(!string_value(filterState,"unsupported").empty()) {
         ImGui::PushStyleColor(ImGuiCol_Text,ImVec4(.98f,.72f,.43f,1));text(tr("Отбор заказов недоступен для: ")+string_value(filterState,"unsupported"));ImGui::PopStyleColor();
